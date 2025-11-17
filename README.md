@@ -116,10 +116,6 @@ Each agent specializes in:
 - Firebase / Supabase / S3  
 - ChromaDB / Pinecone (for RAG)
 
----
-
-## 🧩 System Architecture
-
 
 ---
 
