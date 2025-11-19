@@ -1,15 +1,13 @@
-# backend/routers/slides.py
-from fastapi import APIRouter
-from pydantic import BaseModel
-from backend.agents.planner import generate_outline
+# backend/app/api/slides.py
+from fastapi import APIRouter, Query
+from app.services.slide_service import generate_slides
+
 
 router = APIRouter()
 
-class TopicRequest(BaseModel):
-    topic: str
-    detail: str = "medium"
-    theme: str = "corporate"
-
-@router.post("/generate-outline")
-def generate(req: TopicRequest):
-    return {"outline": generate_outline(req.topic, req.detail)}
+@router.get("/generate")
+def generate(topic: str = Query(..., description="Topic for slide generation"),
+             num_slides: int = Query(10, description="Number of slides"),
+             theme: str = Query("Modern", description="Slide theme")):
+    slides = generate_slides(topic, num_slides, theme)
+    return {"slides": slides}
