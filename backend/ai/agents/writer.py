@@ -1,10 +1,25 @@
-# ai/agents/writer_agent.py
-def write_content(slide_title: str, key_points: list):
-    """
-    Converts outline + research points into bullet content.
-    """
-    bullets = [f"- {point}" for point in key_points]
-    return {
-        "title": slide_title,
-        "content": "\n".join(bullets)
-    }
+from ai.utils.agent_utils import BaseAgent
+
+WRITER_SYSTEM_PROMPT = """
+You are a Slide Content Writing Agent.
+Combine outline + research to generate clean slides.
+
+RETURN JSON:
+{
+  "slides": [
+      {
+         "id": 1,
+         "heading": "",
+         "bullets": [],
+         "notes": ""
+      }
+  ]
+}
+"""
+
+class WriterAgent(BaseAgent):
+    def __init__(self):
+        super().__init__(WRITER_SYSTEM_PROMPT)
+
+    def write(self, enriched_outline):
+        return self.run(enriched_outline)
