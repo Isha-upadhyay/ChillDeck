@@ -1,13 +1,13 @@
 # app/services/slide_service.py
 
 from typing import List
-from app.ai.agents.planner import PlannerAgent
-from app.ai.agents.research import ResearchAgent
-from app.ai.agents.writer import WriterAgent
-from app.ai.agents.slide_designer import SlideDesignerAgent
-from app.ai.agents.image_generator import ImageGeneratorAgent
-from app.ai.agents.quality import QualityAgent
-from app.ai.agents.orchestrator import OrchestratorAgent
+from ai.agents.planner import PlannerAgent
+from ai.agents.research import ResearchAgent
+from ai.agents.writer import WriterAgent
+from ai.agents.slide_designer import SlideDesignerAgent
+from ai.agents.image_generator import ImageGeneratorAgent
+from ai.agents.quality import QualityAgent
+from ai.agents.orchestrator import OrchestratorAgent
 
 
 class SlideService:

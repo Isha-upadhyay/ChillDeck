@@ -4,9 +4,9 @@ import shutil
 import uuid
 from pathlib import Path
 from fastapi import UploadFile
-from app.ai.loaders.pdf_loader import PDFLoader
-from app.ai.loaders.docx_loader import DocxLoader
-from app.ai.loaders.txt_loader import TextLoader
+from ai.loaders.pdf_loader import PDFLoader
+from ai.loaders.docx_loader import DocxLoader
+from ai.loaders.txt_loader import TextLoader
 from app.core.logger import logger
 
 

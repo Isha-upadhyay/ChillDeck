@@ -1,6 +1,6 @@
 # app/api/upload.py
 from fastapi import APIRouter, UploadFile, File, HTTPException
-from app.services.rag_service import RAGService
+from app.services.rag_services import RAGService
 from ai.loaders.pdf_loader import PDFLoader
 from ai.loaders.docx_loader import DOCXLoader
 from ai.loaders.txt_loader import TXTLoader

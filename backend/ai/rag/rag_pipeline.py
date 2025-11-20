@@ -1,6 +1,6 @@
 # ai/rag/rag_pipeline.py
 from .chunker import Chunker
-from .embeddings_client import EmbeddingsClient
+from ai.llms.embeddings_client import EmbeddingsClient
 from .vector_store import VectorStore
 from .retriever import Retriever
 from typing import List, Dict, Any

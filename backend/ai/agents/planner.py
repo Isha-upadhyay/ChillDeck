@@ -1,4 +1,4 @@
-from ai.utils.agent_utils import BaseAgent
+from utils.agents_utils import BaseAgent
 
 PLANNER_SYSTEM_PROMPT = """
 You are a Planning Agent for an AI Slide Generator.

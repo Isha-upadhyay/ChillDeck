@@ -1,19 +1,33 @@
+# FastAPI & Server
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
+pydantic-settings
+python-dotenv
+
+# Auth & Security
 passlib[bcrypt]
 pyjwt
+
+# File Upload / Parsing
 python-multipart
+pdfplumber
+python-docx
+
+# RAG / Vector DB / Embeddings
 sentence-transformers
 chromadb
 numpy
 tqdm
-pdfplumber
-python-docx
+
+# HTTP Requests
 requests
-python-dotenv
+
+# LLM Clients
+groq
+tavily-python
+
+# Database (optional, future compatibility)
 sqlmodel
 sqlalchemy
 aiosqlite
-
-

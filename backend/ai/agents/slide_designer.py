@@ -1,4 +1,4 @@
-from ai.utils.agent_utils import BaseAgent
+from utils.agents_utils import BaseAgent
 
 DESIGN_SYSTEM_PROMPT = """
 You are Slide Design Agent.
