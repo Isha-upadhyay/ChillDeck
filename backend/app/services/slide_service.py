@@ -1,22 +1,66 @@
-# backend/app/services/slide_service.py
-from ai.agents import (
-    planning_agent,
-    research_agent,
-    content_writer_agent,
-    quality_agent,
-    design_agent,
-    image_agent
-)
-def generate_slides(topic: str, num_slides: int = 10, theme: str = "Modern"):
-    slides = []
-    outline = planning_agent.plan_slides(topic, num_slides)
-    
-    for slide_title in outline:
-        research = research_agent.research_topic(slide_title)
-        content = content_writer_agent.write_content(slide_title, research)
-        content = quality_agent.improve_quality(content)
-        content = design_agent.apply_theme(content, theme)
-        content["image"] = image_agent.generate_image(slide_title)
-        slides.append(content)
-    
-    return slides
+# app/services/slide_service.py
+
+from typing import List
+from app.ai.agents.planner import PlannerAgent
+from app.ai.agents.research import ResearchAgent
+from app.ai.agents.writer import WriterAgent
+from app.ai.agents.slide_designer import SlideDesignerAgent
+from app.ai.agents.image_generator import ImageGeneratorAgent
+from app.ai.agents.quality import QualityAgent
+from app.ai.agents.orchestrator import OrchestratorAgent
+
+
+class SlideService:
+    """
+    Central service that controls the slide generation pipeline.
+    """
+
+    def __init__(self):
+        self.planner = PlannerAgent()
+        self.researcher = ResearchAgent()
+        self.writer = WriterAgent()
+        self.designer = SlideDesignerAgent()
+        self.image_gen = ImageGeneratorAgent()
+        self.quality = QualityAgent()
+        self.orchestrator = OrchestratorAgent()
+
+    # --------------------------
+    # MAIN PIPELINE
+    # --------------------------
+    async def generate_slides(self, topic: str, slide_count: int):
+        """
+        Full multi-agent slide generation workflow.
+        """
+
+        # 1) Plan structure
+        outline = await self.planner.create_outline(topic, slide_count)
+
+        # 2) Research each point
+        research_data = await self.researcher.fetch_research(outline)
+
+        # 3) Write content
+        slides = await self.writer.write_slides(research_data)
+
+        # 4) Generate images
+        images = await self.image_gen.generate_images(slides)
+
+        # 5) Full slide layout (title, body, bullets, image)
+        designed_slides = self.designer.build_layout(slides, images)
+
+        # 6) Quality check
+        final_slides = await self.quality.validate(designed_slides)
+
+        return final_slides
+
+    # --------------------------
+    # ORCHESTRATOR (optional)
+    # --------------------------
+    async def generate_with_orchestrator(self, topic: str):
+        """
+        Uses a single Orchestrator agent to auto decide:
+        - slide count
+        - styles
+        - research depth
+        """
+
+        return await self.orchestrator.run(topic)

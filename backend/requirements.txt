@@ -1,6 +1,8 @@
 fastapi
 uvicorn
 pydantic
+passlib[bcrypt]
+pyjwt
 python-multipart
 sentence-transformers
 chromadb
@@ -10,4 +12,8 @@ pdfplumber
 python-docx
 requests
 python-dotenv
+sqlmodel
+sqlalchemy
+aiosqlite
+
 
