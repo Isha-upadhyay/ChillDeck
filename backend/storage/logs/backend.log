@@ -38,3 +38,33 @@
 2025-11-23 14:50:51,046 [INFO] backend: RAGPipeline initialized successfully
 2025-11-23 14:50:55,453 [INFO] backend: RAGPipeline initialized successfully
 2025-11-23 14:50:55,838 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:54:07,016 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:54:10,999 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:54:11,375 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:55:22,537 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:55:26,540 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:55:26,990 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:55:39,930 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:55:44,320 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:55:44,618 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:56:36,834 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:56:40,973 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:56:41,345 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:57:25,687 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:57:29,582 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:57:29,930 [INFO] backend: Application Starting Up...
+2025-11-23 14:57:29,932 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:57:29,932 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 14:57:29,933 [INFO] backend: Application Shutting Down...
+2025-11-23 14:57:41,903 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:57:46,894 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:57:47,403 [INFO] backend: Application Starting Up...
+2025-11-23 14:57:47,412 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:57:47,412 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 14:57:47,414 [INFO] backend: Application Shutting Down...
+2025-11-23 14:58:01,489 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:58:05,453 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:58:05,746 [INFO] backend: Application Starting Up...
+2025-11-23 14:58:05,747 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:58:05,747 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 14:58:24,973 [INFO] backend: Application Shutting Down...

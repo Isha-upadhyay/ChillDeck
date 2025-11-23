@@ -76,14 +76,14 @@ app = create_application()
 # -----------------------
 @app.on_event("startup")
 def on_startup():
-    logger.info("🚀 Application Starting Up...")
+    logger.info("Application Starting Up...")
 
     # Create DB & tables
     create_db_and_tables()
 
-    logger.info("📘 DB Ready, AI Slide Generator Online!")
+    logger.info("DB Ready, AI Slide Generator Online!")
 
 
 @app.on_event("shutdown")
 def on_shutdown():
-    logger.info("🛑 Application Shutting Down...")
+    logger.info("Application Shutting Down...")

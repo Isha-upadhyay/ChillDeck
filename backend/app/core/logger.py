@@ -20,11 +20,18 @@ def get_logger(name: str = "backend"):
 
     logger.setLevel(level)
 
-    # Console handler
-    ch = logging.StreamHandler()
+    # Console handler with UTF-8 encoding support
+    import sys
+    ch = logging.StreamHandler(sys.stdout)
     ch.setLevel(level)
     ch_formatter = logging.Formatter("[%(levelname)s] %(asctime)s - %(name)s - %(message)s")
     ch.setFormatter(ch_formatter)
+    # Handle Unicode encoding errors gracefully
+    if hasattr(ch.stream, 'reconfigure'):
+        try:
+            ch.stream.reconfigure(encoding='utf-8', errors='replace')
+        except (AttributeError, ValueError):
+            pass
 
     # Rotating file handler
     try:
