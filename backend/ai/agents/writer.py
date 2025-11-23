@@ -1,19 +1,19 @@
 from ai.utils.agents_utils import BaseAgent
+import json
+import re
 
 WRITER_SYSTEM_PROMPT = """
 You are a Slide Content Writing Agent.
-Combine outline + research to generate clean slides.
+You must combine outline + context to generate full slide content.
 
-RETURN JSON:
+Return ONLY JSON in this format:
 {
-  "slides": [
-      {
-         "id": 1,
-         "heading": "",
-         "bullets": [],
-         "notes": ""
-      }
-  ]
+  "slide": {
+     "id": 1,
+     "heading": "Slide title",
+     "bullets": ["point 1", "point 2"],
+     "notes": "speaker notes"
+  }
 }
 """
 
@@ -21,38 +21,72 @@ class WriterAgent(BaseAgent):
     def __init__(self):
         super().__init__(WRITER_SYSTEM_PROMPT)
 
-    def write(self, enriched_outline, context: str = None):
-        """Write slide content from outline and optional context"""
-        prompt = f"Outline: {enriched_outline}"
-        if context:
-            prompt += f"\n\nAdditional Context: {context}"
-        result = self.run(prompt)
-        import json
+    def _extract_json(self, text: str):
+        """Extract valid JSON from any LLM output."""
+        # Direct load attempt
         try:
-            parsed = json.loads(result)
-            # If it's a list of slides, return first one; if single slide dict, return it
-            if isinstance(parsed, dict) and "slides" in parsed:
-                return parsed["slides"][0] if parsed["slides"] else {"title": "", "bullets": [], "notes": ""}
-            elif isinstance(parsed, dict):
-                return parsed
-            else:
-                return {"title": "", "bullets": [], "notes": ""}
-        except (json.JSONDecodeError, ValueError, TypeError):
-            return {"title": str(enriched_outline), "bullets": [], "notes": ""}
-    
-    def write_slide(self, title: str, research_data: dict):
-        """Write a single slide from title and research data (for orchestrator)"""
-        prompt = f"Title: {title}\nResearch Data: {research_data}\n\nCreate slide content with bullets and notes."
-        result = self.run(prompt)
-        import json
-        try:
-            parsed = json.loads(result)
-            if isinstance(parsed, dict):
-                return {
-                    "title": parsed.get("title") or title,
-                    "bullets": parsed.get("bullets", []),
-                    "notes": parsed.get("notes", "")
-                }
-        except (json.JSONDecodeError, ValueError, TypeError):
+            return json.loads(text)
+        except:
             pass
-        return {"title": title, "bullets": [], "notes": ""}
+
+        # Try extracting JSON inside code block
+        match = re.search(r"\{[\s\S]*\}", text)
+        if match:
+            try:
+                return json.loads(match.group(0))
+            except:
+                pass
+
+        # Last fallback
+        return {
+            "slide": {
+                "id": 0,
+                "heading": "",
+                "bullets": [],
+                "notes": ""
+            }
+        }
+
+    def write(self, enriched_outline, context: str = None):
+        """Write slide using outline + extra RAG context."""
+        prompt = f"""
+Outline JSON:
+{enriched_outline}
+
+Context:
+{context or ""}
+
+Write ONLY JSON for one slide.
+"""
+
+        raw = self.run(prompt)
+        result = self._extract_json(raw)
+
+        # Normalize output
+        slide = result.get("slide") or result.get("slides", [{}])[0]
+
+        return {
+            "id": slide.get("id", 0),
+            "heading": slide.get("title") or slide.get("heading") or "Untitled Slide",
+            "bullets": slide.get("bullets", []),
+            "notes": slide.get("notes", "")
+        }
+
+    def write_slide(self, title: str, research_data: dict):
+        """Write slide from title + research data only."""
+        prompt = f"""
+Title: {title}
+Research: {research_data}
+
+Write ONLY JSON for one slide.
+"""
+        raw = self.run(prompt)
+        result = self._extract_json(raw)
+
+        slide = result.get("slide") or result.get("slides", [{}])[0]
+
+        return {
+            "title": slide.get("heading") or title,
+            "bullets": slide.get("bullets", []),
+            "notes": slide.get("notes", "")
+        }

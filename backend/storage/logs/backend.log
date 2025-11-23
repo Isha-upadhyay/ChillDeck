@@ -260,3 +260,25 @@ TypeError: 'ChatCompletionMessage' object is not subscriptable
 2025-11-23 15:17:18,268 [INFO] backend: Database & tables created/verified.
 2025-11-23 15:17:18,269 [INFO] backend: DB Ready, AI Slide Generator Online!
 2025-11-23 15:17:34,238 [INFO] backend: Application Shutting Down...
+2025-11-23 15:20:22,294 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:20:27,058 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:20:27,407 [INFO] backend: Application Starting Up...
+2025-11-23 15:20:27,410 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:20:27,410 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:20:27,411 [INFO] backend: Application Shutting Down...
+2025-11-23 15:23:07,504 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:23:11,711 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:23:12,236 [INFO] backend: Application Starting Up...
+2025-11-23 15:23:12,247 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:23:12,247 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:23:18,053 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-23 15:23:18,267 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-23 15:23:18,277 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-23 15:23:18,289 [INFO] backend: [RAG] Global query: 'Challenges of Implementing AI in Education' (top_k=5)
+2025-11-23 15:23:18,303 [INFO] backend: [RAG] Global query: 'AI-Powered Tools for Education' (top_k=5)
+2025-11-23 15:23:18,316 [INFO] backend: [RAG] Global query: 'Impact of AI on Teaching and Learning' (top_k=5)
+2025-11-23 15:23:18,329 [INFO] backend: [RAG] Global query: 'Ethics and Bias in AI-Powered Education' (top_k=5)
+2025-11-23 15:23:18,340 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-23 15:23:18,351 [INFO] backend: [RAG] Global query: 'Case Studies: AI in Education' (top_k=5)
+2025-11-23 15:23:18,363 [INFO] backend: [RAG] Global query: 'Conclusion: AI in Education' (top_k=5)
+2025-11-23 15:27:00,077 [INFO] backend: Application Shutting Down...
