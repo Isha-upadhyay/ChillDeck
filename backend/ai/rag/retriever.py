@@ -1,6 +1,6 @@
 # ai/rag/retriever.py
-from ..llms.embeddings_client import EmbeddingsClient
-from .vector_store import VectorStore
+from ai.llms.embeddings_client import EmbeddingsClient
+from ai.rag.vector_store import VectorStore
 from typing import List, Dict, Any
 
 class Retriever:

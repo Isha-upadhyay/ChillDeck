@@ -1,46 +1,4 @@
-# # app/core/config.py
-# from pydantic_settings import BaseSettings
-# from pydantic import AnyHttpUrl
-# from typing import List, Optional
-# import os
 
-
-# class Settings(BaseSettings):
-#     # App Info
-#     APP_NAME: str = "AI Slide Generator"
-#     DEBUG: bool = False
-#     HOST: str = "0.0.0.0"
-#     PORT: int = 8000
-
-#     # Storage Paths
-#     BASE_DIR: str = os.path.abspath("./storage")
-#     STORAGE_DIR: str = f"{BASE_DIR}"
-#     UPLOAD_DIR: str = f"{BASE_DIR}/uploads"
-#     EXPORT_DIR: str = f"{BASE_DIR}/exports"
-#     CHROMA_DB_DIR: str = f"{BASE_DIR}/chroma_db"
-
-#     # API Keys (Optional)
-#     GROQ_API_KEY: Optional[str] = None
-#     TAVILY_API_KEY: Optional[str] = None
-#     HF_API_KEY: Optional[str] = None
-
-#     # JWT Auth Config
-#     JWT_SECRET_KEY: str = "change-in-prod"
-#     JWT_ALGORITHM: str = "HS256"
-#     JWT_EXP_MINUTES: int = 60 * 24  # 24 hrs
-
-#     # CORS Allowed Origins
-#     CORS_ORIGINS: List[AnyHttpUrl] = []
-
-#     class Config:
-#         env_file = ".env"
-#         env_file_encoding = "utf-8"
-
-
-# settings = Settings()
-
-
-# app/core/config.py
 from pydantic_settings import BaseSettings
 from pydantic import AnyHttpUrl
 from typing import List, Optional
@@ -102,6 +60,9 @@ class Settings(BaseSettings):
     # SECURITY
     #########################################
     PASSWORD_SALT: str = "extra_secure_salt"
+    JWT_SECRET_KEY: str = "change-this-in-production-secret-key"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRATION_MINUTES: int = 60 * 24  # 24 hours
 
     #########################################
     # AGENTS

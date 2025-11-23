@@ -1,13 +1,31 @@
 # ai/rag/vector_store.py
 import chromadb
-from chromadb.config import Settings
 from typing import List, Dict, Optional
 import os
+from pathlib import Path
 
 class VectorStore:
     def __init__(self, persist_directory: Optional[str] = None, collection_name: str = "slides"):
-        persist_directory = persist_directory or os.getenv("CHROMA_DB_DIR", "./storage/chroma_db")
-        self.client = chromadb.Client(Settings(chroma_db_impl="duckdb+parquet", persist_directory=persist_directory))
+        persist_directory = persist_directory or os.getenv("CHROMA_DB_DIR", "./vector_store")
+        # Create directory if it doesn't exist
+        Path(persist_directory).mkdir(parents=True, exist_ok=True)
+        
+        # Use PersistentClient for newer ChromaDB versions, fallback to Client for older
+        try:
+            # Try new API first (ChromaDB 0.4+)
+            self.client = chromadb.PersistentClient(path=persist_directory)
+        except (AttributeError, TypeError):
+            # Fallback to old API (ChromaDB < 0.4)
+            try:
+                from chromadb.config import Settings
+                self.client = chromadb.Client(Settings(
+                    chroma_db_impl="duckdb+parquet",
+                    persist_directory=persist_directory
+                ))
+            except Exception as e:
+                # Last resort: try without settings
+                self.client = chromadb.Client()
+        
         self.collection = self.client.get_or_create_collection(name=collection_name)
 
     def add_documents(self, ids: List[str], texts: List[str], embeddings: List[List[float]], metadatas: List[Dict]):
@@ -17,14 +35,28 @@ class VectorStore:
         embeddings: list of vector lists
         metadatas: list of metadata dicts per chunk (e.g., {"document_id":..., "page":..})
         """
-        self.collection.add(
-            ids=ids,
-            documents=texts,
-            embeddings=embeddings,
-            metadatas=metadatas
-        )
-        # optionally persist (chroma does on shutdown, but safe to call)
-        self.client.persist()
+        try:
+            self.collection.add(
+                ids=ids,
+                documents=texts,
+                embeddings=embeddings,
+                metadatas=metadatas
+            )
+        except Exception as e:
+            # If add fails, try upsert
+            self.collection.upsert(
+                ids=ids,
+                documents=texts,
+                embeddings=embeddings,
+                metadatas=metadatas
+            )
+        
+        # Persist if method exists (older versions)
+        if hasattr(self.client, 'persist'):
+            try:
+                self.client.persist()
+            except:
+                pass
 
     def similarity_search(self, query_embedding: List[float], n_results: int = 5):
         results = self.collection.query(

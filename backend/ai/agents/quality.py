@@ -1,4 +1,4 @@
-from utils.agents_utils import BaseAgent
+from ai.utils.agents_utils import BaseAgent
 
 QUALITY_SYSTEM_PROMPT = """
 You are a Quality Agent.

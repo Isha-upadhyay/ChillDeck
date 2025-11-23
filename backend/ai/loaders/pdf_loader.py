@@ -1,13 +1,17 @@
-import fitz  # PyMuPDF
+import pdfplumber
 
 class PDFLoader:
     def load(self, file_path):
-        doc = fitz.open(file_path)
         text = ""
-
-        for page in doc:
-            cleaned = page.get_text().replace("\n", " ").strip()
-            text += cleaned + " "
+        
+        try:
+            with pdfplumber.open(file_path) as pdf:
+                for page in pdf.pages:
+                    page_text = page.extract_text()
+                    if page_text:
+                        text += page_text + " "
+        except Exception as e:
+            raise Exception(f"Failed to load PDF: {e}")
 
         text = text.strip()
 

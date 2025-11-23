@@ -5,8 +5,8 @@ import uuid
 from pathlib import Path
 from fastapi import UploadFile
 from ai.loaders.pdf_loader import PDFLoader
-from ai.loaders.docx_loader import DocxLoader
-from ai.loaders.txt_loader import TextLoader
+from ai.loaders.docx_loader import DOCXLoader
+from ai.loaders.txt_loader import TXTLoader
 from app.core.logger import logger
 
 
@@ -39,13 +39,19 @@ class FileService:
         ext = path.suffix.lower()
 
         if ext == ".pdf":
-            return PDFLoader().load(path)
+            loader = PDFLoader()
         elif ext == ".docx":
-            return DocxLoader().load(path)
+            loader = DOCXLoader()
         elif ext in [".txt", ".md"]:
-            return TextLoader().load(path)
+            loader = TXTLoader()
         else:
             raise ValueError("Unsupported document type")
+        
+        result = loader.load(str(path))
+        # Return raw_text if it's a dict, otherwise return the result
+        if isinstance(result, dict):
+            return result.get("raw_text", "")
+        return result
 
     def cleanup(self, path: Path):
         if path.exists():

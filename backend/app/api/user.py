@@ -1,6 +1,6 @@
 # app/api/user.py
 from fastapi import APIRouter, HTTPException, Depends, status
-from app.models.user import UserCreate, UserOut, UserIn, UserUpdate
+from app.models.user import UserCreate, UserOut, UserUpdate
 from app.services.user_service import UserService
 from app.core.security import create_access_token, get_current_user, decode_access_token
 from app.core.logger import logger

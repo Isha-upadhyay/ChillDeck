@@ -1,8 +1,8 @@
 # ai/rag/rag_pipeline.py
-from .chunker import Chunker
+from ai.rag.chunker import Chunker
 from ai.llms.embeddings_client import EmbeddingsClient
-from .vector_store import VectorStore
-from .retriever import Retriever
+from ai.rag.vector_store import VectorStore
+from ai.rag.retriever import Retriever
 from typing import List, Dict, Any
 import uuid
 
@@ -48,3 +48,40 @@ class RAGPipeline:
 
     def retrieve_for_document(self, document_id: str, query: str, top_k: int = 5):
         return self.retriever.retrieve_by_document(document_id=document_id, query=query, top_k=top_k)
+    
+    def delete_document(self, document_id: str) -> bool:
+        """
+        Delete all chunks for a document from vector store.
+        """
+        try:
+            # Get all chunks for this document
+            results = self.vs.collection.get(
+                where={"document_id": document_id}
+            )
+            if results and results.get("ids"):
+                # Delete all chunks
+                self.vs.collection.delete(ids=results["ids"])
+                return True
+            return False
+        except Exception:
+            return False
+    
+    def list_documents(self) -> List[Dict]:
+        """
+        List all unique document IDs in the vector store.
+        """
+        try:
+            # Get all metadata
+            results = self.vs.collection.get()
+            if not results or not results.get("metadatas"):
+                return []
+            
+            # Extract unique document IDs
+            doc_ids = set()
+            for meta in results["metadatas"]:
+                if isinstance(meta, dict) and "document_id" in meta:
+                    doc_ids.add(meta["document_id"])
+            
+            return [{"document_id": doc_id} for doc_id in doc_ids]
+        except Exception:
+            return []

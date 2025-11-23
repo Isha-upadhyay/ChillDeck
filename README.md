@@ -21,6 +21,7 @@ Built with **Next.js**, **FastAPI**, **LangChain**, **LangGraph**, **OpenAI**, a
 
 ## 📚 Table of Contents
 
+- [🚀 Quick Start](#-quick-start)  
 - [Overview](#-overview)  
 - [Core Features](#-core-features)  
 - [Tech Stack](#-tech-stack)  
@@ -32,6 +33,46 @@ Built with **Next.js**, **FastAPI**, **LangChain**, **LangGraph**, **OpenAI**, a
 - [Future Enhancements](#-future-enhancements)  
 - [Screenshots](#-screenshots-optional)  
 - [Resume Description](#-resume-description)
+
+---
+
+## 🚀 Quick Start
+
+**New to the project?** Start here!
+
+### Prerequisites
+- Python 3.11+
+- Node.js 18+
+- [Groq API Key](https://console.groq.com/) (free)
+
+### 3-Step Setup
+
+1. **Backend Setup**
+   ```bash
+   cd backend
+   python -m venv venv
+   venv\Scripts\activate  # Windows
+   # or: source venv/bin/activate  # Mac/Linux
+   pip install -r requirements.txt
+   # Create .env file with GROQ_API_KEY
+   uvicorn main:app --reload
+   ```
+
+2. **Frontend Setup**
+   ```bash
+   cd frontend
+   npm install
+   # Create .env.local with NEXT_PUBLIC_API_BASE=http://localhost:8000
+   npm run dev
+   ```
+
+3. **Test It!**
+   - Open http://localhost:3000
+   - Enter topic: "Impact of AI on Education"
+   - Generate slides!
+
+📖 **For detailed instructions, see [GETTING_STARTED.md](./GETTING_STARTED.md)**  
+⚡ **For fastest setup, see [QUICKSTART.md](./QUICKSTART.md)**
 
 ---
 

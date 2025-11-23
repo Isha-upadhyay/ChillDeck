@@ -16,6 +16,7 @@ python-docx
 
 # RAG / Vector DB / Embeddings
 sentence-transformers
+torch  # Required by sentence-transformers (CPU version for Windows)
 chromadb
 numpy
 tqdm
@@ -26,6 +27,13 @@ requests
 # LLM Clients
 groq
 tavily-python
+openai  # Optional: for OpenAI models
+
+# LangChain & LangGraph (for agentic workflows)
+langchain
+langchain-community
+langchain-core
+langgraph  # For multi-agent orchestration
 
 # Database (optional, future compatibility)
 sqlmodel

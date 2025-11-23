@@ -1,9 +1,9 @@
 import uuid
-from agents.planner import PlannerAgent
-from agents.research import ResearcherAgent
-from agents.writer import WriterAgent
-from agents.slide_designer import DesignerAgent
-from agents.image_generator import ImageAgent
+from ai.agents.planner import PlannerAgent
+from ai.agents.research import ResearcherAgent
+from ai.agents.writer import WriterAgent
+from ai.agents.slide_designer import DesignerAgent
+from ai.agents.image_generator import ImageAgent
 
 class SlideOrchestrator:
     def __init__(self):
