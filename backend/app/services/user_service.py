@@ -2,7 +2,7 @@
 from typing import Optional, List
 from app.db.session import get_session
 from app.db.models import UserTable
-from app.models.user import UserCreate, UserOut, UserIn, UserUpdate
+from app.models.user import UserCreate, UserOut, UserUpdate
 from app.core.security import hash_password, verify_password
 from sqlmodel import select
 from app.core.logger import logger
