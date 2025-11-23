@@ -2,7 +2,7 @@ from groq import Groq
 import os
 
 class GroqLLM:
-    def __init__(self, model="llama3-70b-8192"):
+    def __init__(self, model="llama-3.1-8b-instant"):
         self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         self.model = model
 
@@ -10,6 +10,7 @@ class GroqLLM:
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
-            temperature=temperature
+            temperature=temperature,
         )
-        return response.choices[0].message["content"]
+        # FIX: new response format
+        return response.choices[0].message.content

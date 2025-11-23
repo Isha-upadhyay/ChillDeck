@@ -1,14 +1,3 @@
-# from fastapi import APIRouter
-# from ai.agents.quality import generate_slides
-
-# router = APIRouter()
-
-# @router.post("/generate")
-# def generate(data: dict):
-#     topic = data.get("topic")
-#     result = generate_slides(topic)
-#     return result
-
 
 # app/api/slides.py
 from fastapi import APIRouter, HTTPException

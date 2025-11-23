@@ -68,3 +68,195 @@
 2025-11-23 14:58:05,747 [INFO] backend: Database & tables created/verified.
 2025-11-23 14:58:05,747 [INFO] backend: DB Ready, AI Slide Generator Online!
 2025-11-23 14:58:24,973 [INFO] backend: Application Shutting Down...
+2025-11-23 14:59:30,856 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:59:35,014 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 14:59:35,289 [INFO] backend: Application Starting Up...
+2025-11-23 14:59:35,290 [INFO] backend: Database & tables created/verified.
+2025-11-23 14:59:35,291 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:05:49,157 [INFO] backend: Application Shutting Down...
+2025-11-23 15:06:18,515 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:06:22,984 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:06:23,433 [INFO] backend: Application Starting Up...
+2025-11-23 15:06:23,448 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:06:23,449 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:06:23,455 [INFO] backend: Application Shutting Down...
+2025-11-23 15:06:37,546 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:06:41,367 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:06:41,646 [INFO] backend: Application Starting Up...
+2025-11-23 15:06:41,647 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:06:41,647 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:09:29,033 [ERROR] backend: Unhandled exception occurred
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2485, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\app\api\slides.py", line 32, in generate_slides
+    outline_json = planner.plan(topic=payload.topic or "Untitled", detail=payload.detail, num_slides=payload.num_slides)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\agents\planner.py", line 31, in plan
+    result = self.run(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\utils\agents_utils.py", line 20, in run
+    return self.llm.generate(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\llms\groq_client.py", line 10, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\groq\resources\chat\completions.py", line 464, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `llama-3.1-8b-instant` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-11-23 15:10:52,626 [INFO] backend: Application Shutting Down...
+2025-11-23 15:11:06,535 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:11:10,457 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:11:10,730 [INFO] backend: Application Starting Up...
+2025-11-23 15:11:10,732 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:11:10,732 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:11:10,733 [INFO] backend: Application Shutting Down...
+2025-11-23 15:11:23,230 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:11:27,939 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:11:28,210 [INFO] backend: Application Starting Up...
+2025-11-23 15:11:28,212 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:11:28,212 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:11:28,212 [INFO] backend: Application Shutting Down...
+2025-11-23 15:11:40,802 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:11:44,707 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:11:45,076 [INFO] backend: Application Starting Up...
+2025-11-23 15:11:45,078 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:11:45,079 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:13:04,363 [INFO] backend: Application Shutting Down...
+2025-11-23 15:13:18,910 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:13:22,817 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:13:23,170 [INFO] backend: Application Starting Up...
+2025-11-23 15:13:23,171 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:13:23,171 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:13:23,172 [INFO] backend: Application Shutting Down...
+2025-11-23 15:13:36,108 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:13:40,424 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:13:40,725 [INFO] backend: Application Starting Up...
+2025-11-23 15:13:40,727 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:13:40,727 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:13:40,728 [INFO] backend: Application Shutting Down...
+2025-11-23 15:14:03,812 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:14:07,685 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:14:08,035 [INFO] backend: Application Starting Up...
+2025-11-23 15:14:08,037 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:14:08,037 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:15:50,818 [ERROR] backend: Unhandled exception occurred
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2485, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\app\api\slides.py", line 32, in generate_slides
+    outline_json = planner.plan(topic=payload.topic or "Untitled", detail=payload.detail, num_slides=payload.num_slides)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\agents\planner.py", line 31, in plan
+    result = self.run(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\utils\agents_utils.py", line 20, in run
+    return self.llm.generate(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\llms\groq_client.py", line 15, in generate
+    return response.choices[0].message["content"]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'ChatCompletionMessage' object is not subscriptable
+2025-11-23 15:16:58,946 [INFO] backend: Application Shutting Down...
+2025-11-23 15:17:13,930 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:17:17,910 [INFO] backend: RAGPipeline initialized successfully
+2025-11-23 15:17:18,267 [INFO] backend: Application Starting Up...
+2025-11-23 15:17:18,268 [INFO] backend: Database & tables created/verified.
+2025-11-23 15:17:18,269 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-23 15:17:34,238 [INFO] backend: Application Shutting Down...
