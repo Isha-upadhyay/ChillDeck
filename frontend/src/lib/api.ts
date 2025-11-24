@@ -1,16 +1,37 @@
 // frontend/src/lib/api.ts
-// frontend/src/lib/api.ts
 import axios from "axios";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 
-export async function generateOutline(topic: string) {
+export async function generateOutline(topic: string, theme: string = "corporate") {
   const resp = await axios.post(`${API_BASE}/api/slides/generate`, {
     topic,
     detail: "medium",
-    theme: "corporate",
+    style: theme,
   });
 
   return resp.data;
+}
+
+export async function exportSlides(slides: any[], topic: string, format: "pptx" | "pdf" | "md" | "json") {
+  const resp = await axios.post(
+    `${API_BASE}/api/slides/export`,
+    { slides, topic, format },
+    { responseType: "blob" }
+  );
+  
+  // Create download link
+  const url = window.URL.createObjectURL(new Blob([resp.data]));
+  const link = document.createElement("a");
+  link.href = url;
+  
+  // Set filename based on format
+  const extension = format === "pptx" ? "pptx" : format === "pdf" ? "pdf" : format === "md" ? "md" : "json";
+  const safeTopic = topic.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+  link.setAttribute("download", `${safeTopic}.${extension}`);
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.URL.revokeObjectURL(url);
 }
 

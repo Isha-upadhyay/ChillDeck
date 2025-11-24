@@ -1,15 +1,20 @@
 
 # app/api/slides.py
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
+from typing import List, Dict, Any
 from app.services.rag_services import RAGService
+from app.services.export_service import ExportService
 from ai.agents.writer import WriterAgent  # your already-made writer agent
 from ai.agents.planner import PlannerAgent
+from pathlib import Path
 
 router = APIRouter()
 rag_service = RAGService()
 planner = PlannerAgent()
 writer = WriterAgent()
+export_service = ExportService()
 
 class SlideRequest(BaseModel):
     topic: str = None
@@ -41,8 +46,90 @@ def generate_slides(payload: SlideRequest):
 
     # writer: produce final slide contents using writer agent
     final_slides = []
-    for sec in enriched_sections:
-        content = writer.write(sec["outline"], sec["context"])  # implement writer.write to accept context
+    for idx, sec in enumerate(enriched_sections, start=1):
+        content = writer.write(sec["outline"], sec["context"])
+        # Ensure each slide has unique ID and proper structure
+        if isinstance(content, dict):
+            # Ensure ID is unique
+            content["id"] = content.get("id", idx)
+            # Normalize field names
+            if "heading" in content and "title" not in content:
+                content["title"] = content["heading"]
+            elif "title" not in content:
+                content["title"] = sec["outline"].get("title", f"Slide {idx}")
+            # Ensure bullets exist
+            if "bullets" not in content:
+                content["bullets"] = content.get("points", [])
+            # Ensure notes exist
+            if "notes" not in content:
+                content["notes"] = ""
+        else:
+            # Fallback if content is not a dict
+            content = {
+                "id": idx,
+                "title": sec["outline"].get("title", f"Slide {idx}"),
+                "bullets": sec["outline"].get("points", []),
+                "notes": ""
+            }
         final_slides.append(content)
 
     return {"topic": payload.topic, "slides": final_slides}
+
+
+class ExportRequest(BaseModel):
+    slides: List[Dict[str, Any]]
+    topic: str
+    format: str  # "pptx", "pdf", "md", "json"
+
+
+@router.post("/export")
+def export_slides(payload: ExportRequest):
+    """Export slides to various formats"""
+    try:
+        if payload.format == "pptx":
+            file_path = export_service.export_pptx(payload.slides, payload.topic)
+        elif payload.format == "pdf":
+            file_path = export_service.export_pdf(payload.slides, payload.topic)
+        elif payload.format == "md":
+            file_path = export_service.export_markdown(payload.slides, payload.topic)
+        elif payload.format == "json":
+            file_path = export_service.export_json(payload.slides, payload.topic)
+        else:
+            raise HTTPException(status_code=400, detail=f"Unsupported format: {payload.format}")
+        
+        return FileResponse(
+            path=file_path,
+            filename=Path(file_path).name,
+            media_type="application/octet-stream"
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Export failed: {str(e)}")
+
+
+class UpdateSlideRequest(BaseModel):
+    title: str
+    bullets: List[str]
+    notes: str = ""
+    design: Dict[str, Any] = {}
+
+
+@router.put("/{slide_id}")
+def update_slide(slide_id: str, payload: UpdateSlideRequest):
+    """Update a single slide"""
+    # For now, just return the updated slide data
+    # In a real app, you'd save this to a database
+    return {
+        "id": slide_id,
+        "title": payload.title,
+        "bullets": payload.bullets,
+        "notes": payload.notes,
+        "design": payload.design
+    }
+
+
+@router.get("/{slide_id}")
+def get_slide(slide_id: str):
+    """Get a single slide by ID"""
+    # For now, return a placeholder
+    # In a real app, you'd fetch from database
+    raise HTTPException(status_code=404, detail="Slide not found. This endpoint requires database storage.")
