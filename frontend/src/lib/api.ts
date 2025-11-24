@@ -35,3 +35,36 @@ export async function exportSlides(slides: any[], topic: string, format: "pptx" 
   window.URL.revokeObjectURL(url);
 }
 
+export async function uploadDocument(file: File): Promise<{ document_id: string; filename: string }> {
+  const formData = new FormData();
+  formData.append("file", file);
+  
+  const resp = await axios.post(`${API_BASE}/api/upload/upload`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  
+  // Handle both response formats
+  const documentId = resp.data.document_id || resp.data.ingest?.document_id;
+  
+  if (!documentId) {
+    throw new Error("Document ID not found in response");
+  }
+  
+  return {
+    document_id: documentId,
+    filename: file.name,
+  };
+}
+
+export async function generateSlidesFromDocument(documentId: string, theme: string = "corporate") {
+  const resp = await axios.post(`${API_BASE}/api/slides/generate`, {
+    document_id: documentId,
+    detail: "medium",
+    style: theme,
+  });
+  
+  return resp.data;
+}
+

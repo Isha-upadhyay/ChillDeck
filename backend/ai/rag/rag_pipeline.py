@@ -16,7 +16,7 @@ class RAGPipeline:
     def ingest_document(self, document_id: str, text: str, metadata: Dict = None):
         """
         - chunk text
-        - embed chunks
+        - embed chunks (in batches to avoid memory issues)
         - add to vector store with metadata
         Returns list of chunk ids
         """
@@ -25,20 +25,43 @@ class RAGPipeline:
         if not chunks:
             return []
 
-        embeddings = self.embed_client.embed_texts(chunks)
-        ids = []
-        metadatas = []
-        for i, chunk in enumerate(chunks):
-            chunk_id = f"{document_id}__chunk__{i}"
-            ids.append(chunk_id)
-            # store metadata per chunk
-            meta = {"document_id": document_id, "chunk_index": i}
-            meta.update(metadata)
-            metadatas.append(meta)
+        # Process embeddings in batches to avoid memory issues
+        BATCH_SIZE = 50  # Process 50 chunks at a time
+        all_ids = []
+        all_metadatas = []
+        all_embeddings = []
+        
+        for batch_start in range(0, len(chunks), BATCH_SIZE):
+            batch_end = min(batch_start + BATCH_SIZE, len(chunks))
+            batch_chunks = chunks[batch_start:batch_end]
+            
+            # Embed this batch
+            batch_embeddings = self.embed_client.embed_texts(batch_chunks)
+            
+            # Prepare IDs and metadata for this batch
+            batch_ids = []
+            batch_metadatas = []
+            for i in range(batch_start, batch_end):
+                chunk_id = f"{document_id}__chunk__{i}"
+                batch_ids.append(chunk_id)
+                # store metadata per chunk
+                meta = {"document_id": document_id, "chunk_index": i}
+                meta.update(metadata)
+                batch_metadatas.append(meta)
+            
+            # Add this batch to vector store
+            self.vs.add_documents(
+                ids=batch_ids, 
+                texts=batch_chunks, 
+                embeddings=batch_embeddings, 
+                metadatas=batch_metadatas
+            )
+            
+            all_ids.extend(batch_ids)
+            all_metadatas.extend(batch_metadatas)
+            all_embeddings.extend(batch_embeddings)
 
-        # upsert into vector store
-        self.vs.add_documents(ids=ids, texts=chunks, embeddings=embeddings, metadatas=metadatas)
-        return ids
+        return all_ids
 
     def retrieve_for_topic(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
         """

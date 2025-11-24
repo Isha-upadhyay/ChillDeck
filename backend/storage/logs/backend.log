@@ -405,3 +405,125 @@ TypeError: 'ChatCompletionMessage' object is not subscriptable
 2025-11-25 01:29:42,803 [INFO] backend: [RAG] Global query: 'Implementation and Deployment' (top_k=5)
 2025-11-25 01:29:42,825 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
 2025-11-25 01:32:38,585 [INFO] backend: Application Shutting Down...
+2025-11-25 01:46:19,428 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:46:25,327 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:46:26,471 [INFO] backend: Application Starting Up...
+2025-11-25 01:46:26,488 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:46:26,488 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:48:08,778 [INFO] backend: [RAG] Ingesting document: impact_of_ai_on_education.pdf (doc__f20ec22f8974)
+2025-11-25 01:48:30,633 [ERROR] backend: [RAG] Ingestion failed for impact_of_ai_on_education.pdf: 
+2025-11-25 01:48:31,789 [ERROR] backend: Unhandled exception occurred
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2485, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\app\api\upload.py", line 46, in upload_file
+    result = rag_service.ingest_file_text(filename=file.filename, text=text, extra_meta={"source_path": path})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\app\services\rag_services.py", line 47, in ingest_file_text
+    chunk_ids = self.pipeline.ingest_document(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\rag\rag_pipeline.py", line 24, in ingest_document
+    chunks = self.chunker.chunk_text(text)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\ai\rag\chunker.py", line 25, in chunk_text
+    chunks.append(chunk)
+MemoryError
+2025-11-25 01:48:52,448 [INFO] backend: Application Shutting Down...
+2025-11-25 01:57:36,744 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:57:43,359 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:57:44,839 [INFO] backend: Application Starting Up...
+2025-11-25 01:57:44,855 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:57:44,855 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:57:44,859 [INFO] backend: Application Shutting Down...
+2025-11-25 01:58:21,320 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:58:27,735 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:58:28,960 [INFO] backend: Application Starting Up...
+2025-11-25 01:58:28,976 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:58:28,976 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:58:28,984 [INFO] backend: Application Shutting Down...
+2025-11-25 01:58:58,772 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:59:42,901 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:59:48,878 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:59:50,258 [INFO] backend: Application Starting Up...
+2025-11-25 01:59:50,279 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:59:50,279 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 02:00:28,170 [INFO] backend: Uploading file: Isha_Upadhyay_Resume (7).pdf (170.43KB)
+2025-11-25 02:00:28,181 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume (7).pdf
+2025-11-25 02:00:28,874 [INFO] backend: Processing text: 2764 characters (original: 2764)
+2025-11-25 02:00:28,880 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume (7).pdf (doc__a7c1c0909bce), text length: 2764
+2025-11-25 02:01:14,184 [INFO] backend: [RAG] Document doc__a7c1c0909bce ingested with 1000 chunks
+2025-11-25 02:01:14,191 [INFO] backend: Successfully ingested document: doc__a7c1c0909bce
+2025-11-25 02:01:14,519 [INFO] backend: [RAG] Querying document: doc__a7c1c0909bce | query=''
+2025-11-25 02:01:16,291 [INFO] backend: [RAG] Global query: 'Introduction' (top_k=5)
+2025-11-25 02:01:16,327 [INFO] backend: [RAG] Global query: 'Education' (top_k=5)
+2025-11-25 02:01:16,354 [INFO] backend: [RAG] Global query: 'Achievements & Certifications' (top_k=5)
+2025-11-25 02:01:16,387 [INFO] backend: [RAG] Global query: 'AI/ML Training' (top_k=5)
+2025-11-25 02:01:16,416 [INFO] backend: [RAG] Global query: 'AWS Solutions Architecture' (top_k=5)
+2025-11-25 02:01:16,440 [INFO] backend: [RAG] Global query: 'Key Takeaways' (top_k=5)
+2025-11-25 02:01:16,466 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-25 02:01:16,491 [INFO] backend: [RAG] Global query: 'Recommendations' (top_k=5)
+2025-11-25 02:01:16,515 [INFO] backend: [RAG] Global query: 'Action Plan' (top_k=5)
+2025-11-25 02:01:16,540 [INFO] backend: [RAG] Global query: 'Next Steps' (top_k=5)
+2025-11-25 02:04:27,509 [INFO] backend: Uploading file: Isha_Upadhyay_Resume (7).pdf (170.43KB)
+2025-11-25 02:04:27,521 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume (7).pdf
+2025-11-25 02:04:28,082 [INFO] backend: Processing text: 2764 characters (original: 2764)
+2025-11-25 02:04:28,085 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume (7).pdf (doc__09fedbc61acc), text length: 2764
+2025-11-25 02:05:09,334 [INFO] backend: [RAG] Document doc__09fedbc61acc ingested with 1000 chunks
+2025-11-25 02:05:09,335 [INFO] backend: Successfully ingested document: doc__09fedbc61acc
+2025-11-25 02:05:09,355 [INFO] backend: [RAG] Querying document: doc__09fedbc61acc | query=''
+2025-11-25 02:05:10,393 [INFO] backend: [RAG] Global query: 'Introduction' (top_k=5)
+2025-11-25 02:05:10,416 [INFO] backend: [RAG] Global query: 'Education' (top_k=5)
+2025-11-25 02:05:10,446 [INFO] backend: [RAG] Global query: 'Achievements & Certifications' (top_k=5)
+2025-11-25 02:05:10,475 [INFO] backend: [RAG] Global query: 'AI/ML Training' (top_k=5)
+2025-11-25 02:05:10,506 [INFO] backend: [RAG] Global query: 'AWS Solutions Architecture' (top_k=5)
+2025-11-25 02:05:10,531 [INFO] backend: [RAG] Global query: 'Key Takeaways' (top_k=5)
+2025-11-25 02:05:10,555 [INFO] backend: [RAG] Global query: 'Education Background' (top_k=5)
+2025-11-25 02:05:10,581 [INFO] backend: [RAG] Global query: 'Achievements' (top_k=5)
+2025-11-25 02:05:10,603 [INFO] backend: [RAG] Global query: 'AI/ML Training Experience' (top_k=5)
+2025-11-25 02:05:10,632 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-25 02:08:26,255 [INFO] backend: Application Shutting Down...

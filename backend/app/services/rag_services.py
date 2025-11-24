@@ -41,16 +41,20 @@ class RAGService:
         if extra_meta:
             metadata.update(extra_meta)
 
-        logger.info(f"[RAG] Ingesting document: {filename} ({doc_id})")
+        logger.info(f"[RAG] Ingesting document: {filename} ({doc_id}), text length: {len(text)}")
 
         try:
+            # Process in batches to avoid memory issues
             chunk_ids = self.pipeline.ingest_document(
                 document_id=doc_id,
                 text=text,
                 metadata=metadata
             )
+        except MemoryError as e:
+            logger.error(f"[RAG] Memory error ingesting {filename}: {e}")
+            raise ValueError(f"Document too large to process. Please use a smaller file or split the document.")
         except Exception as e:
-            logger.error(f"[RAG] Ingestion failed for {filename}: {e}")
+            logger.error(f"[RAG] Ingestion failed for {filename}: {e}", exc_info=True)
             raise
 
         logger.info(f"[RAG] Document {doc_id} ingested with {len(chunk_ids)} chunks")
