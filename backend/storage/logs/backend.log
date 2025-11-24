@@ -282,3 +282,126 @@ TypeError: 'ChatCompletionMessage' object is not subscriptable
 2025-11-23 15:23:18,351 [INFO] backend: [RAG] Global query: 'Case Studies: AI in Education' (top_k=5)
 2025-11-23 15:23:18,363 [INFO] backend: [RAG] Global query: 'Conclusion: AI in Education' (top_k=5)
 2025-11-23 15:27:00,077 [INFO] backend: Application Shutting Down...
+2025-11-25 00:59:42,155 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 00:59:49,308 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 00:59:52,472 [INFO] backend: Application Starting Up...
+2025-11-25 00:59:52,553 [INFO] backend: Database & tables created/verified.
+2025-11-25 00:59:52,559 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:00:34,463 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-25 01:00:34,781 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-25 01:00:34,800 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-25 01:00:34,816 [INFO] backend: [RAG] Global query: 'AI-Powered Learning Tools' (top_k=5)
+2025-11-25 01:00:34,833 [INFO] backend: [RAG] Global query: 'Challenges and Limitations of AI in Education' (top_k=5)
+2025-11-25 01:00:34,855 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-25 01:00:34,873 [INFO] backend: [RAG] Global query: 'AI and Teacher Roles' (top_k=5)
+2025-11-25 01:00:34,890 [INFO] backend: [RAG] Global query: 'Ethics and Safety in AI-Driven Education' (top_k=5)
+2025-11-25 01:00:34,907 [INFO] backend: [RAG] Global query: 'Case Studies: AI in Education' (top_k=5)
+2025-11-25 01:00:34,924 [INFO] backend: [RAG] Global query: 'Conclusion: AI in Education' (top_k=5)
+2025-11-25 01:04:46,475 [INFO] backend: Application Shutting Down...
+2025-11-25 01:05:21,685 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:05:26,877 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:05:27,445 [INFO] backend: Application Starting Up...
+2025-11-25 01:05:27,456 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:05:27,456 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:05:27,457 [INFO] backend: Application Shutting Down...
+2025-11-25 01:05:46,287 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:05:51,418 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:05:51,911 [INFO] backend: Application Starting Up...
+2025-11-25 01:05:51,915 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:05:51,915 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:06:59,417 [INFO] backend: Application Shutting Down...
+2025-11-25 01:07:25,086 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:07:29,891 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:07:30,743 [INFO] backend: Application Starting Up...
+2025-11-25 01:07:30,761 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:07:30,761 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:08:01,072 [INFO] backend: Application Shutting Down...
+2025-11-25 01:08:25,709 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:08:30,750 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:08:31,957 [INFO] backend: Application Starting Up...
+2025-11-25 01:08:31,996 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:08:31,996 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:09:27,243 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-25 01:09:27,522 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-25 01:09:27,536 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-25 01:09:27,549 [INFO] backend: [RAG] Global query: 'Challenges of Implementing AI in Education' (top_k=5)
+2025-11-25 01:09:27,565 [INFO] backend: [RAG] Global query: 'AI-Powered Adaptive Learning' (top_k=5)
+2025-11-25 01:09:27,581 [INFO] backend: [RAG] Global query: 'AI in Special Education' (top_k=5)
+2025-11-25 01:09:27,596 [INFO] backend: [RAG] Global query: 'AI in Language Learning' (top_k=5)
+2025-11-25 01:09:27,610 [INFO] backend: [RAG] Global query: 'AI in STEM Education' (top_k=5)
+2025-11-25 01:09:27,624 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-25 01:09:27,641 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-25 01:12:14,461 [INFO] backend: [RAG] Global query: 'Introduction to AI Based Crop Recommendation System' (top_k=5)
+2025-11-25 01:12:14,496 [INFO] backend: [RAG] Global query: 'Benefits of AI Based Crop Recommendation System' (top_k=5)
+2025-11-25 01:12:14,516 [INFO] backend: [RAG] Global query: 'Key Components of AI Based Crop Recommendation System' (top_k=5)
+2025-11-25 01:12:14,538 [INFO] backend: [RAG] Global query: 'Data Collection and Preprocessing' (top_k=5)
+2025-11-25 01:12:14,561 [INFO] backend: [RAG] Global query: 'Machine Learning Model Development and Training' (top_k=5)
+2025-11-25 01:12:14,580 [INFO] backend: [RAG] Global query: 'User Interface and Visualization' (top_k=5)
+2025-11-25 01:12:14,595 [INFO] backend: [RAG] Global query: 'Challenges and Limitations' (top_k=5)
+2025-11-25 01:12:14,608 [INFO] backend: [RAG] Global query: 'Future Directions and Research' (top_k=5)
+2025-11-25 01:12:14,622 [INFO] backend: [RAG] Global query: 'Implementation and Deployment' (top_k=5)
+2025-11-25 01:12:14,636 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-25 01:15:12,314 [INFO] backend: Application Shutting Down...
+2025-11-25 01:15:55,726 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:16:02,127 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:16:03,217 [INFO] backend: Application Starting Up...
+2025-11-25 01:16:03,237 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:16:03,238 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:16:03,241 [INFO] backend: Application Shutting Down...
+2025-11-25 01:19:15,694 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:19:22,342 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:19:23,679 [INFO] backend: Application Starting Up...
+2025-11-25 01:19:23,697 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:19:23,698 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:19:52,509 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-25 01:19:52,883 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-25 01:19:52,906 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-25 01:19:52,933 [INFO] backend: [RAG] Global query: 'AI-Powered Learning Tools' (top_k=5)
+2025-11-25 01:19:52,959 [INFO] backend: [RAG] Global query: 'Challenges and Limitations of AI in Education' (top_k=5)
+2025-11-25 01:19:52,986 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-25 01:19:53,007 [INFO] backend: [RAG] Global query: 'AI and Accessibility in Education' (top_k=5)
+2025-11-25 01:19:53,028 [INFO] backend: [RAG] Global query: 'AI in Teacher Training and Development' (top_k=5)
+2025-11-25 01:19:53,054 [INFO] backend: [RAG] Global query: 'Ethics and Responsibility in AI Education' (top_k=5)
+2025-11-25 01:19:53,077 [INFO] backend: [RAG] Global query: 'Conclusion: AI in Education' (top_k=5)
+2025-11-25 01:20:01,289 [INFO] backend: Exported PPTX to: exports\Impact_of_AI_on_Education_f39bb93d.pptx
+2025-11-25 01:22:58,718 [INFO] backend: Exported PDF to: exports\Impact_of_AI_on_Education_a982b72d.pdf
+2025-11-25 01:24:19,369 [INFO] backend: Application Shutting Down...
+2025-11-25 01:25:11,387 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:25:20,592 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:25:25,494 [INFO] backend: Application Starting Up...
+2025-11-25 01:25:25,522 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:25:25,524 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:25:28,234 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-25 01:25:28,635 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-25 01:25:28,663 [INFO] backend: [RAG] Global query: 'Challenges of AI in Education' (top_k=5)
+2025-11-25 01:25:28,691 [INFO] backend: [RAG] Global query: 'AI-Powered Learning Tools' (top_k=5)
+2025-11-25 01:25:28,719 [INFO] backend: [RAG] Global query: 'AI in Assessment and Evaluation' (top_k=5)
+2025-11-25 01:25:28,747 [INFO] backend: [RAG] Global query: 'Ethics and AI in Education' (top_k=5)
+2025-11-25 01:25:28,775 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-25 01:25:28,800 [INFO] backend: [RAG] Global query: 'Case Studies: AI in Education' (top_k=5)
+2025-11-25 01:25:28,832 [INFO] backend: [RAG] Global query: 'Implementation and Adoption of AI in Education' (top_k=5)
+2025-11-25 01:25:28,867 [INFO] backend: [RAG] Global query: 'Conclusion: AI in Education' (top_k=5)
+2025-11-25 01:25:37,163 [INFO] backend: Exported Markdown to: exports\Impact_of_AI_on_Education_fdb252ce.md
+2025-11-25 01:27:20,171 [INFO] backend: Application Shutting Down...
+2025-11-25 01:28:07,080 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:28:12,904 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:28:14,084 [INFO] backend: Application Starting Up...
+2025-11-25 01:28:14,100 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:28:14,101 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:28:14,102 [INFO] backend: Application Shutting Down...
+2025-11-25 01:28:44,453 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:28:50,334 [INFO] backend: RAGPipeline initialized successfully
+2025-11-25 01:28:51,507 [INFO] backend: Application Starting Up...
+2025-11-25 01:28:51,522 [INFO] backend: Database & tables created/verified.
+2025-11-25 01:28:51,522 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-25 01:29:42,279 [INFO] backend: [RAG] Global query: 'Introduction to AI Based Crop Recommendation System' (top_k=5)
+2025-11-25 01:29:42,646 [INFO] backend: [RAG] Global query: 'Components of AI Based Crop Recommendation System' (top_k=5)
+2025-11-25 01:29:42,672 [INFO] backend: [RAG] Global query: 'Machine Learning Algorithms Used' (top_k=5)
+2025-11-25 01:29:42,694 [INFO] backend: [RAG] Global query: 'Advantages of AI Based Crop Recommendation System' (top_k=5)
+2025-11-25 01:29:42,717 [INFO] backend: [RAG] Global query: 'Challenges and Limitations' (top_k=5)
+2025-11-25 01:29:42,740 [INFO] backend: [RAG] Global query: 'Real-World Applications' (top_k=5)
+2025-11-25 01:29:42,762 [INFO] backend: [RAG] Global query: 'Future Directions' (top_k=5)
+2025-11-25 01:29:42,783 [INFO] backend: [RAG] Global query: 'Ethical Considerations' (top_k=5)
+2025-11-25 01:29:42,803 [INFO] backend: [RAG] Global query: 'Implementation and Deployment' (top_k=5)
+2025-11-25 01:29:42,825 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-25 01:32:38,585 [INFO] backend: Application Shutting Down...

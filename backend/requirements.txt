@@ -14,6 +14,11 @@ python-multipart
 pdfplumber
 python-docx
 
+# Export / Presentation
+python-pptx
+reportlab
+Pillow
+
 # RAG / Vector DB / Embeddings
 sentence-transformers
 torch  # Required by sentence-transformers (CPU version for Windows)

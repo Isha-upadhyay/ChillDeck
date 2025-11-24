@@ -19,6 +19,7 @@ interface EditorState {
   removeBullet: (index: number) => void;
 
   updateDesign: (design: Partial<SlideDesign>) => void;
+  clearSlide: () => void;
 }
 
 export const useEditorStore = create<EditorState>((set) => ({
@@ -73,4 +74,6 @@ export const useEditorStore = create<EditorState>((set) => ({
         },
       };
     }),
+
+  clearSlide: () => set({ slide: null }),
 }));
