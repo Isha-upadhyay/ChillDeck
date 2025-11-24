@@ -1,11 +1,13 @@
 // frontend/src/app/page.tsx
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { generateOutline, exportSlides } from "@/lib/api";
 import { SlideEditor } from "@/components/slides/SlideEditor";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useEditorStore } from "@/store/editorStore";
 import type { SlideOut } from "@/types/slide";
+import { Button } from "@/components/ui/button";
 
 interface Slide {
   id: number;
@@ -27,6 +29,7 @@ const THEMES = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   const [topic, setTopic] = useState("");
   const [selectedTheme, setSelectedTheme] = useState("corporate");
   const [loading, setLoading] = useState(false);
@@ -107,7 +110,29 @@ export default function Home() {
     <main className="min-h-screen p-8 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white p-6 rounded shadow mb-6">
-          <h1 className="text-3xl font-bold mb-4">AI Slide Generator</h1>
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-bold">AI Slide Generator</h1>
+            <Button
+              variant="outline"
+              onClick={() => router.push("/upload")}
+            >
+              📄 Upload Document
+            </Button>
+          </div>
+          
+          <div className="mb-4 p-3 bg-blue-50 rounded border border-blue-200">
+            <p className="text-sm text-blue-800">
+              💡 <strong>Tip:</strong> Enter a topic below or{" "}
+              <button
+                onClick={() => router.push("/upload")}
+                className="underline font-semibold"
+              >
+                upload a document
+              </button>{" "}
+              to generate slides automatically
+            </p>
+          </div>
+          
           <form onSubmit={handleGenerate} className="mb-4">
             <input
               value={topic}
