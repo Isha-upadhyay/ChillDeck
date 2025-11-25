@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.slides import router as slides_router
 from app.api.upload import router as upload_router
 from app.api.user import router as user_router
+from app.api.image import router as image_router
 
 # Core
 from app.core.config import settings
@@ -48,6 +49,7 @@ def create_application() -> FastAPI:
     app.include_router(user_router, prefix="/api/users", tags=["users"])
     app.include_router(upload_router, prefix="/api/upload", tags=["upload"])
     app.include_router(slides_router, prefix="/api/slides", tags=["slides"])
+    app.include_router(image_router, prefix="/api/image", tags=["image"])
 
     # -----------------------
     # Exception Handlers
@@ -86,4 +88,6 @@ def on_startup():
 
 @app.on_event("shutdown")
 def on_shutdown():
+    logger.info("Application Shutting Down...")
+
     logger.info("Application Shutting Down...")

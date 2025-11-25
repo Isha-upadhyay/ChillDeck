@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     GROQ_MODEL_VISION: str = "llama-3.2-90b-vision"
 
     TAVILY_API_KEY: Optional[str] = None
+    HF_API_KEY: Optional[str] = None
 
     #########################################
     # EMBEDDINGS / VECTORSTORE
