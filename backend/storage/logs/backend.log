@@ -578,3 +578,153 @@ MemoryError
 2025-11-26 00:24:36,515 [INFO] backend: DB Ready, AI Slide Generator Online!
 2025-11-26 00:31:18,584 [INFO] backend: Application Shutting Down...
 2025-11-26 00:31:18,598 [INFO] backend: Application Shutting Down...
+2025-11-28 00:44:37,530 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:44:43,859 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:44:45,254 [INFO] backend: Application Starting Up...
+2025-11-28 00:44:45,274 [INFO] backend: Database & tables created/verified.
+2025-11-28 00:44:45,274 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 00:44:45,276 [INFO] backend: Application Shutting Down...
+2025-11-28 00:44:45,276 [INFO] backend: Application Shutting Down...
+2025-11-28 00:45:17,072 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:45:23,937 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:45:27,450 [INFO] backend: Application Starting Up...
+2025-11-28 00:45:27,465 [INFO] backend: Database & tables created/verified.
+2025-11-28 00:45:27,465 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 00:49:31,982 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:49:38,109 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:49:39,419 [INFO] backend: Application Starting Up...
+2025-11-28 00:49:39,434 [INFO] backend: Database & tables created/verified.
+2025-11-28 00:49:39,435 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 00:52:34,394 [INFO] backend: Application Shutting Down...
+2025-11-28 00:52:34,400 [INFO] backend: Application Shutting Down...
+2025-11-28 00:52:58,985 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:53:03,347 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 00:53:03,928 [INFO] backend: Application Starting Up...
+2025-11-28 00:53:03,938 [INFO] backend: Database & tables created/verified.
+2025-11-28 00:53:03,939 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 00:59:51,007 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-28 00:59:51,798 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-28 00:59:51,816 [INFO] backend: [RAG] Global query: 'Challenges of AI in Education' (top_k=5)
+2025-11-28 00:59:51,835 [INFO] backend: [RAG] Global query: 'AI-Powered Learning Tools' (top_k=5)
+2025-11-28 00:59:51,856 [INFO] backend: [RAG] Global query: 'AI in Assessment and Evaluation' (top_k=5)
+2025-11-28 00:59:51,875 [INFO] backend: [RAG] Global query: 'AI in Special Education' (top_k=5)
+2025-11-28 00:59:51,894 [INFO] backend: [RAG] Global query: 'Ethics and Safety in AI Education' (top_k=5)
+2025-11-28 00:59:51,915 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-28 00:59:51,933 [INFO] backend: [RAG] Global query: 'Implementation of AI in Education' (top_k=5)
+2025-11-28 00:59:51,948 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-28 01:06:43,654 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (180.98KB)
+2025-11-28 01:06:43,672 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-11-28 01:06:43,994 [INFO] backend: Processing text: 2372 characters (original: 2372)
+2025-11-28 01:06:43,997 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__67b51c95b8aa), text length: 2372
+2025-11-28 01:07:15,678 [INFO] backend: [RAG] Document doc__67b51c95b8aa ingested with 1000 chunks
+2025-11-28 01:07:15,679 [INFO] backend: Successfully ingested document: doc__67b51c95b8aa
+2025-11-28 01:07:15,708 [INFO] backend: [RAG] Querying document: doc__67b51c95b8aa | query=''
+2025-11-28 01:07:16,755 [INFO] backend: [RAG] Global query: 'Introduction' (top_k=5)
+2025-11-28 01:07:16,773 [INFO] backend: [RAG] Global query: 'Education' (top_k=5)
+2025-11-28 01:07:16,789 [INFO] backend: [RAG] Global query: 'Achievements & Certifications' (top_k=5)
+2025-11-28 01:07:16,814 [INFO] backend: [RAG] Global query: 'Key Features' (top_k=5)
+2025-11-28 01:07:16,838 [INFO] backend: [RAG] Global query: 'Education Details' (top_k=5)
+2025-11-28 01:07:16,861 [INFO] backend: [RAG] Global query: 'Achievements & Certifications Details' (top_k=5)
+2025-11-28 01:07:16,882 [INFO] backend: [RAG] Global query: 'Key Features Details' (top_k=5)
+2025-11-28 01:07:16,904 [INFO] backend: [RAG] Global query: 'Education Benefits' (top_k=5)
+2025-11-28 01:07:16,923 [INFO] backend: [RAG] Global query: 'Achievements & Certifications Benefits' (top_k=5)
+2025-11-28 01:07:16,939 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-28 01:08:40,912 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-28 01:08:40,932 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-28 01:08:40,947 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-28 01:08:40,963 [INFO] backend: [RAG] Global query: 'Impact of AI on Teaching' (top_k=5)
+2025-11-28 01:08:40,979 [INFO] backend: [RAG] Global query: 'Impact of AI on Learning' (top_k=5)
+2025-11-28 01:08:40,995 [INFO] backend: [RAG] Global query: 'Challenges and Limitations of AI in Education' (top_k=5)
+2025-11-28 01:08:41,012 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-28 01:08:41,028 [INFO] backend: [RAG] Global query: 'Robot in Education' (top_k=5)
+2025-11-28 01:08:41,042 [INFO] backend: [RAG] Global query: 'Image of Robot' (top_k=5)
+2025-11-28 01:08:41,057 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-28 01:18:51,647 [INFO] backend: Application Shutting Down...
+2025-11-28 01:18:51,658 [INFO] backend: Application Shutting Down...
+2025-11-28 01:19:13,314 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:19:17,361 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:19:18,012 [INFO] backend: Application Starting Up...
+2025-11-28 01:19:18,022 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:19:18,022 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:19:39,993 [INFO] backend: Application Shutting Down...
+2025-11-28 01:19:39,994 [INFO] backend: Application Shutting Down...
+2025-11-28 01:19:54,667 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:19:59,748 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:20:00,307 [INFO] backend: Application Starting Up...
+2025-11-28 01:20:00,308 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:20:00,308 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:20:04,672 [INFO] backend: Application Shutting Down...
+2025-11-28 01:20:04,673 [INFO] backend: Application Shutting Down...
+2025-11-28 01:20:19,345 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:20:23,584 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:20:24,265 [INFO] backend: Application Starting Up...
+2025-11-28 01:20:24,267 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:20:24,267 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:20:24,268 [INFO] backend: Application Shutting Down...
+2025-11-28 01:20:24,268 [INFO] backend: Application Shutting Down...
+2025-11-28 01:20:38,062 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:20:42,313 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:20:42,800 [INFO] backend: Application Starting Up...
+2025-11-28 01:20:42,802 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:20:42,802 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:20:42,803 [INFO] backend: Application Shutting Down...
+2025-11-28 01:20:42,803 [INFO] backend: Application Shutting Down...
+2025-11-28 01:20:57,140 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:21:01,835 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:21:02,333 [INFO] backend: Application Starting Up...
+2025-11-28 01:21:02,334 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:21:02,334 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:21:02,335 [INFO] backend: Application Shutting Down...
+2025-11-28 01:21:02,335 [INFO] backend: Application Shutting Down...
+2025-11-28 01:21:19,628 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:21:24,511 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:21:25,185 [INFO] backend: Application Starting Up...
+2025-11-28 01:21:25,188 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:21:25,188 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:21:25,189 [INFO] backend: Application Shutting Down...
+2025-11-28 01:21:25,189 [INFO] backend: Application Shutting Down...
+2025-11-28 01:21:43,076 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:21:47,555 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:21:48,138 [INFO] backend: Application Starting Up...
+2025-11-28 01:21:48,140 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:21:48,141 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:22:27,822 [INFO] backend: Application Shutting Down...
+2025-11-28 01:22:27,823 [INFO] backend: Application Shutting Down...
+2025-11-28 01:22:48,733 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:22:53,729 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:22:54,418 [INFO] backend: Application Starting Up...
+2025-11-28 01:22:54,420 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:22:54,420 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:23:16,212 [INFO] backend: Application Shutting Down...
+2025-11-28 01:23:16,212 [INFO] backend: Application Shutting Down...
+2025-11-28 01:23:32,138 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:23:36,465 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:23:36,971 [INFO] backend: Application Starting Up...
+2025-11-28 01:23:36,976 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:23:36,976 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:24:08,019 [INFO] backend: Application Shutting Down...
+2025-11-28 01:24:08,019 [INFO] backend: Application Shutting Down...
+2025-11-28 01:24:23,018 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:24:27,132 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:24:27,750 [INFO] backend: Application Starting Up...
+2025-11-28 01:24:27,752 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:24:27,752 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:24:27,753 [INFO] backend: Application Shutting Down...
+2025-11-28 01:24:27,754 [INFO] backend: Application Shutting Down...
+2025-11-28 01:24:41,489 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:24:45,407 [INFO] backend: RAGPipeline initialized successfully
+2025-11-28 01:24:46,075 [INFO] backend: Application Starting Up...
+2025-11-28 01:24:46,078 [INFO] backend: Database & tables created/verified.
+2025-11-28 01:24:46,078 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-28 01:39:59,786 [INFO] backend: [RAG] Global query: 'Introduction to AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,448 [INFO] backend: [RAG] Global query: 'Components of AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,469 [INFO] backend: [RAG] Global query: 'Data Collection for AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,489 [INFO] backend: [RAG] Global query: 'Machine Learning Algorithms for AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,510 [INFO] backend: [RAG] Global query: 'User Interface for AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,529 [INFO] backend: [RAG] Global query: 'Benefits of AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,613 [INFO] backend: [RAG] Global query: 'Challenges and Limitations of AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,632 [INFO] backend: [RAG] Global query: 'Future Developments in AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,650 [INFO] backend: [RAG] Global query: 'Implementation and Deployment of AI-based Crop Recommendation System' (top_k=5)
+2025-11-28 01:40:00,668 [INFO] backend: [RAG] Global query: 'Conclusion and Future Directions' (top_k=5)
+2025-11-28 01:42:23,304 [INFO] backend: Application Shutting Down...
+2025-11-28 01:42:23,307 [INFO] backend: Application Shutting Down...

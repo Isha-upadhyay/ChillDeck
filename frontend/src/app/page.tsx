@@ -261,6 +261,18 @@ export default function Home() {
                       </p>
                     </div>
                   )}
+
+                  {/* IMAGE PREVIEW (if exists) */}
+{slide.design?.image_url && (
+  <div className="mt-4">
+    <img
+      src={slide.design.image_url}
+      alt="slide image"
+      className="w-full h-40 object-cover rounded-md border"
+    />
+  </div>
+)}
+
                 </div>
               )})}
             </div>

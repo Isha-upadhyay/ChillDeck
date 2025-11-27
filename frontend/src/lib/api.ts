@@ -68,3 +68,14 @@ export async function generateSlidesFromDocument(documentId: string, theme: stri
   return resp.data;
 }
 
+export async function generateImage(prompt: string, model: string = "flux") {
+  const res = await fetch("http://localhost:8000/api/image/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt, model }),
+  });
+
+  const data = await res.json();
+  return data;
+}
+

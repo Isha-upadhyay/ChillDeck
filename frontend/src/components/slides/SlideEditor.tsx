@@ -149,33 +149,65 @@ export function SlideEditor({ onSave, saving }: SlideEditorProps) {
           </div>
 
           {/* Image Prompt */}
-          <div className="space-y-1.5">
-            <Label htmlFor="image_prompt">Image Prompt</Label>
-            <Textarea
-              id="image_prompt"
-              value={slide.design?.image_prompt ?? ""}
-              onChange={(e) =>
-                updateDesign({ image_prompt: e.target.value || null })
-              }
-              rows={3}
-              placeholder="Prompt for AI image generator..."
-            />
-          </div>
+<div className="space-y-1.5">
+  <Label htmlFor="image_prompt">Image Prompt</Label>
+  <Textarea
+    id="image_prompt"
+    value={slide.design?.image_prompt ?? ""}
+    onChange={(e) => updateDesign({ image_prompt: e.target.value || null })}
+    rows={3}
+    placeholder="Prompt for AI image generator..."
+  />
+</div>
 
-          {/* Image URL Preview (if exists) */}
-          {slide.design?.image_url && (
-            <div className="space-y-1.5">
-              <Label>Preview Image</Label>
-              <div className="overflow-hidden rounded-md border">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={slide.design.image_url}
-                  alt="slide image"
-                  className="h-40 w-full object-cover"
-                />
-              </div>
-            </div>
-          )}
+{/* Generate Image Button */}
+<div className="flex justify-end">
+  <Button
+    variant="outline"
+    disabled={!slide.design?.image_prompt}
+    onClick={async () => {
+      if (!slide.design?.image_prompt) return;
+
+      try {
+        const prompt = slide.design.image_prompt;
+        const res = await fetch("http://localhost:8000/api/image/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt }),
+        });
+
+        const data = await res.json();
+
+        if (data.image_base64) {
+          const base64Url = `data:image/png;base64,${data.image_base64}`;
+          updateDesign({ image_url: base64Url });
+        } else {
+          alert("Image generation failed.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Error generating image!");
+      }
+    }}
+  >
+    Generate Image
+  </Button>
+</div>
+
+{/* Image Preview */}
+{slide.design?.image_url && (
+  <div className="space-y-1.5">
+    <Label>Preview Image</Label>
+    <div className="overflow-hidden rounded-md border">
+      <img
+        src={slide.design.image_url}
+        alt="slide image"
+        className="h-40 w-full object-cover"
+      />
+    </div>
+  </div>
+)}
+
         </CardContent>
       </Card>
     </div>
