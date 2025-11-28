@@ -1,11 +1,11 @@
-# 🚀 ChillDek (AI-Powered Auto Slide Generator )
+# ChillDek (AI-Powered Auto Slide Generator )
 
 An **end-to-end agentic AI system** that automatically creates beautiful, research-backed presentations from **any topic** or **uploaded document**.  
 Built with **Next.js**, **FastAPI**, **LangChain**, **LangGraph**, **OpenAI**, and modern slide rendering engines.
 
 ---
 
-## ✨ Key Highlights
+## Key Highlights
 
 - 🔍 **Topic → Complete Presentation**
 - 📄 **Document Upload → Auto Slides**
@@ -19,7 +19,7 @@ Built with **Next.js**, **FastAPI**, **LangChain**, **LangGraph**, **OpenAI**, a
 
 ---
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [🚀 Quick Start](#-quick-start)  
 - [Overview](#-overview)  
@@ -36,7 +36,7 @@ Built with **Next.js**, **FastAPI**, **LangChain**, **LangGraph**, **OpenAI**, a
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 **New to the project?** Start here!
 
