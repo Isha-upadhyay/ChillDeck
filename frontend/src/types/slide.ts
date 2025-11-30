@@ -16,6 +16,7 @@ export interface SlideIn {
 }
 
 export interface SlideOut extends SlideIn {
+  heading: string;
   id: string;
   order?: number | null;
 }

@@ -728,3 +728,166 @@ MemoryError
 2025-11-28 01:40:00,668 [INFO] backend: [RAG] Global query: 'Conclusion and Future Directions' (top_k=5)
 2025-11-28 01:42:23,304 [INFO] backend: Application Shutting Down...
 2025-11-28 01:42:23,307 [INFO] backend: Application Shutting Down...
+2025-11-29 14:19:54,573 [INFO] backend: RAGPipeline initialized successfully
+2025-11-29 14:20:00,922 [INFO] backend: RAGPipeline initialized successfully
+2025-11-29 14:20:02,409 [INFO] backend: Application Starting Up...
+2025-11-29 14:20:02,427 [INFO] backend: Database & tables created/verified.
+2025-11-29 14:20:02,427 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-29 15:01:59,679 [INFO] backend: Application Shutting Down...
+2025-11-29 15:01:59,716 [INFO] backend: Application Shutting Down...
+2025-11-30 20:26:07,081 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:26:11,548 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:26:12,884 [INFO] backend: Application Starting Up...
+2025-11-30 20:26:12,899 [INFO] backend: Database & tables created/verified.
+2025-11-30 20:26:12,900 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 20:31:21,877 [WARNING] backend: HTTPException: Slide generation failed: 'PlannerAgent' object has no attribute 'create_outline'
+2025-11-30 20:34:02,195 [INFO] backend: Application Shutting Down...
+2025-11-30 20:34:02,196 [INFO] backend: Application Shutting Down...
+2025-11-30 20:34:33,101 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:34:36,657 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:34:37,844 [INFO] backend: Application Starting Up...
+2025-11-30 20:34:37,860 [INFO] backend: Database & tables created/verified.
+2025-11-30 20:34:37,861 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 20:34:44,352 [INFO] backend: [RAG] Global query: 'What is Medium?' (top_k=5)
+2025-11-30 20:34:48,237 [WARNING] backend: HTTPException: Slide generation failed: can only concatenate str (not "dict") to str
+2025-11-30 20:37:19,210 [INFO] backend: Application Shutting Down...
+2025-11-30 20:37:19,210 [INFO] backend: Application Shutting Down...
+2025-11-30 20:37:41,483 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:37:45,933 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:37:46,885 [INFO] backend: Application Starting Up...
+2025-11-30 20:37:46,889 [INFO] backend: Database & tables created/verified.
+2025-11-30 20:37:46,889 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 20:37:47,903 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-30 20:37:52,996 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-30 20:37:58,712 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-30 20:38:20,875 [INFO] backend: [RAG] Global query: 'AI-Powered Learning Tools' (top_k=5)
+2025-11-30 20:38:42,419 [INFO] backend: [RAG] Global query: 'Challenges of Implementing AI in Education' (top_k=5)
+2025-11-30 20:39:05,814 [INFO] backend: [RAG] Global query: 'Ethical Considerations of AI in Education' (top_k=5)
+2025-11-30 20:39:25,996 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-30 20:39:47,238 [INFO] backend: [RAG] Global query: 'Case Studies of AI in Education' (top_k=5)
+2025-11-30 20:40:13,544 [INFO] backend: [RAG] Global query: 'Best Practices for Implementing AI in Education' (top_k=5)
+2025-11-30 20:40:35,180 [INFO] backend: [RAG] Global query: 'Conclusion: The Future of AI in Education' (top_k=5)
+2025-11-30 20:41:00,901 [INFO] backend: Application Shutting Down...
+2025-11-30 20:41:00,901 [INFO] backend: Application Shutting Down...
+2025-11-30 20:41:26,677 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:41:30,641 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:41:31,708 [INFO] backend: Application Starting Up...
+2025-11-30 20:41:31,713 [INFO] backend: Database & tables created/verified.
+2025-11-30 20:41:31,713 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 20:46:09,253 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (180.98KB)
+2025-11-30 20:46:09,255 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-11-30 20:46:09,481 [INFO] backend: Processing text: 2372 characters (original: 2372)
+2025-11-30 20:46:09,481 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__abbe1140775f), text length: 2372
+2025-11-30 20:46:39,733 [INFO] backend: [RAG] Document doc__abbe1140775f ingested with 1000 chunks
+2025-11-30 20:46:39,734 [INFO] backend: Successfully ingested document: doc__abbe1140775f
+2025-11-30 20:46:39,747 [INFO] backend: [RAG] Querying document: doc__abbe1140775f | query='None'
+2025-11-30 20:46:39,750 [ERROR] backend: [RAG] Error querying document doc__abbe1140775f: 'NoneType' object is not subscriptable
+2025-11-30 20:46:39,751 [WARNING] backend: HTTPException: Slide generation failed: 'NoneType' object is not subscriptable
+2025-11-30 20:48:59,085 [INFO] backend: Application Shutting Down...
+2025-11-30 20:48:59,086 [INFO] backend: Application Shutting Down...
+2025-11-30 20:49:27,247 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:49:31,049 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:49:31,977 [INFO] backend: Application Starting Up...
+2025-11-30 20:49:31,987 [INFO] backend: Database & tables created/verified.
+2025-11-30 20:49:31,987 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 20:49:31,989 [INFO] backend: Application Shutting Down...
+2025-11-30 20:49:31,990 [INFO] backend: Application Shutting Down...
+2025-11-30 20:49:52,534 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:49:56,090 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 20:49:57,039 [INFO] backend: Application Starting Up...
+2025-11-30 20:49:57,043 [INFO] backend: Database & tables created/verified.
+2025-11-30 20:49:57,043 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 20:50:32,851 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (180.98KB)
+2025-11-30 20:50:32,854 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-11-30 20:50:33,048 [INFO] backend: Processing text: 2372 characters (original: 2372)
+2025-11-30 20:50:33,048 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__b1e52228c0d6), text length: 2372
+2025-11-30 20:51:01,840 [INFO] backend: [RAG] Document doc__b1e52228c0d6 ingested with 1000 chunks
+2025-11-30 20:51:01,841 [INFO] backend: Successfully ingested document: doc__b1e52228c0d6
+2025-11-30 20:51:01,850 [INFO] backend: [RAG] Querying document: doc__b1e52228c0d6 | query='None'
+2025-11-30 20:51:01,853 [ERROR] backend: [RAG] Error querying document doc__b1e52228c0d6: 'NoneType' object is not subscriptable
+2025-11-30 20:51:01,854 [WARNING] backend: HTTPException: Slide generation failed: 'NoneType' object is not subscriptable
+2025-11-30 21:17:48,337 [INFO] backend: Application Shutting Down...
+2025-11-30 21:17:48,342 [INFO] backend: Application Shutting Down...
+2025-11-30 21:19:44,402 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:19:49,008 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:19:50,151 [INFO] backend: Application Starting Up...
+2025-11-30 21:19:50,173 [INFO] backend: Database & tables created/verified.
+2025-11-30 21:19:50,173 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 21:19:50,175 [INFO] backend: Application Shutting Down...
+2025-11-30 21:19:50,175 [INFO] backend: Application Shutting Down...
+2025-11-30 21:20:11,033 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:20:14,488 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:20:15,519 [INFO] backend: Application Starting Up...
+2025-11-30 21:20:15,522 [INFO] backend: Database & tables created/verified.
+2025-11-30 21:20:15,522 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 21:20:24,484 [INFO] backend: Application Shutting Down...
+2025-11-30 21:20:24,485 [INFO] backend: Application Shutting Down...
+2025-11-30 21:20:45,891 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:20:49,920 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:20:50,883 [INFO] backend: Application Starting Up...
+2025-11-30 21:20:50,887 [INFO] backend: Database & tables created/verified.
+2025-11-30 21:20:50,887 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 21:20:50,889 [INFO] backend: Application Shutting Down...
+2025-11-30 21:20:50,889 [INFO] backend: Application Shutting Down...
+2025-11-30 21:21:12,236 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:21:15,850 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:21:16,787 [INFO] backend: Application Starting Up...
+2025-11-30 21:21:16,790 [INFO] backend: Database & tables created/verified.
+2025-11-30 21:21:16,790 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 21:21:28,481 [INFO] backend: Application Shutting Down...
+2025-11-30 21:21:28,482 [INFO] backend: Application Shutting Down...
+2025-11-30 21:23:27,061 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:23:31,136 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:23:32,533 [INFO] backend: Application Starting Up...
+2025-11-30 21:23:32,547 [INFO] backend: Database & tables created/verified.
+2025-11-30 21:23:32,547 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 21:23:45,562 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (180.98KB)
+2025-11-30 21:23:45,565 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-11-30 21:23:45,760 [INFO] backend: Processing text: 2372 characters (original: 2372)
+2025-11-30 21:23:45,761 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__d2a63941efee), text length: 2372
+2025-11-30 21:24:18,588 [INFO] backend: [RAG] Document doc__d2a63941efee ingested with 1000 chunks
+2025-11-30 21:24:18,589 [INFO] backend: Successfully ingested document: doc__d2a63941efee
+2025-11-30 21:24:18,606 [INFO] backend: [RAG] Querying document: doc__d2a63941efee | query='None'
+2025-11-30 21:24:18,611 [ERROR] backend: [RAG] Error querying document doc__d2a63941efee: 'NoneType' object is not subscriptable
+2025-11-30 21:24:18,612 [WARNING] backend: HTTPException: Slide generation failed: 'NoneType' object is not subscriptable
+2025-11-30 21:27:52,903 [INFO] backend: Application Shutting Down...
+2025-11-30 21:27:52,903 [INFO] backend: Application Shutting Down...
+2025-11-30 21:28:21,434 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:28:25,157 [INFO] backend: RAGPipeline initialized successfully
+2025-11-30 21:28:26,267 [INFO] backend: Application Starting Up...
+2025-11-30 21:28:26,286 [INFO] backend: Database & tables created/verified.
+2025-11-30 21:28:26,287 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-11-30 21:28:43,437 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (180.98KB)
+2025-11-30 21:28:43,439 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-11-30 21:28:43,620 [INFO] backend: Processing text: 2372 characters (original: 2372)
+2025-11-30 21:28:43,621 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__a7a35e555b7f), text length: 2372
+2025-11-30 21:29:13,504 [INFO] backend: [RAG] Document doc__a7a35e555b7f ingested with 1000 chunks
+2025-11-30 21:29:13,505 [INFO] backend: Successfully ingested document: doc__a7a35e555b7f
+2025-11-30 21:29:13,515 [INFO] backend: [RAG] Querying document: doc__a7a35e555b7f | query='None'
+2025-11-30 21:29:13,517 [ERROR] backend: [RAG] Error querying document doc__a7a35e555b7f: 'NoneType' object is not subscriptable
+2025-11-30 21:29:13,517 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-11-30 21:29:17,799 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-11-30 21:29:22,089 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-11-30 22:08:14,962 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-30 22:08:21,266 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-30 22:08:27,133 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-30 22:08:47,137 [INFO] backend: [RAG] Global query: 'AI-Powered Learning Platforms' (top_k=5)
+2025-11-30 22:09:10,729 [INFO] backend: [RAG] Global query: 'Challenges of Implementing AI in Education' (top_k=5)
+2025-11-30 22:09:33,457 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-30 22:09:56,260 [INFO] backend: [RAG] Global query: 'AI and Accessibility in Education' (top_k=5)
+2025-11-30 22:10:17,899 [INFO] backend: [RAG] Global query: 'AI in Special Education' (top_k=5)
+2025-11-30 22:10:40,171 [INFO] backend: [RAG] Global query: 'Ethics of AI in Education' (top_k=5)
+2025-11-30 22:11:05,033 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-11-30 22:12:17,134 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-11-30 22:12:21,228 [INFO] backend: [RAG] Global query: 'Benefits of AI in Education' (top_k=5)
+2025-11-30 22:12:33,185 [INFO] backend: [RAG] Global query: 'Types of AI in Education' (top_k=5)
+2025-11-30 22:12:57,216 [INFO] backend: [RAG] Global query: 'AI-Powered Learning Tools' (top_k=5)
+2025-11-30 22:13:17,271 [INFO] backend: [RAG] Global query: 'Challenges and Limitations of AI in Education' (top_k=5)
+2025-11-30 22:13:44,662 [INFO] backend: [RAG] Global query: 'Future of AI in Education' (top_k=5)
+2025-11-30 22:14:05,068 [INFO] backend: Exported PDF to: exports\Impact_of_AI_on_Education_1966e93d.pdf
+2025-11-30 22:14:11,986 [INFO] backend: [RAG] Global query: 'AI and Teacher Roles' (top_k=5)
+2025-11-30 22:14:32,732 [INFO] backend: [RAG] Global query: 'AI and Student Outcomes' (top_k=5)
+2025-11-30 22:15:20,593 [INFO] backend: [RAG] Global query: 'Ethics and AI in Education' (top_k=5)
+2025-11-30 22:15:35,183 [INFO] backend: Application Shutting Down...
+2025-11-30 22:15:35,185 [INFO] backend: Application Shutting Down...
+2025-11-30 22:15:42,498 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)

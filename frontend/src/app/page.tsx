@@ -78,7 +78,8 @@ export default function Home() {
       design: slide.design || {
         layout: "title_and_body",
         theme: "corporate"
-      }
+      },
+      heading: ""
     };
     setSlide(slideOut);
     setEditingSlideIndex(index);
