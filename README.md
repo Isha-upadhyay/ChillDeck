@@ -1,205 +1,235 @@
-# ChillDek (AI-Powered Auto Slide Generator )
+# 🚀 ChillDeck — AI-Powered Automatic Slide Generator  
+### *Generate stunning, research-backed presentations from any topic or document using Multi-Agent AI.*
 
-An **end-to-end agentic AI system** that automatically creates beautiful, research-backed presentations from **any topic** or **uploaded document**.  
-Built with **Next.js**, **FastAPI**, **LangChain**, **LangGraph**, **OpenAI**, and modern slide rendering engines.
+<div align="center">
 
----
+✨ Powered by **Next.js + FastAPI + LangChain + LangGraph + ChromaDB + Generative AI**  
+📊 Creates smart, beautiful presentations like **Gamma**, **Notion AI**, **Kimi** — but fully customizable & open-source  
 
-## Key Highlights
-
-- 🔍 **Topic → Complete Presentation**
-- 📄 **Document Upload → Auto Slides**
-- 🧠 **Multi-Agent AI Pipeline**
-- 🎨 **Multiple Themes (Corporate, Dark, Tech, Cute)**
-- 🖼️ **AI Image Generation**
-- ⚡ **Real-Time Slide Preview**
-- 📤 **Exports: PPTX, PDF, Images, Markdown, Notion**
-- 📝 **Speaker Notes Support**
-- 🧹 **Auto Grammar Fix + Quality Enhancement**
+</div>
 
 ---
 
-## Table of Contents
+# 🌟 Overview
 
-- [🚀 Quick Start](#-quick-start)  
-- [Overview](#-overview)  
-- [Core Features](#-core-features)  
-- [Tech Stack](#-tech-stack)  
-- [System Architecture](#-system-architecture)  
-- [Agentic Pipeline](#-agentic-pipeline)  
-- [API Endpoints](#-api-endpoints)  
-- [Frontend Structure](#-frontend-structure)  
-- [How to Run Locally](#-how-to-run-locally)  
-- [Future Enhancements](#-future-enhancements)  
-- [Screenshots](#-screenshots-optional)  
-- [Resume Description](#-resume-description)
-
----
-
-##  Quick Start
-
-**New to the project?** Start here!
-
-### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- [Groq API Key](https://console.groq.com/) (free)
-
-### 3-Step Setup
-
-1. **Backend Setup**
-   ```bash
-   cd backend
-   python -m venv venv
-   venv\Scripts\activate  # Windows
-   # or: source venv/bin/activate  # Mac/Linux
-   pip install -r requirements.txt
-   # Create .env file with GROQ_API_KEY
-   uvicorn main:app --reload
-   ```
-
-2. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   # Create .env.local with NEXT_PUBLIC_API_BASE=http://localhost:8000
-   npm run dev
-   ```
-
-3. **Test It!**
-   - Open http://localhost:3000
-   - Enter topic: "Impact of AI on Education"
-   - Generate slides!
-
-📖 **For detailed instructions, see [GETTING_STARTED.md](./GETTING_STARTED.md)**  
-⚡ **For fastest setup, see [QUICKSTART.md](./QUICKSTART.md)**
-
----
-
-## 🧭 Overview
-
-**AI-Powered Auto Slide Generator** is a next-gen productivity tool inspired by **Gamma**, **Kimi**, and **Notion AI**.
-
-It transforms:
+**ChillDeck** is an advanced **AI slide generator** that transforms:
 - a **topic**,  
-- a **PDF/DOCX/TXT**,  
-- or a **research query**  
+- an **uploaded document (PDF/DOCX/TXT)**, or  
+- a **research query**  
 
-into a **beautiful, themed, fully exportable presentation** with:
-- structured slide layout  
-- facts & statistics  
+into a complete, themed, editable presentation with:
+- structured slides  
+- researched facts  
 - AI-generated images  
 - speaker notes  
+- professional themes  
+- export options (PDF, PPTX, PNG, Markdown, Notion)
 
-All automated through an **agent-based AI pipeline**.
+All powered by an intelligent **multi-agent LLM pipeline**.
 
 ---
 
-## ⭐ Core Features
+# 🚀 Features at a Glance
 
-### 🎯 Topic-to-Slides
-Enter any topic → get a complete presentation.
+### 🧠 Multi-Agent AI Workflow  
+Planner → Researcher → Writer → Improver → Designer → Image Agent
 
-### 📁 Document-to-Slides
-Upload a file → system extracts → summarizes → converts to slides.
+### 🎯 Input Options  
+- Enter a topic  
+- Upload a document  
+- Provide detailed research query  
 
-### 🧠 Multi-Agent AI Workflow
-Each agent specializes in:
-- Planning  
-- Research  
-- Writing  
-- Quality Improvement  
-- Designing  
-- Image Suggestion/Generation  
+### 🎨 Smart Slide Generation  
+- Auto headings  
+- Concise points  
+- Layout instructions  
+- Icons & design cues  
+- Optional illustrations
 
-### 🎨 Custom Themes
-- Modern  
-- Corporate  
-- Minimal  
-- Tech  
-- Dark  
-- Cute  
+### 🎨 Themes  
+Corporate • Minimal • Cute • Tech • Modern • Dark
 
-### 📤 Export Options
-- PPTX  
-- PDF  
-- PNG / JPG  
-- Markdown  
-- Notion page export  
+### 🖼️ AI Image Generation  
+HuggingFace inference models for cover images & illustrations.
 
-### 🔥 Smart Editing Tools
-- Extend slide  
-- Shorten slide  
+### ⚡ Real-Time Editing  
+- Slide preview  
+- Modify bullets  
 - Regenerate content  
-- Auto-format  
-- Add speaker notes  
+- Grammar fix  
+- Extend/shorten slide
+
+### 📤 Export Options  
+- PDF  
+- PPTX  
+- PNG/JPG  
+- Markdown  
+- Notion page
 
 ---
 
-## 🏗️ Tech Stack
+# 🧩 Tech Stack
 
 ### **Frontend**
 - Next.js 14  
 - TypeScript  
-- Tailwind CSS  
+- TailwindCSS  
 - ShadCN UI  
 - Zustand / Redux  
-- React-PPT or HTML-to-PPT  
 
 ### **Backend**
-- FastAPI (Python)  
-- LangChain + LangGraph  
-- PyPDF / python-docx  
-- OpenAI / Gemini / Llama  
-- Tavily / SerpAPI Search APIs  
+- FastAPI  
+- LangChain  
+- LangGraph  
+- Groq / OpenAI / Gemini  
+- ChromaDB (RAG pipeline)
+- Tavily / SerpAPI (web research)
 
 ### **Storage**
-- Firebase / Supabase / S3  
-- ChromaDB / Pinecone (for RAG)
-
-
----
-
-## 🤖 Agentic Pipeline
-
-### 1️⃣ Planning Agent  
-Creates complete slide outline + structure.
-
-### 2️⃣ Research Agent  
-Uses search APIs → extracts stats, facts, recent data.
-
-### 3️⃣ Content Writer Agent  
-Generates bullet points, headings, and examples.
-
-### 4️⃣ Quality Checker Agent  
-Improves:
-- grammar  
-- clarity  
-- repetition  
-- formatting  
-
-### 5️⃣ Slide Designer Agent  
-Adds:
-- layout instructions  
-- icons/emojis  
-- image suggestions  
-
-### 6️⃣ Image Generation Agent  
-Creates cover images, illustrations, diagrams.
+- Firebase / Supabase / AWS S3  
+- Vector storage via ChromaDB
 
 ---
 
-## 🔌 API Endpoints
+# 🧠 System Architecture
+                   ┌────────────────────┐
+                   │     Next.js UI     │
+                   └──────────┬─────────┘
+                              │
+                  User Input (topic/file)
+                              │
+                 ┌────────────▼────────────┐
+                 │       FastAPI API        │
+                 └────────────┬────────────┘
+                              │
+                 LangChain + LangGraph Engine
+                              │
+    ┌───────────────Agent Pipeline────────────────┐
+    │        Planning Agent                        │
+    │        Research Agent (Tavily/SerpAPI)       │
+    │        Writer Agent (Slides)                 │
+    │        Quality Agent (Grammar/Clarity)       │
+    │        Designer Agent (Layout/Emojis)        │
+    │        Image Agent (HuggingFace)             │
+    └───────────────────────────┬──────────────────┘
+                                │
+                      Generated Slide Data
+                                │
+                 ┌──────────────▼──────────────┐
+                 │      Next.js Editor UI       │
+                 └──────────────┬──────────────┘
+                                │
+                       Export Engine (PDF/PPTX)
 
-### **POST** `/generate`
-Generate slides from a topic.
+                       
+---
 
-```json
+# ⚡ Quick Start
+
+### **Prerequisites**
+- Python 3.11+
+- Node.js 18+
+- Groq / OpenAI API Key
+
+---
+
+## 🔧 Backend Setup (FastAPI)
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+# OR: venv\Scripts\activate  # Windows
+
+pip install -r requirements.txt
+
+# Add GROQ_API_KEY or OPENAI_API_KEY in .env
+uvicorn main:app --reload
+
+cd frontend
+npm install
+
+# Set backend endpoint
+echo "NEXT_PUBLIC_API_BASE=http://localhost:8000" > .env.local
+
+npm run dev
+
+✔ Run the App
+
+Visit:
+👉 http://localhost:3000
+
+Enter a topic → Select theme → Generate slides!
+
+🤖 Agentic Pipeline (How It Works)
+1️⃣ Planning Agent
+
+Creates slide outline + logical structure.
+
+2️⃣ Research Agent
+
+Uses Tavily/SerpAPI → extracts current data, stats, quotes.
+
+3️⃣ Content Writer Agent
+
+Writes bullet points, headings, examples.
+
+4️⃣ Quality Agent
+
+Enhances grammar, readability, emphasis.
+
+5️⃣ Slide Designer Agent
+
+Adds emojis, layout hints, visual instructions.
+
+6️⃣ Image Agent
+
+Generates slide-cover or illustration images using HF models.
+
+🔌 API Endpoints
+POST /generate
+
+Generate slides from topic.
 {
   "topic": "Impact of AI on Education",
   "theme": "corporate",
   "detail": "medium"
 }
 
+POST /generate-from-file
+
+Upload a document → Create slides automatically.
+
+📁 Frontend Folder Structure
+frontend/
+│-- app/
+│-- components/
+│-- slides/
+│-- store/
+│-- utils/
+└-- export/
+
+🖼 Screenshots (Add Later)
+/screenshots/home.png
+/screenshots/editor.png
+/screenshots/theme.png
+/screenshots/export.png
+
+🔮 Future Enhancements
+
+🎤 AI Voiceover for presentations
+
+🔗 Real-time collaboration mode
+
+🧩 Plugin marketplace (templates, charts, animations)
+
+📊 Auto chart/graph generation from CSV
+
+⏳ Offline RAG + local models
+
+📝 Resume Description (Copy This for Your Resume)
+
+ChillDeck — AI Slide Generator
+Built a multi-agent LLM system that converts topics or documents into complete presentations using FastAPI, LangChain, ChromaDB, and Next.js; implemented RAG pipelines, AI image generation, and modular export features (PDF/PPTX) with real-time slide preview.
 
 
