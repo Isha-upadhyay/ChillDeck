@@ -107,10 +107,10 @@ class SlideOrchestrator:
                 outline = self.planner.plan_from_document(
                     context=context_doc,
                     detail=detail,
-                    num_slides=10
+                    num_slides=2
                 )
             else:
-                outline = self.planner.plan(topic, detail, 10)
+                outline = self.planner.plan(topic, detail, 2)
 
         except Exception:
             outline = {"slides": []}

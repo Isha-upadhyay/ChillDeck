@@ -1,19 +1,3 @@
-// // src/services/slides.service.ts
-// import api from "@/lib/axiosClient";
-// import type { SlideIn, SlideOut } from "@/types/slide";
-
-// export async function fetchSlideById(id: string): Promise<SlideOut> {
-//   const res = await api.get<SlideOut>(`/slides/${id}`);
-//   return res.data;
-// }
-
-// export async function updateSlide(id: string, payload: SlideIn): Promise<SlideOut> {
-//   const res = await api.put<SlideOut>(`/slides/${id}`, payload);
-//   return res.data;
-// }
-
-
-
 // src/services/slides.service.ts
 import api from "@/lib/axiosClient";
 import type { SlideIn, SlideOut } from "@/types/slide";
@@ -23,10 +7,10 @@ import type { SlideIn, SlideOut } from "@/types/slide";
 // ----------------------------------------
 export async function fetchPresentationById(id: string): Promise<{
   presentation_id: string;
-  title: string;
+  title?: string;
   slides: SlideOut[];
 }> {
-  const res = await api.get(`/slides/presentation/${id}`);
+  const res = await api.get(`/api/slides/presentation/${id}`);
   return res.data;
 }
 
@@ -37,7 +21,7 @@ export async function updatePresentation(
   id: string,
   slides: SlideOut[]
 ): Promise<{ success: boolean }> {
-
+  
   const payload = {
     presentation_id: id,
     slides: slides.map((s) => ({
@@ -49,23 +33,23 @@ export async function updatePresentation(
     })),
   };
 
-  const res = await api.put(`/slides/presentation/${id}`, payload);
+  const res = await api.put(`/api/slides/presentation/${id}`, payload);
   return res.data;
 }
 
 //
-// 3) (Optional) Fetch single slide
+// 3) Fetch single slide
 // ----------------------------------------
 export async function fetchSlideById(id: string): Promise<SlideOut> {
-  const res = await api.get<SlideOut>(`/slides/${id}`);
+  const res = await api.get(`/api/slides/${id}`);
   return res.data;
 }
 
 //
-// 4) (Optional) Update single slide
+// 4) Update single slide
 // ----------------------------------------
 export async function updateSlide(id: string, payload: SlideIn): Promise<SlideOut> {
-  const res = await api.put<SlideOut>(`/slides/${id}`, payload);
+  const res = await api.put(`/api/slides/${id}`, payload);
   return res.data;
 }
 
@@ -73,7 +57,7 @@ export async function updateSlide(id: string, payload: SlideIn): Promise<SlideOu
 // 5) Generate slides from topic
 // ----------------------------------------
 export async function generateSlides(topic: string, detail: string, theme: string) {
-  const res = await api.post("/slides/generate", {
+  const res = await api.post(`/api/slides/generate`, {
     topic,
     detail,
     style: theme,
@@ -88,7 +72,7 @@ export async function generateSlidesFromDocument(
   documentId: string,
   theme: string
 ) {
-  const res = await api.post("/slides/generate", {
+  const res = await api.post(`/api/slides/generate`, {
     document_id: documentId,
     style: theme,
   });
@@ -96,11 +80,11 @@ export async function generateSlidesFromDocument(
 }
 
 //
-// 7) Export slides (pptx/pdf/md/json)
+// 7) Export slides
 // ----------------------------------------
 export async function exportSlides(slides: SlideOut[], topic: string, format: string) {
   const res = await api.post(
-    "/slides/export",
+    `/api/slides/export`,
     { slides, topic, format },
     { responseType: "blob" }
   );
