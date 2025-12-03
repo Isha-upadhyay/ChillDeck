@@ -1,297 +1,111 @@
-// frontend/src/app/page.tsx
 "use client";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { generateOutline, exportSlides } from "@/lib/api";
-import { SlideEditor } from "@/components/slides/SlideEditor";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useEditorStore } from "@/store/editorStore";
-import type { SlideOut } from "@/types/slide";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { MoreVertical, Plus } from "lucide-react";
 
-interface Slide {
-  id: number;
-  title?: string;
-  heading?: string;
-  bullets?: string[];
-  points?: string[];
-  notes?: string;
-  design?: any;
-}
-
-const THEMES = [
-  { id: "corporate", name: "Corporate", colors: { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-900" } },
-  { id: "dark", name: "Dark", colors: { bg: "bg-gray-900", border: "border-gray-700", text: "text-gray-100" } },
-  { id: "modern", name: "Modern", colors: { bg: "bg-gradient-to-br from-purple-50 to-pink-50", border: "border-purple-200", text: "text-purple-900" } },
-  { id: "tech", name: "Tech", colors: { bg: "bg-green-50", border: "border-green-200", text: "text-green-900" } },
-  { id: "cute", name: "Cute", colors: { bg: "bg-pink-50", border: "border-pink-200", text: "text-pink-900" } },
-  { id: "minimal", name: "Minimal", colors: { bg: "bg-white", border: "border-gray-300", text: "text-gray-900" } },
-];
-
-export default function Home() {
+export default function DashboardPage() {
   const router = useRouter();
-  const [topic, setTopic] = useState("");
-  const [selectedTheme, setSelectedTheme] = useState("corporate");
-  const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<{ topic: string; slides: Slide[] } | null>(null);
-  const [error, setError] = useState("");
-  const [editingSlideIndex, setEditingSlideIndex] = useState<number | null>(null);
-  const { setSlide, clearSlide } = useEditorStore();
 
-  async function handleGenerate(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    if (!topic.trim()) return setError("Please enter a topic");
-    setLoading(true);
-    try {
-      const res = await generateOutline(topic, selectedTheme);
-      // Apply theme to all slides
-      const themedSlides = res.slides.map((slide: Slide) => ({
-        ...slide,
-        design: {
-          ...slide.design,
-          theme: selectedTheme
-        }
-      }));
-      setResult({ ...res, slides: themedSlides });
-    } catch (err: any) {
-      setError(err?.message || "Request failed");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  function getThemeColors(themeId: string) {
-    const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
-    return theme.colors;
-  }
-
-  function handleEditSlide(index: number) {
-    if (!result || !result.slides) return;
-    const slide = result.slides[index];
-    // Convert to SlideOut format
-    const slideOut: SlideOut = {
-      id: String(slide.id || index + 1),
-      title: slide.title || slide.heading || `Slide ${index + 1}`,
-      bullets: slide.bullets || slide.points || [],
-      notes: slide.notes || null,
-      design: slide.design || {
-        layout: "title_and_body",
-        theme: "corporate"
-      },
-      heading: ""
-    };
-    setSlide(slideOut);
-    setEditingSlideIndex(index);
-  }
-
-  function handleSaveSlide(updatedSlide: SlideOut) {
-    if (!result || editingSlideIndex === null) return;
-    
-    const updatedSlides = [...result.slides];
-    updatedSlides[editingSlideIndex] = {
-      id: Number(updatedSlide.id),
-      title: updatedSlide.title,
-      bullets: updatedSlide.bullets,
-      notes: updatedSlide.notes || "",
-      design: updatedSlide.design
-    };
-    
-    setResult({ ...result, slides: updatedSlides });
-    setEditingSlideIndex(null);
-    clearSlide();
-  }
-
-  function handleCloseEdit() {
-    setEditingSlideIndex(null);
-    clearSlide();
-  }
+  const presentations = [
+    {
+      id: "1",
+      title: "Q4 Marketing Strategy",
+      slides: 12,
+      theme: "Corporate",
+      updated: "Edited 2 mins ago",
+    },
+    {
+      id: "2",
+      title: "AI in Healthcare",
+      slides: 8,
+      theme: "Modern Dark",
+      updated: "Edited 2 days ago",
+    },
+    {
+      id: "3",
+      title: "Project Nebula Overview",
+      slides: 15,
+      theme: "Tech",
+      updated: "Edited 1 week ago",
+    },
+  ];
 
   return (
-    <main className="min-h-screen p-8 bg-slate-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="bg-white p-6 rounded shadow mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold">AI Slide Generator</h1>
-            <Button
-              variant="outline"
-              onClick={() => router.push("/upload")}
-            >
-              📄 Upload Document
-            </Button>
-          </div>
-          
-          <div className="mb-4 p-3 bg-blue-50 rounded border border-blue-200">
-            <p className="text-sm text-blue-800">
-              💡 <strong>Tip:</strong> Enter a topic below or{" "}
-              <button
-                onClick={() => router.push("/upload")}
-                className="underline font-semibold"
-              >
-                upload a document
-              </button>{" "}
-              to generate slides automatically
-            </p>
-          </div>
-          
-          <form onSubmit={handleGenerate} className="mb-4">
-            <input
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              placeholder="Type a topic e.g. Impact of AI on Education"
-              className="w-full p-3 border rounded mb-3 text-lg"
-            />
-            
-            {/* Theme Selector */}
-            <div className="mb-3">
-              <label className="block text-sm font-medium mb-2">Select Theme:</label>
-              <div className="flex gap-2 flex-wrap">
-                {THEMES.map((theme) => (
-                  <button
-                    key={theme.id}
-                    type="button"
-                    onClick={() => setSelectedTheme(theme.id)}
-                    className={`px-3 py-2 rounded text-sm border transition-all ${
-                      selectedTheme === theme.id
-                        ? `${theme.colors.bg} ${theme.colors.border} border-2 font-semibold`
-                        : "bg-white border-gray-300 hover:bg-gray-50"
-                    }`}
-                  >
-                    {theme.name}
-                  </button>
-                ))}
-              </div>
-            </div>
+    <main className="min-h-screen bg-[#0C0C12] text-white p-10">
+      <div className="max-w-7xl mx-auto">
 
-            <div className="flex gap-2">
-              <button 
-                type="submit" 
-                disabled={loading}
-                className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
-              >
-                {loading ? "Generating..." : "Generate Slides"}
-              </button>
-              <button 
-                type="button" 
-                onClick={()=>{setTopic("Impact of AI on Education")}} 
-                className="px-4 py-2 border rounded hover:bg-gray-50"
-              >
-                Sample
-              </button>
-            </div>
-          </form>
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-12">
+          <h1 className="text-4xl font-bold tracking-tight">
+            Dashboard
+          </h1>
 
-          {error && <div className="text-red-600 mb-2 p-2 bg-red-50 rounded">{error}</div>}
+          <Button
+            className="bg-[#4F46E5] hover:bg-[#4338CA] px-6 py-2 text-sm rounded-xl shadow-lg shadow-indigo-500/20"
+            onClick={() => router.push("/generate")}
+          >
+            <Plus className="mr-2 h-4 w-4" /> New Presentation
+          </Button>
         </div>
 
-        {result && result.slides && (
-          <div>
-            <div className="bg-white p-4 rounded shadow mb-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-2xl font-semibold mb-2">Topic: {result.topic}</h2>
-                  <p className="text-gray-600">Generated {result.slides.length} slides</p>
-                </div>
-                <div className="flex gap-2 flex-wrap">
-                  <button
-                    onClick={() => exportSlides(result.slides, result.topic, "pptx")}
-                    className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm"
-                  >
-                    📊 Export PPTX
-                  </button>
-                  <button
-                    onClick={() => exportSlides(result.slides, result.topic, "pdf")}
-                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm"
-                  >
-                    📄 Export PDF
-                  </button>
-                  <button
-                    onClick={() => exportSlides(result.slides, result.topic, "md")}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm"
-                  >
-                    📝 Export Markdown
-                  </button>
-                  <button
-                    onClick={() => exportSlides(result.slides, result.topic, "json")}
-                    className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 text-sm"
-                  >
-                    💾 Export JSON
-                  </button>
-                </div>
+        {/* SUBTITLE */}
+        <p className="text-gray-400 mb-10">
+          Manage your presentations and create new ones effortlessly.
+        </p>
+
+        {/* GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {/* CREATE NEW CARD */}
+          <Card
+            onClick={() => router.push("/generate")}
+            className="
+              h-56 
+              rounded-2xl
+              bg-gradient-to-br from-[#1A1A27] to-[#14141F] 
+              border border-gray-700/50 
+              flex flex-col justify-center items-center cursor-pointer 
+              hover:scale-[1.02] hover:border-indigo-400 transition-all 
+              backdrop-blur-sm shadow-xl
+            "
+          >
+            <div className="h-14 w-14 rounded-full bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center mb-3">
+              <Plus className="h-7 w-7 text-indigo-300" />
+            </div>
+            <p className="text-lg font-semibold">Create New Presentation</p>
+            <p className="text-gray-400 text-sm">From topic or upload document</p>
+          </Card>
+
+          {/* SAVED PRESENTATIONS */}
+          {presentations.map((p) => (
+            <Card
+              key={p.id}
+              className="
+                h-56 p-6 rounded-2xl 
+                bg-[#11111a]/80 border border-gray-700/40 
+                hover:bg-[#181824] backdrop-blur-sm 
+                hover:scale-[1.02] transition-all cursor-pointer shadow-lg
+              "
+              onClick={() => router.push(`/presentation/${p.id}`)}
+            >
+              <div className="flex justify-between mb-4">
+                <span className="bg-indigo-600/20 px-4 py-1 rounded-full text-xs border border-indigo-600/40 text-indigo-300">
+                  {p.slides} slides
+                </span>
+                <MoreVertical className="text-gray-400" size={18} />
               </div>
-            </div>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {result.slides.map((slide: Slide, index: number) => {
-                const themeId = slide.design?.theme || selectedTheme || "corporate";
-                const themeColors = getThemeColors(themeId);
-                return (
-                <div 
-                  key={slide.id || index} 
-                  className={`${themeColors.bg} p-5 rounded-lg shadow-md ${themeColors.border} border-2 hover:shadow-lg transition-shadow relative`}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <span className={`text-xs font-semibold ${themeColors.text} bg-white/50 px-2 py-1 rounded`}>
-                      Slide {slide.id || index + 1} • {themeId}
-                    </span>
-                    <button
-                      onClick={() => handleEditSlide(index)}
-                      className="text-xs px-2 py-1 bg-white/80 hover:bg-white rounded text-gray-700 shadow-sm"
-                    >
-                      ✏️ Edit
-                    </button>
-                  </div>
-                  
-                  <h3 className={`text-lg font-bold mb-3 ${themeColors.text}`}>
-                    {slide.title || slide.heading || `Slide ${index + 1}`}
-                  </h3>
-                  
-                  <ul className="space-y-2 mb-4">
-                    {(slide.bullets || slide.points || []).map((bullet: string, idx: number) => (
-                      <li key={idx} className={`text-sm ${themeColors.text} flex items-start opacity-90`}>
-                        <span className={`${themeColors.text} mr-2 font-bold`}>•</span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <h2 className="text-xl font-semibold leading-tight">{p.title}</h2>
+              <p className="text-gray-400 mt-1 text-sm">{p.theme}</p>
 
-                  {slide.notes && (
-                    <div className={`mt-4 pt-4 border-t ${themeColors.border}`}>
-                      <p className={`text-xs ${themeColors.text} italic opacity-75`}>
-                        <strong>Notes:</strong> {slide.notes}
-                      </p>
-                    </div>
-                  )}
+              <p className="text-gray-500 text-xs absolute bottom-6">
+                {p.updated}
+              </p>
+            </Card>
+          ))}
 
-                  {/* IMAGE PREVIEW (if exists) */}
-{slide.design?.image_url && (
-  <div className="mt-4">
-    <img
-      src={slide.design.image_url}
-      alt="slide image"
-      className="w-full h-40 object-cover rounded-md border"
-    />
-  </div>
-)}
-
-                </div>
-              )})}
-            </div>
-
-            {/* Edit Dialog */}
-            <Dialog open={editingSlideIndex !== null} onOpenChange={(open) => !open && handleCloseEdit()}>
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle>Edit Slide {editingSlideIndex !== null ? editingSlideIndex + 1 : ''}</DialogTitle>
-                </DialogHeader>
-                <SlideEditor 
-                  onSave={handleSaveSlide}
-                  saving={false}
-                />
-              </DialogContent>
-            </Dialog>
-          </div>
-        )}
+        </div>
       </div>
     </main>
   );

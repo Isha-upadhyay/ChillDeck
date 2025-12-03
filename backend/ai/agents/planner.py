@@ -163,7 +163,7 @@ Return ONLY JSON.
     topic: str = None,
     document_text: str = None,
     detail: str = "medium",
-    num_slides: int = 10,
+    num_slides: int = 2,
 ):
      if document_text:
         return self.plan_from_document(

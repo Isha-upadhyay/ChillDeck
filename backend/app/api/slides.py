@@ -167,7 +167,7 @@ class SlideRequest(BaseModel):
     document_id: str = None       # optional → for document-based slides
     detail: str = "medium"
     style: str = "corporate"
-    num_slides: int = 10
+    num_slides: int = 2
 
 
 class ExportRequest(BaseModel):
@@ -182,11 +182,6 @@ class ExportRequest(BaseModel):
 
 @router.post("/generate")
 def generate_slides(payload: SlideRequest):
-    """
-    This endpoint runs the FULL multi-agent workflow through SlideOrchestrator:
-    Planner → RAG → Researcher → Writer → Designer → Image Generator → Final JSON
-    """
-
     try:
         result = orchestrator.generate_presentation(
             topic=payload.topic,
@@ -194,7 +189,16 @@ def generate_slides(payload: SlideRequest):
             detail=payload.detail,
             style=payload.style,
         )
-        return result
+
+        # Create temporary unique ID (later can come from DB)
+        from time import time
+        presentation_id = str(int(time() * 1000))
+
+        return {
+            "presentation_id": presentation_id,
+            "topic": payload.topic,
+            "slides": result["slides"]
+        }
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Slide generation failed: {str(e)}")

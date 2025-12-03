@@ -891,3 +891,94 @@ MemoryError
 2025-11-30 22:15:35,183 [INFO] backend: Application Shutting Down...
 2025-11-30 22:15:35,185 [INFO] backend: Application Shutting Down...
 2025-11-30 22:15:42,498 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-12-04 02:09:54,884 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 02:09:58,427 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 02:09:59,267 [INFO] backend: Application Starting Up...
+2025-12-04 02:09:59,275 [INFO] backend: Database & tables created/verified.
+2025-12-04 02:09:59,275 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 02:20:56,526 [INFO] backend: [RAG] Global query: 'Introduction to AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:21:02,813 [INFO] backend: [RAG] Global query: 'Components of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:21:06,248 [INFO] backend: [RAG] Global query: 'Machine Learning Algorithms Used' (top_k=5)
+2025-12-04 02:21:14,969 [INFO] backend: [RAG] Global query: 'Benefits of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:21:31,255 [INFO] backend: [RAG] Global query: 'Challenges and Limitations' (top_k=5)
+2025-12-04 02:21:52,215 [INFO] backend: [RAG] Global query: 'Real-World Applications' (top_k=5)
+2025-12-04 02:22:12,600 [INFO] backend: [RAG] Global query: 'Future Directions' (top_k=5)
+2025-12-04 02:22:39,155 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-12-04 02:23:04,262 [INFO] backend: [RAG] Global query: 'References' (top_k=5)
+2025-12-04 02:23:07,702 [WARNING] backend: HTTPException: Slide generation failed: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.1-8b-instant` in organization `org_01k0pxyc0pf5jbp5sp0dmzwnyg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 9009, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2025-12-04 02:28:55,549 [INFO] backend: [RAG] Global query: 'Introduction to AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:29:00,323 [INFO] backend: [RAG] Global query: 'Components of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:29:06,087 [INFO] backend: [RAG] Global query: 'Benefits of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:29:16,246 [INFO] backend: [RAG] Global query: 'Challenges in Implementing AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:29:37,568 [INFO] backend: [RAG] Global query: 'Machine Learning Algorithms Used in AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:29:59,005 [INFO] backend: [RAG] Global query: 'Real-World Applications of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:30:15,385 [INFO] backend: [RAG] Global query: 'Future Developments in AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:30:31,963 [INFO] backend: [RAG] Global query: 'Limitations of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 02:30:52,478 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-12-04 02:31:16,600 [INFO] backend: [RAG] Global query: 'References' (top_k=5)
+2025-12-04 02:44:47,108 [INFO] backend: [RAG] Global query: 'Introduction to AI Impact' (top_k=5)
+2025-12-04 02:44:52,291 [INFO] backend: [RAG] Global query: 'Positive Impact of AI' (top_k=5)
+2025-12-04 02:44:56,973 [INFO] backend: [RAG] Global query: 'Negative Impact of AI' (top_k=5)
+2025-12-04 02:45:10,397 [INFO] backend: [RAG] Global query: 'Impact on Healthcare' (top_k=5)
+2025-12-04 02:45:31,840 [INFO] backend: [RAG] Global query: 'Impact on Education' (top_k=5)
+2025-12-04 02:45:49,664 [INFO] backend: [RAG] Global query: 'Impact on Environment' (top_k=5)
+2025-12-04 02:46:09,389 [INFO] backend: [RAG] Global query: 'Impact on Economy' (top_k=5)
+2025-12-04 02:46:30,066 [INFO] backend: [RAG] Global query: 'Challenges and Limitations' (top_k=5)
+2025-12-04 02:46:50,280 [INFO] backend: [RAG] Global query: 'Future of AI' (top_k=5)
+2025-12-04 02:47:16,181 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-12-04 02:51:22,163 [INFO] backend: [RAG] Global query: 'Introduction' (top_k=5)
+2025-12-04 02:51:28,191 [INFO] backend: [RAG] Global query: 'Positive Impact' (top_k=5)
+2025-12-04 02:51:34,188 [INFO] backend: [RAG] Global query: 'Negative Impact' (top_k=5)
+2025-12-04 02:51:39,627 [INFO] backend: [RAG] Global query: 'Social Comparison' (top_k=5)
+2025-12-04 02:52:01,923 [INFO] backend: [RAG] Global query: 'Cyberbullying' (top_k=5)
+2025-12-04 02:52:27,690 [INFO] backend: [RAG] Global query: 'Addiction' (top_k=5)
+2025-12-04 02:52:48,941 [INFO] backend: [RAG] Global query: 'Impact on Relationships' (top_k=5)
+2025-12-04 02:53:08,364 [INFO] backend: [RAG] Global query: 'Impact on Mental Health' (top_k=5)
+2025-12-04 02:53:30,680 [INFO] backend: [RAG] Global query: 'Impact on Sleep' (top_k=5)
+2025-12-04 02:54:00,573 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-12-04 03:05:32,364 [INFO] backend: Application Shutting Down...
+2025-12-04 03:05:32,375 [INFO] backend: Application Shutting Down...
+2025-12-04 03:06:01,117 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:06:05,086 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:06:06,134 [INFO] backend: Application Starting Up...
+2025-12-04 03:06:06,148 [INFO] backend: Database & tables created/verified.
+2025-12-04 03:06:06,149 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 03:06:51,929 [INFO] backend: Application Shutting Down...
+2025-12-04 03:06:51,929 [INFO] backend: Application Shutting Down...
+2025-12-04 03:07:20,633 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:07:25,112 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:07:26,190 [INFO] backend: Application Starting Up...
+2025-12-04 03:07:26,196 [INFO] backend: Database & tables created/verified.
+2025-12-04 03:07:26,196 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 03:08:18,256 [INFO] backend: [RAG] Global query: 'Introduction to Women in Tech' (top_k=5)
+2025-12-04 03:08:24,436 [INFO] backend: [RAG] Global query: 'Historical Context' (top_k=5)
+2025-12-04 03:08:30,243 [INFO] backend: [RAG] Global query: 'Barriers to Entry' (top_k=5)
+2025-12-04 03:08:37,027 [INFO] backend: [RAG] Global query: 'Stereotypes and Biases' (top_k=5)
+2025-12-04 03:09:00,968 [INFO] backend: [RAG] Global query: 'Role Models and Mentors' (top_k=5)
+2025-12-04 03:09:20,557 [INFO] backend: [RAG] Global query: 'Organizations Supporting Women in Tech' (top_k=5)
+2025-12-04 03:09:39,906 [INFO] backend: [RAG] Global query: 'Breaking Down Barriers' (top_k=5)
+2025-12-04 03:09:58,039 [INFO] backend: [RAG] Global query: 'Success Stories' (top_k=5)
+2025-12-04 03:10:16,771 [INFO] backend: [RAG] Global query: 'Challenges Ahead' (top_k=5)
+2025-12-04 03:10:38,557 [INFO] backend: [RAG] Global query: 'Conclusion' (top_k=5)
+2025-12-04 03:16:43,403 [INFO] backend: Application Shutting Down...
+2025-12-04 03:16:43,418 [INFO] backend: Application Shutting Down...
+2025-12-04 03:17:15,813 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:17:19,381 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:17:20,569 [INFO] backend: Application Starting Up...
+2025-12-04 03:17:20,590 [INFO] backend: Database & tables created/verified.
+2025-12-04 03:17:20,592 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 03:17:20,593 [INFO] backend: Application Shutting Down...
+2025-12-04 03:17:20,593 [INFO] backend: Application Shutting Down...
+2025-12-04 03:17:41,798 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:17:45,674 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 03:17:46,601 [INFO] backend: Application Starting Up...
+2025-12-04 03:17:46,604 [INFO] backend: Database & tables created/verified.
+2025-12-04 03:17:46,605 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 03:20:13,868 [INFO] backend: [RAG] Global query: 'Why People Fail to Stay Consistent' (top_k=5)
+2025-12-04 03:20:19,937 [INFO] backend: [RAG] Global query: 'Breaking the Cycle of Inconsistency' (top_k=5)
+2025-12-04 03:21:16,567 [INFO] backend: [RAG] Global query: 'Why People Fail to Stay Consistent' (top_k=5)
+2025-12-04 03:21:22,092 [INFO] backend: [RAG] Global query: 'Breaking the Cycle of Inconsistency' (top_k=5)
+2025-12-04 03:29:27,091 [INFO] backend: [RAG] Global query: 'The Future of AI: Trends and Predictions' (top_k=5)
+2025-12-04 03:29:33,109 [INFO] backend: [RAG] Global query: 'Impact of AI on Society and Economy' (top_k=5)
+2025-12-04 03:30:49,145 [INFO] backend: Application Shutting Down...
+2025-12-04 03:30:49,147 [INFO] backend: Application Shutting Down...
