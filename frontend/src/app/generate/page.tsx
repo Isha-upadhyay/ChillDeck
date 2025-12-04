@@ -364,12 +364,15 @@ export default function Home() {
       }));
 
       setResult({ ...res, slides: themedSlides });
+      router.push(`/slides/${res.presentation_id}`);
     } catch (err: any) {
       setError(err?.message || "Request failed");
     } finally {
       setLoading(false);
     }
   }
+
+
 
   // -------------------------------------------------
   // OPEN EDITOR

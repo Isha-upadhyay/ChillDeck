@@ -157,6 +157,7 @@ router = APIRouter()
 orchestrator = SlideOrchestrator()
 export_service = ExportService()
 
+PRESENTATIONS = {}
 
 # -------------------------------------------------------
 # REQUEST MODELS
@@ -183,6 +184,7 @@ class ExportRequest(BaseModel):
 @router.post("/generate")
 def generate_slides(payload: SlideRequest):
     try:
+        # Run multi-agent orchestrator
         result = orchestrator.generate_presentation(
             topic=payload.topic,
             document_id=payload.document_id,
@@ -190,10 +192,16 @@ def generate_slides(payload: SlideRequest):
             style=payload.style,
         )
 
-        # Create temporary unique ID (later can come from DB)
+        # Unique ID for presentation
         from time import time
         presentation_id = str(int(time() * 1000))
 
+        # 🔥 SAVE GENERATED SLIDES
+        PRESENTATIONS[presentation_id] = result["slides"]
+
+        print("\n\nSAVED PRESENTATIONS NOW:", PRESENTATIONS.keys(), "\n\n")
+
+        # Return response
         return {
             "presentation_id": presentation_id,
             "topic": payload.topic,
@@ -271,27 +279,12 @@ def update_slide(slide_id: str, payload: UpdateSlideRequest):
 
 @router.get("/presentation/{presentation_id}")
 def get_presentation(presentation_id: str):
-    """
-    TEMPORARY ENDPOINT:
-    Returns a dummy presentation structure so frontend does not break.
-    Later you will plug in a real DB.
-    """
+    if presentation_id not in PRESENTATIONS:
+        raise HTTPException(status_code=404, detail="Presentation not found")
 
-    # Dummy single-slide fallback (frontend expects array)
     return {
         "presentation_id": presentation_id,
-        "slides": [
-            {
-                "id": "1",
-                "title": "Sample Slide",
-                "bullets": ["Point 1", "Point 2"],
-                "notes": "",
-                "design": {
-                    "layout": "title_and_body",
-                    "theme": "corporate"
-                }
-            }
-        ]
+        "slides": PRESENTATIONS[presentation_id]
     }
 
 
