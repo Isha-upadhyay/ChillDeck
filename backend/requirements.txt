@@ -21,7 +21,7 @@ Pillow
 
 # RAG / Vector DB / Embeddings
 sentence-transformers
-torch  # Required by sentence-transformers (CPU version for Windows)
+torch --index-url https://download.pytorch.org/whl/cpu
 chromadb
 numpy
 tqdm
@@ -32,15 +32,15 @@ requests
 # LLM Clients
 groq
 tavily-python
-openai  # Optional: for OpenAI models
+openai
 
-# LangChain & LangGraph (for agentic workflows)
+# LangChain & LangGraph
 langchain
 langchain-community
 langchain-core
-langgraph  # For multi-agent orchestration
+langgraph
 
-# Database (optional, future compatibility)
+# Database
 sqlmodel
 sqlalchemy
 aiosqlite
