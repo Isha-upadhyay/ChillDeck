@@ -5,6 +5,7 @@ load_dotenv()
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 # Routers
 from app.api.slides import router as slides_router
@@ -79,10 +80,7 @@ app = create_application()
 @app.on_event("startup")
 def on_startup():
     logger.info("Application Starting Up...")
-
-    # Create DB & tables
     create_db_and_tables()
-
     logger.info("DB Ready, AI Slide Generator Online!")
 
 
@@ -90,4 +88,16 @@ def on_startup():
 def on_shutdown():
     logger.info("Application Shutting Down...")
 
-    logger.info("Application Shutting Down...")
+
+# -----------------------------------------------------
+# DEPLOY MODE: This block MUST be at the BOTTOM
+# -----------------------------------------------------
+if __name__ == "__main__":
+    import uvicorn
+    
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",                           # Required for Render / Railway
+        port=int(os.getenv("PORT", 8000)),        # Render gives dynamic port
+        reload=True                               # Works locally; ignored in production
+    )
