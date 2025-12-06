@@ -1,5 +1,9 @@
 # backend/main.py
 
+import os, sys
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
+
 from dotenv import load_dotenv
 load_dotenv()
 
