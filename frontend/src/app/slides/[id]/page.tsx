@@ -165,17 +165,26 @@ setSlides(formattedSlides);
 
   // Save all slides (bulk update)
   const handleSaveAll = async () => {
-    try {
-      setSaving(true);
-      await updatePresentation(presentationId, slides);
-      alert("Slides saved successfully!");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to save.");
-    } finally {
-      setSaving(false);
-    }
-  };
+  try {
+    setSaving(true);
+
+    await updatePresentation(presentationId, {
+      title: slides[0]?.title || "Untitled",
+      theme: slides[0]?.design?.theme || "corporate",
+      slides: slides,
+    });
+
+    // ⭐ Redirect to Dashboard
+    router.push("/");
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to save.");
+  } finally {
+    setSaving(false);
+  }
+};
+
 
   if (loading) {
     return (

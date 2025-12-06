@@ -1002,3 +1002,442 @@ MemoryError
 2025-12-04 13:21:58,345 [INFO] backend: [RAG] Global query: 'Potential Applications and Challenges' (top_k=5)
 2025-12-04 13:26:50,514 [INFO] backend: Application Shutting Down...
 2025-12-04 13:26:50,516 [INFO] backend: Application Shutting Down...
+2025-12-04 13:28:22,354 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 13:28:25,955 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 13:28:26,947 [INFO] backend: Application Starting Up...
+2025-12-04 13:28:26,961 [INFO] backend: Database & tables created/verified.
+2025-12-04 13:28:26,961 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 13:52:23,595 [WARNING] backend: HTTPException: Presentation not found
+2025-12-04 13:52:45,960 [WARNING] backend: HTTPException: Presentation not found
+2025-12-04 13:52:55,944 [WARNING] backend: HTTPException: Presentation not found
+2025-12-04 13:56:14,293 [WARNING] backend: HTTPException: Presentation not found
+2025-12-04 13:56:36,513 [INFO] backend: [RAG] Global query: 'Introduction to AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 13:56:42,460 [INFO] backend: [RAG] Global query: 'Components and Working of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 14:07:56,993 [INFO] backend: Application Shutting Down...
+2025-12-04 14:07:56,995 [INFO] backend: Application Shutting Down...
+2025-12-04 14:08:37,567 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:08:41,514 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:08:42,621 [INFO] backend: Application Starting Up...
+2025-12-04 14:08:42,642 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:08:42,643 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:08:42,645 [INFO] backend: Application Shutting Down...
+2025-12-04 14:08:42,646 [INFO] backend: Application Shutting Down...
+2025-12-04 14:09:14,216 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:09:17,917 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:09:19,065 [INFO] backend: Application Starting Up...
+2025-12-04 14:09:19,069 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:09:19,069 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:09:24,097 [INFO] backend: [RAG] Global query: 'Introduction to AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 14:09:30,455 [INFO] backend: [RAG] Global query: 'Benefits and Implementation of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 14:18:46,601 [INFO] backend: Application Shutting Down...
+2025-12-04 14:18:46,607 [INFO] backend: Application Shutting Down...
+2025-12-04 14:19:22,301 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:19:26,400 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:19:27,698 [INFO] backend: Application Starting Up...
+2025-12-04 14:19:27,720 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:19:27,720 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:19:27,723 [INFO] backend: Application Shutting Down...
+2025-12-04 14:19:27,724 [INFO] backend: Application Shutting Down...
+2025-12-04 14:19:57,985 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:20:01,968 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:20:02,160 [INFO] backend: Application Starting Up...
+2025-12-04 14:20:02,174 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:20:02,174 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:20:17,048 [INFO] backend: Application Shutting Down...
+2025-12-04 14:20:17,049 [INFO] backend: Application Shutting Down...
+2025-12-04 14:20:47,947 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:20:51,943 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:20:52,141 [INFO] backend: Application Starting Up...
+2025-12-04 14:20:52,145 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:20:52,145 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:20:52,176 [WARNING] backend: HTTPException: Presentation not found
+2025-12-04 14:22:57,249 [INFO] backend: [RAG] Global query: 'Introduction to AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 14:23:02,929 [INFO] backend: [RAG] Global query: 'Key Components of AI Based Crop Recommendation System' (top_k=5)
+2025-12-04 14:25:08,902 [WARNING] backend: HTTPException: Presentation not found
+2025-12-04 14:27:01,353 [INFO] backend: Application Shutting Down...
+2025-12-04 14:27:01,354 [INFO] backend: Application Shutting Down...
+2025-12-04 14:27:38,330 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:27:42,972 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:27:43,320 [INFO] backend: Application Starting Up...
+2025-12-04 14:27:43,326 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:27:43,327 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:28:29,514 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (167.97KB)
+2025-12-04 14:28:29,535 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-12-04 14:28:29,932 [INFO] backend: Processing text: 2707 characters (original: 2707)
+2025-12-04 14:28:29,933 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__f5d8ca860d92), text length: 2707
+2025-12-04 14:29:14,301 [INFO] backend: [RAG] Document doc__f5d8ca860d92 ingested with 1000 chunks
+2025-12-04 14:29:14,302 [INFO] backend: Successfully ingested document: doc__f5d8ca860d92
+2025-12-04 14:29:14,317 [INFO] backend: [RAG] Querying document: doc__f5d8ca860d92 | query='None'
+2025-12-04 14:29:14,322 [ERROR] backend: [RAG] Error querying document doc__f5d8ca860d92: 'NoneType' object is not subscriptable
+2025-12-04 14:29:14,323 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-04 14:29:19,640 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-04 14:29:24,637 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-04 14:41:38,742 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (167.97KB)
+2025-12-04 14:41:38,773 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-12-04 14:41:39,273 [INFO] backend: Processing text: 2707 characters (original: 2707)
+2025-12-04 14:41:39,275 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__5fa42543b6cc), text length: 2707
+2025-12-04 14:42:23,676 [INFO] backend: [RAG] Document doc__5fa42543b6cc ingested with 1000 chunks
+2025-12-04 14:42:23,677 [INFO] backend: Successfully ingested document: doc__5fa42543b6cc
+2025-12-04 14:42:23,712 [INFO] backend: [RAG] Querying document: doc__5fa42543b6cc | query='None'
+2025-12-04 14:42:23,723 [ERROR] backend: [RAG] Error querying document doc__5fa42543b6cc: 'NoneType' object is not subscriptable
+2025-12-04 14:42:23,724 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-04 14:42:28,079 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-04 14:42:31,550 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-04 14:45:15,471 [INFO] backend: Application Shutting Down...
+2025-12-04 14:45:15,475 [INFO] backend: Application Shutting Down...
+2025-12-04 14:45:55,979 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:46:00,296 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:46:30,803 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:46:34,997 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:46:35,198 [INFO] backend: Application Starting Up...
+2025-12-04 14:46:35,217 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:46:35,217 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:48:13,515 [INFO] backend: Application Shutting Down...
+2025-12-04 14:48:13,515 [INFO] backend: Application Shutting Down...
+2025-12-04 14:48:44,544 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:49:16,835 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:49:49,858 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:52:59,602 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:53:03,342 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:53:03,558 [INFO] backend: Application Starting Up...
+2025-12-04 14:53:03,564 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:53:03,564 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:53:03,567 [INFO] backend: Application Shutting Down...
+2025-12-04 14:53:03,567 [INFO] backend: Application Shutting Down...
+2025-12-04 14:53:42,863 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:53:47,018 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:53:47,300 [INFO] backend: Application Starting Up...
+2025-12-04 14:53:47,321 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:53:47,322 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:53:47,455 [ERROR] backend: Unhandled exception occurred
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: presentations.presentation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2485, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\app\api\slides.py", line 156, in get_all_presentations
+    data = session.exec(select(PresentationTable)).all()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlmodel\orm\session.py", line 83, in exec
+    results = super().execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: presentations.presentation_id
+[SQL: SELECT presentations.presentation_id, presentations.topic, presentations.theme, presentations.slides, presentations.updated_at 
+FROM presentations]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-12-04 14:54:18,906 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-04 14:54:32,404 [INFO] backend: [RAG] Global query: 'Potential Applications and Challenges' (top_k=5)
+2025-12-04 14:54:38,572 [WARNING] backend: HTTPException: Slide generation failed: (sqlite3.OperationalError) table presentations has no column named presentation_id
+[SQL: INSERT INTO presentations (presentation_id, topic, theme, slides, updated_at) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('1764840278566', 'future of ai', 'corporate', '[{"id": "db4931c5-c284-4ac0-908a-507fd60ed459", "title": "Introduction to the Future of AI", "bullets": ["Key advancements in AI include improved nat ... (3697 characters truncated) ... e": {"error": "{\\"error\\":\\"https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead.\\"}"}}]', '2025-12-04 09:24:38.567317')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-12-04 14:55:41,976 [INFO] backend: Application Shutting Down...
+2025-12-04 14:55:41,976 [INFO] backend: Application Shutting Down...
+2025-12-04 14:56:15,558 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:57:08,588 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:57:12,260 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:57:12,457 [INFO] backend: Application Starting Up...
+2025-12-04 14:57:12,462 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:57:12,463 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:57:12,465 [INFO] backend: Application Shutting Down...
+2025-12-04 14:57:12,466 [INFO] backend: Application Shutting Down...
+2025-12-04 14:57:42,760 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:57:46,506 [INFO] backend: RAGPipeline initialized successfully
+2025-12-04 14:57:46,735 [INFO] backend: Application Starting Up...
+2025-12-04 14:57:46,739 [INFO] backend: Database & tables created/verified.
+2025-12-04 14:57:46,740 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-04 14:58:12,795 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-04 14:58:17,061 [INFO] backend: [RAG] Global query: 'Potential Applications and Implications' (top_k=5)
+2025-12-04 15:37:00,050 [INFO] backend: [RAG] Global query: 'Introduction to Women' (top_k=5)
+2025-12-04 15:37:05,560 [INFO] backend: [RAG] Global query: 'Key Aspects of Women' (top_k=5)
+2025-12-04 16:02:10,965 [INFO] backend: Application Shutting Down...
+2025-12-04 16:02:10,996 [INFO] backend: Application Shutting Down...
+2025-12-06 01:26:01,041 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 01:26:05,570 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 01:26:05,806 [INFO] backend: Application Starting Up...
+2025-12-06 01:26:05,825 [INFO] backend: Database & tables created/verified.
+2025-12-06 01:26:05,826 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 01:27:08,559 [INFO] backend: [RAG] Global query: 'Introduction to Women' (top_k=5)
+2025-12-06 01:27:15,194 [INFO] backend: [RAG] Global query: 'Women's Rights and Empowerment' (top_k=5)
+2025-12-06 15:10:48,281 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (127.06KB)
+2025-12-06 15:10:48,312 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-12-06 15:10:48,942 [INFO] backend: Processing text: 3196 characters (original: 3196)
+2025-12-06 15:10:48,951 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__0520d163a281), text length: 3196
+2025-12-06 15:11:25,206 [INFO] backend: [RAG] Document doc__0520d163a281 ingested with 1000 chunks
+2025-12-06 15:11:25,206 [INFO] backend: Successfully ingested document: doc__0520d163a281
+2025-12-06 15:11:25,236 [INFO] backend: [RAG] Querying document: doc__0520d163a281 | query='None'
+2025-12-06 15:11:25,253 [ERROR] backend: [RAG] Error querying document doc__0520d163a281: 'NoneType' object is not subscriptable
+2025-12-06 15:11:25,254 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-06 15:11:33,087 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-06 15:11:37,825 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-06 15:19:22,210 [INFO] backend: Exported PPTX to: exports\Untitled_29f04fe9.pptx
+2025-12-06 15:20:01,174 [INFO] backend: Exported PDF to: exports\Untitled_7196c9cd.pdf
+2025-12-06 15:23:04,839 [INFO] backend: Exported PPTX to: exports\Untitled_69379bbb.pptx
+2025-12-06 15:23:07,252 [INFO] backend: Exported Markdown to: exports\Untitled_9cf730f0.md
+2025-12-06 15:25:58,422 [INFO] backend: Application Shutting Down...
+2025-12-06 15:25:58,426 [INFO] backend: Application Shutting Down...
+2025-12-06 15:26:49,086 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 15:26:53,571 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 15:26:53,844 [INFO] backend: Application Starting Up...
+2025-12-06 15:26:53,864 [INFO] backend: Database & tables created/verified.
+2025-12-06 15:26:53,864 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 15:27:24,030 [INFO] backend: Exported PDF to: exports\Untitled_2e1f2d73.pdf
+2025-12-06 15:29:11,780 [INFO] backend: Application Shutting Down...
+2025-12-06 15:29:11,781 [INFO] backend: Application Shutting Down...
+2025-12-06 15:31:54,312 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 15:32:10,358 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 15:32:11,790 [INFO] backend: Application Starting Up...
+2025-12-06 15:32:11,806 [INFO] backend: Database & tables created/verified.
+2025-12-06 15:32:11,808 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 15:39:37,867 [INFO] backend: Application Shutting Down...
+2025-12-06 15:39:37,880 [INFO] backend: Application Shutting Down...
+2025-12-06 15:40:11,428 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 15:40:15,608 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 15:40:16,578 [INFO] backend: Application Starting Up...
+2025-12-06 15:40:16,590 [INFO] backend: Database & tables created/verified.
+2025-12-06 15:40:16,591 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 15:43:35,398 [INFO] backend: [RAG] Global query: 'Introduction to AI in Education' (top_k=5)
+2025-12-06 15:43:43,031 [INFO] backend: [RAG] Global query: 'Impact of AI on Teaching and Learning' (top_k=5)
+2025-12-06 15:43:51,189 [INFO] backend: Exported PPTX to: exports\Impact_of_AI_on_Education_99c3bbf4.pptx
+2025-12-06 15:50:12,944 [WARNING] backend: HTTPException: Presentation not found
+2025-12-06 16:07:52,389 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 16:07:57,617 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 16:07:59,096 [INFO] backend: Application Starting Up...
+2025-12-06 16:07:59,112 [INFO] backend: Database & tables created/verified.
+2025-12-06 16:07:59,112 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 16:08:37,823 [INFO] backend: [RAG] Global query: 'Introduction to AI Impact' (top_k=5)
+2025-12-06 16:08:44,922 [INFO] backend: [RAG] Global query: 'Positive and Negative Impacts of AI' (top_k=5)
+2025-12-06 21:06:14,100 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 21:06:17,931 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 21:06:18,801 [INFO] backend: Application Starting Up...
+2025-12-06 21:06:18,810 [INFO] backend: Database & tables created/verified.
+2025-12-06 21:06:18,811 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 21:17:18,894 [INFO] backend: Application Shutting Down...
+2025-12-06 21:18:42,357 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 21:18:46,021 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 21:18:47,187 [INFO] backend: Application Starting Up...
+2025-12-06 21:18:47,192 [INFO] backend: Database & tables created/verified.
+2025-12-06 21:18:47,192 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 21:39:38,757 [INFO] backend: Application Shutting Down...
+2025-12-06 23:00:51,554 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:00:52,143 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:00:53,332 [INFO] backend: Application Starting Up...
+2025-12-06 23:00:53,375 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:00:53,377 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:02:01,994 [INFO] backend: Application Shutting Down...
+2025-12-06 23:22:14,522 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:22:14,789 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:22:15,400 [INFO] backend: Application Starting Up...
+2025-12-06 23:22:15,407 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:22:15,407 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:27:07,473 [INFO] backend: Application Shutting Down...
+2025-12-06 23:27:11,978 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:12,272 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:13,118 [INFO] backend: Application Starting Up...
+2025-12-06 23:27:13,124 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:27:13,124 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:27:40,946 [INFO] backend: Application Shutting Down...
+2025-12-06 23:27:44,000 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:44,172 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:44,676 [INFO] backend: Application Starting Up...
+2025-12-06 23:27:44,679 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:27:44,679 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:27:44,681 [INFO] backend: Application Shutting Down...
+2025-12-06 23:27:47,470 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:47,607 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:48,002 [INFO] backend: Application Starting Up...
+2025-12-06 23:27:48,004 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:27:48,005 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:27:55,106 [INFO] backend: Application Shutting Down...
+2025-12-06 23:27:57,879 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:58,017 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:27:58,406 [INFO] backend: Application Starting Up...
+2025-12-06 23:27:58,408 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:27:58,408 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:27:58,409 [INFO] backend: Application Shutting Down...
+2025-12-06 23:28:01,116 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:01,258 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:01,659 [INFO] backend: Application Starting Up...
+2025-12-06 23:28:01,661 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:28:01,661 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:28:09,845 [INFO] backend: Application Shutting Down...
+2025-12-06 23:28:12,623 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:12,760 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:13,159 [INFO] backend: Application Starting Up...
+2025-12-06 23:28:13,163 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:28:13,163 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:28:13,167 [INFO] backend: Application Shutting Down...
+2025-12-06 23:28:15,982 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:16,117 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:16,487 [INFO] backend: Application Starting Up...
+2025-12-06 23:28:16,489 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:28:16,489 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:28:16,490 [INFO] backend: Application Shutting Down...
+2025-12-06 23:28:19,160 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:19,312 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:19,704 [INFO] backend: Application Starting Up...
+2025-12-06 23:28:19,705 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:28:19,706 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:28:19,706 [INFO] backend: Application Shutting Down...
+2025-12-06 23:28:22,713 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:22,860 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:23,231 [INFO] backend: Application Starting Up...
+2025-12-06 23:28:23,232 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:28:23,232 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:28:27,614 [INFO] backend: Application Shutting Down...
+2025-12-06 23:28:30,382 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:30,522 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:30,895 [INFO] backend: Application Starting Up...
+2025-12-06 23:28:30,897 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:28:30,897 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:28:37,419 [INFO] backend: Application Shutting Down...
+2025-12-06 23:28:42,939 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:43,078 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:28:43,457 [INFO] backend: Application Starting Up...
+2025-12-06 23:28:43,458 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:28:43,459 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:28:47,938 [INFO] backend: Application Shutting Down...
+2025-12-06 23:31:49,951 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:31:50,145 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:31:50,565 [INFO] backend: Application Starting Up...
+2025-12-06 23:31:50,574 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:31:50,574 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:33:14,753 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-06 23:33:41,475 [INFO] backend: [RAG] Global query: 'Potential Applications and Challenges' (top_k=5)
+2025-12-06 23:33:45,248 [WARNING] backend: HTTPException: Slide generation failed: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.1-8b-instant` in organization `org_01k0pxyc0pf5jbp5sp0dmzwnyg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 13106, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2025-12-06 23:39:46,291 [INFO] backend: [RAG] Global query: 'Introduction to Women' (top_k=5)
+2025-12-06 23:39:51,728 [INFO] backend: [RAG] Global query: 'Empowering Women' (top_k=5)
+2025-12-06 23:49:44,397 [INFO] backend: Application Shutting Down...
+2025-12-06 23:49:52,205 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:49:52,422 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:49:53,158 [INFO] backend: Application Starting Up...
+2025-12-06 23:49:53,166 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:49:53,166 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:50:16,633 [INFO] backend: Application Shutting Down...
+2025-12-06 23:50:19,451 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:50:19,587 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:50:19,980 [INFO] backend: Application Starting Up...
+2025-12-06 23:50:19,981 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:50:19,981 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:50:19,982 [INFO] backend: Application Shutting Down...
+2025-12-06 23:50:22,581 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:50:22,726 [INFO] backend: RAGPipeline initialized successfully
+2025-12-06 23:50:23,084 [INFO] backend: Application Starting Up...
+2025-12-06 23:50:23,086 [INFO] backend: Database & tables created/verified.
+2025-12-06 23:50:23,086 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-06 23:57:15,145 [WARNING] backend: HTTPException: Slide not found (DB not implemented yet).
+2025-12-07 00:01:49,696 [WARNING] backend: HTTPException: Slide not found (DB not implemented yet).
+2025-12-07 00:02:15,088 [INFO] backend: [RAG] Global query: 'The Future of AI: Trends and Predictions' (top_k=5)
+2025-12-07 00:02:37,467 [INFO] backend: [RAG] Global query: 'Potential Impact of AI on Society' (top_k=5)
+2025-12-07 00:05:24,304 [WARNING] backend: HTTPException: Slide not found (DB not implemented yet).
+2025-12-07 00:05:24,311 [WARNING] backend: HTTPException: Slide not found (DB not implemented yet).
+2025-12-07 00:05:26,903 [WARNING] backend: HTTPException: Slide not found (DB not implemented yet).
+2025-12-07 00:08:27,036 [INFO] backend: Application Shutting Down...
+2025-12-07 00:08:32,895 [INFO] backend: RAGPipeline initialized successfully
+2025-12-07 00:08:40,375 [INFO] backend: RAGPipeline initialized successfully
+2025-12-07 00:08:40,879 [INFO] backend: RAGPipeline initialized successfully
+2025-12-07 00:08:41,678 [INFO] backend: Application Starting Up...
+2025-12-07 00:08:41,687 [INFO] backend: Database & tables created/verified.
+2025-12-07 00:08:41,687 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-07 00:09:13,677 [INFO] backend: Application Shutting Down...
+2025-12-07 00:09:16,513 [INFO] backend: RAGPipeline initialized successfully
+2025-12-07 00:09:16,659 [INFO] backend: RAGPipeline initialized successfully
+2025-12-07 00:09:17,092 [INFO] backend: Application Starting Up...
+2025-12-07 00:09:17,093 [INFO] backend: Database & tables created/verified.
+2025-12-07 00:09:17,093 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-07 00:10:21,516 [INFO] backend: [RAG] Global query: 'Introduction to AI Future' (top_k=5)
+2025-12-07 00:11:04,506 [INFO] backend: [RAG] Global query: 'Key Trends in AI Future' (top_k=5)
+2025-12-07 00:17:58,174 [INFO] backend: Application Shutting Down...
+2025-12-07 00:18:07,020 [INFO] backend: RAGPipeline initialized successfully
+2025-12-07 00:18:07,283 [INFO] backend: RAGPipeline initialized successfully
+2025-12-07 00:18:08,084 [INFO] backend: Application Starting Up...
+2025-12-07 00:18:08,091 [INFO] backend: Database & tables created/verified.
+2025-12-07 00:18:08,092 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-07 00:21:33,220 [WARNING] backend: HTTPException: Presentation not found
+2025-12-07 00:21:33,227 [WARNING] backend: HTTPException: Presentation not found
+2025-12-07 00:21:48,693 [INFO] backend: [RAG] Global query: 'What is a Presentation?' (top_k=5)
+2025-12-07 00:22:14,309 [INFO] backend: [RAG] Global query: 'Key Characteristics of a Presentation' (top_k=5)
+2025-12-07 00:23:05,192 [INFO] backend: [RAG] Global query: 'Introduction' (top_k=5)
+2025-12-07 00:23:09,940 [INFO] backend: [RAG] Global query: 'Capabilities' (top_k=5)
+2025-12-07 00:23:42,508 [INFO] backend: Application Shutting Down...

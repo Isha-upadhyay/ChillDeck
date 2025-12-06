@@ -3,7 +3,7 @@ import axios from "axios";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 
-export async function generateOutline(topic: string, theme: string = "corporate") {
+export async function generateOutline(topic: string, theme: string) {
   const resp = await axios.post(`${API_BASE}/api/slides/generate`, {
     topic,
     detail: "medium",
@@ -69,7 +69,7 @@ export async function generateSlidesFromDocument(documentId: string, theme: stri
 }
 
 export async function generateImage(prompt: string, model: string = "flux") {
-  const res = await fetch("http://localhost:8000/api/image/generate", {
+  const res = await fetch(`${API_BASE}/api/image/generate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ prompt, model }),

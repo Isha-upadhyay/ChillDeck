@@ -19,12 +19,18 @@ export async function fetchPresentationById(id: string): Promise<{
 // ----------------------------------------
 export async function updatePresentation(
   id: string,
-  slides: SlideOut[]
+  slides: {
+    title: string;
+    theme: string;
+    slides: SlideOut[];
+  }
 ): Promise<{ success: boolean }> {
-  
+
   const payload = {
     presentation_id: id,
-    slides: slides.map((s) => ({
+    title: slides.title,
+    theme: slides.theme,
+    slides: slides.slides.map((s) => ({
       id: s.id,
       title: s.title,
       bullets: s.bullets,
@@ -36,6 +42,17 @@ export async function updatePresentation(
   const res = await api.put(`/api/slides/presentation/${id}`, payload);
   return res.data;
 }
+
+
+
+// -----------------------------------------------------
+// FETCH ALL PRESENTATIONS FOR DASHBOARD
+// -----------------------------------------------------
+export async function fetchAllPresentations() {
+  const res = await api.get(`/api/slides/all`);
+  return res.data;
+}
+
 
 //
 // 3) Fetch single slide
@@ -89,5 +106,11 @@ export async function exportSlides(slides: SlideOut[], topic: string, format: st
     { responseType: "blob" }
   );
 
+  return res.data;
+}
+
+
+export async function deletePresentation(id: string) {
+  const res = await api.delete(`/api/slides/presentation/${id}`);
   return res.data;
 }
