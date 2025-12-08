@@ -106,6 +106,9 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { assignPresentationToFolder } from "@/lib/api";
+
 import {
   exportSlides,
   fetchPresentationById,
@@ -122,6 +125,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { addPresentationToFolder } from "@/lib/api";
 
 export default function SlideDetailPage() {
   const params = useParams();
@@ -132,6 +136,10 @@ export default function SlideDetailPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+const searchParams = useSearchParams();
+const folderId = searchParams.get("folder");
+
+
 
   // Fetch ALL slides for this presentation
   useEffect(() => {
@@ -172,25 +180,31 @@ export default function SlideDetailPage() {
   }, [presentationId]);
 
   // Save all slides (bulk update)
-  const handleSaveAll = async () => {
-    try {
-      setSaving(true);
+const handleSaveAll = async () => {
+  try {
+    setSaving(true);
 
-      await updatePresentation(presentationId, {
-        title: slides[0]?.title || "Untitled",
-        theme: slides[0]?.design?.theme || "corporate",
-        slides: slides,
-      });
+    await updatePresentation(presentationId, {
+      title: slides[0]?.title || "Untitled",
+      theme: slides[0]?.design?.theme || "corporate",
+      slides: slides,
+    });
 
-      // ⭐ Redirect to Dashboard
-      router.push("/workspace");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to save.");
-    } finally {
-      setSaving(false);
+    // ⭐ ADD THIS: Auto add to folder if folderId exists
+    if (folderId) {
+      await assignPresentationToFolder(folderId, presentationId);
     }
-  };
+
+    router.push(folderId ? `/folders/${folderId}` : "/workspace");
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to save.");
+  } finally {
+    setSaving(false);
+  }
+};
+
 
   const handleExport = async (format: string) => {
     try {

@@ -8,12 +8,20 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Plus, MoreVertical } from "lucide-react";
 
+
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { fetchFolders, assignPresentationToFolder } from "@/lib/api";
+
+interface FolderItem {
+  id: string;
+  name: string;
+}
+
 
 interface PresentationItem {
   presentation_id: string;
@@ -27,22 +35,27 @@ export default function DashboardPage() {
   const router = useRouter();
   const [presentations, setPresentations] = useState<PresentationItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [folders, setFolders] = useState<FolderItem[]>([]);
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        setLoading(true);
-        const data = await fetchAllPresentations();
-        setPresentations(data);
-      } catch (err) {
-        console.error("Failed to load presentations:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+useEffect(() => {
+  const load = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchAllPresentations();
+      setPresentations(data);
 
-    load();
-  }, []);
+      const f = await fetchFolders();
+      setFolders(f);
+    } catch (err) {
+      console.error("Failed to load presentations:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  load();
+}, []);
+
 
   return (
     <main className="min-h-screen bg-[#0B0B10] text-white px-10 py-12">
@@ -154,25 +167,54 @@ export default function DashboardPage() {
                       </DropdownMenuTrigger>
 
                       <DropdownMenuContent
-                        align="end"
-                        className="bg-[#1A1A27] border border-gray-700 text-white"
-                      >
-                        <DropdownMenuItem
-                          className="hover:bg-red-600/40 cursor-pointer"
-                          onClick={async (e) => {
-                            e.stopPropagation();
+  align="end"
+  className="bg-[#1A1A27] border border-gray-700 text-white"
+>
+  {/* NEW: Move to folder */}
+  {folders.length > 0 && (
+    <>
+      <p className="px-2 pt-2 pb-1 text-[11px] text-gray-400">Move to folder</p>
+      {folders.map((folder) => (
+        <DropdownMenuItem
+          key={folder.id}
+          className="text-xs hover:bg-indigo-600/40 cursor-pointer"
+          onClick={async (e) => {
+            e.stopPropagation();
+            try {
+              await assignPresentationToFolder(folder.id, p.presentation_id);
+              alert(`Moved to folder: ${folder.name}`);
+            } catch (err) {
+              console.error(err);
+              alert("Failed to move to folder");
+            }
+          }}
+        >
+          {folder.name}
+        </DropdownMenuItem>
+      ))}
 
-                            if (confirm("Delete this presentation?")) {
-                              await deletePresentation(p.presentation_id);
-                              setPresentations(prev =>
-                                prev.filter((x) => x.presentation_id !== p.presentation_id)
-                              );
-                            }
-                          }}
-                        >
-                          Delete Presentation
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
+      <div className="border-t border-gray-700 my-1" />
+    </>
+  )}
+
+  {/* OLD: Delete item as it is */}
+  <DropdownMenuItem
+    className="hover:bg-red-600/40 cursor-pointer"
+    onClick={async (e) => {
+      e.stopPropagation();
+
+      if (confirm("Delete this presentation?")) {
+        await deletePresentation(p.presentation_id);
+        setPresentations((prev) =>
+          prev.filter((x) => x.presentation_id !== p.presentation_id)
+        );
+      }
+    }}
+  >
+    Delete Presentation
+  </DropdownMenuItem>
+</DropdownMenuContent>
+
                     </DropdownMenu>
                   </div>
 
@@ -191,3 +233,4 @@ export default function DashboardPage() {
     </main>
   );
 }
+

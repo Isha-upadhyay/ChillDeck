@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useEditorStore } from "@/store/editorStore";
 import type { SlideOut } from "@/types/slide";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "next/navigation";
 
 interface Slide {
   id: number;
@@ -37,42 +38,48 @@ export default function Home() {
   const [error, setError] = useState("");
   const [editingSlideIndex, setEditingSlideIndex] = useState<number | null>(null);
   const { setSlide, clearSlide } = useEditorStore();
+  const searchParams = useSearchParams();
+const folderId = searchParams.get("folder");
 
   // -------------------------------------------------
   // FIXED + MERGED handleGenerate
   // -------------------------------------------------
   async function handleGenerate(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    if (!topic.trim()) return setError("Please enter a topic");
+  if (!topic.trim()) return setError("Please enter a topic");
 
-    setLoading(true);
+  setLoading(true);
 
-    try {
-      const res = await generateOutline(topic, selectedTheme);
+  try {
+    const res = await generateOutline(topic, selectedTheme);
 
-      // Apply theme to all slides
-      const themedSlides = res.slides.map((slide: Slide) => ({
-        ...slide,
-        design: {
-          ...slide.design,
-          theme: selectedTheme,
-          layout: slide.design?.layout || "title_and_body",
-        },
-      }));
+    // Theme apply
+    const themedSlides = res.slides.map((slide: Slide) => ({
+      ...slide,
+      design: {
+        ...slide.design,
+        theme: selectedTheme,
+        layout: slide.design?.layout || "title_and_body",
+      },
+    }));
 
-      setResult({ ...res, slides: themedSlides });
+    setResult({ ...res, slides: themedSlides });
 
-      // Navigate AFTER mapping completed
+    // ⭐ Folder-aware redirect
+    if (folderId) {
+      router.push(`/slides/${res.presentation_id}?folder=${folderId}`);
+    } else {
       router.push(`/slides/${res.presentation_id}`);
-
-    } catch (err: any) {
-      setError(err?.message || "Request failed");
-    } finally {
-      setLoading(false);
     }
+
+  } catch (err: any) {
+    setError(err?.message || "Request failed");
+  } finally {
+    setLoading(false);
   }
+}
 
   function getThemeColors(themeId: string) {
     const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
