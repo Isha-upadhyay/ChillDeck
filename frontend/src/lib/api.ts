@@ -95,3 +95,122 @@ export async function deleteImage(id: string) {
 }
 
 
+// // folder api
+// export async function fetchFolders() {
+//   const res = await fetch(`${API_BASE}/api/folders/all`);
+//   return res.json();
+// }
+
+// export async function fetchFolderPresentations(id: string) {
+//   const res = await fetch(`${API_BASE}/api/folders/${id}`);
+//   return res.json();
+// }
+
+
+// export async function createFolder(name: string) {
+//   const res = await fetch(`${API_BASE}/api/folders/create`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ name }),
+//   });
+//   return res.json();
+// }
+
+// export async function deleteFolder(id: string) {
+//   return fetch(`${API_BASE}/api/folders/${id}`, { method: "DELETE" });
+// }
+
+
+
+
+
+// export async function fetchFolders() {
+//   const res = await fetch(`${API_BASE}/api/folders/all`);
+//   return res.json();
+// }
+
+// export async function createFolder(name: string) {
+//   const res = await fetch(`${API_BASE}/api/folders/create`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ name }),
+//   });
+//   return res.json();
+// }
+
+// export async function deleteFolder(id: string) {
+//   return fetch(`${API_BASE}/api/folders/${id}`, { method: "DELETE" });
+// }
+
+// // ✅ NEW: Folder ke andar presentations
+// export async function fetchFolderPresentations(folderId: string) {
+//   const res = await fetch(`${API_BASE}/api/folders/${folderId}/presentations`);
+//   return res.json();
+// }
+
+// ✅ NEW: Assign presentation to folder
+export async function assignPresentationToFolder(folderId: string, presentationId: string) {
+  const res = await fetch(`${API_BASE}/api/folders/${folderId}/add`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ presentation_id: presentationId }),
+  });
+
+  if (!res.ok) throw new Error("Failed to assign presentation to folder");
+
+  return res.json();
+}
+
+
+
+
+
+// ---------- FOLDER API ----------
+
+export async function fetchFolders() {
+  const res = await fetch(`${API_BASE}/api/folders/all`);
+  return res.json();
+}
+
+export async function createFolder(name: string) {
+  const res = await fetch(`${API_BASE}/api/folders/create`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name }),
+  });
+  return res.json();
+}
+
+export async function addPresentationToFolder(folderId: string, presentationId: string) {
+  const res = await fetch(`${API_BASE}/api/folders/${folderId}/add`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ presentation_id: presentationId }),
+  });
+  return res.json();
+}
+
+export async function fetchFolderPresentations(folderId: string) {
+  const res = await fetch(`${API_BASE}/api/folders/${folderId}/presentations`);
+  const data = await res.json();
+
+  if (Array.isArray(data.presentation_ids)) {
+    const ids = data.presentation_ids;
+
+    const presentations = [];
+
+    for (const id of ids) {
+      const r = await fetch(`${API_BASE}/api/slides/presentation/${id}`);
+
+      if (r.status === 200) {
+        presentations.push(await r.json());
+      } else {
+        console.warn("Missing presentation:", id);
+      }
+    }
+
+    return presentations;
+  }
+
+  return data;
+}

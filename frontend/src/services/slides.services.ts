@@ -59,10 +59,29 @@ export async function updatePresentation(
 // -----------------------------------------------------
 // FETCH ALL PRESENTATIONS FOR DASHBOARD
 // -----------------------------------------------------
-export async function fetchAllPresentations() {
+// export async function fetchAllPresentations(folderId?: string) {
+//   if (folderId) {
+//     const res = await api.get(`/api/folders/${folderId}/presentations`);
+//     return res.data;
+//   }
+
+//   const res = await api.get(`/api/slides/all`);
+//   return res.data;
+// }
+
+
+export async function fetchAllPresentations(folderId?: string) {
+  if (folderId) {
+    const res = await api.get(`/api/folders/${folderId}/presentations`);
+    return res.data;
+  }
+
   const res = await api.get(`/api/slides/all`);
   return res.data;
 }
+
+
+
 
 
 //
