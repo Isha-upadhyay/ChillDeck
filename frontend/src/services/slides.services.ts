@@ -2,6 +2,17 @@
 import api from "@/lib/axiosClient";
 import type { SlideIn, SlideOut } from "@/types/slide";
 
+
+
+export interface PresentationCard {
+  id: string;
+  topic: string;
+  slideCount: number;
+  updated: string;
+  theme: string;
+  thumbnail?: string | null;
+}
+
 //
 // 1) Fetch entire presentation (all slides)
 // ----------------------------------------

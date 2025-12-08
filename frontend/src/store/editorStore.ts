@@ -81,194 +81,69 @@
 
 
 
-// src/store/editorStore.ts
+// frontend/src/store/editorStore.ts
 import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
-import type { SlideOut, SlideDesign } from "@/types/slide";
+import type { SlideOut } from "@/types/slide";
 
-export interface EditorState {
-  // MULTI SLIDE
-  slides: SlideOut[];
-  setSlides: (slides: SlideOut[]) => void;
-
-  currentIndex: number;
-  selectSlide: (index: number) => void;
-
-  addSlide: () => void;
-  deleteSlide: (index: number) => void;
-  updateSlide: (index: number, data: Partial<SlideOut>) => void;
-
-  // SINGLE SLIDE OLD FLOW (BACKWARD COMPAT)
+interface EditorState {
   slide: SlideOut | null;
-  setSlide: (slide: SlideOut | null) => void;
+  setSlide: (slide: SlideOut) => void;
   clearSlide: () => void;
-
-  // EDITING FIELDS
+  
+  // Actions
   updateTitle: (title: string) => void;
+  updateHeading: (heading: string) => void;
   updateNotes: (notes: string) => void;
-
   updateBullet: (index: number, value: string) => void;
   addBullet: () => void;
   removeBullet: (index: number) => void;
-
-  updateDesign: (design: Partial<SlideDesign>) => void;
-
-  // UI
-  loading: boolean;
-  setLoading: (value: boolean) => void;
-  error: string | null;
-  setError: (msg: string | null) => void;
+  updateDesign: (designUpdates: Partial<SlideOut["design"]>) => void;
 }
 
-export const useEditorStore = create<EditorState>()(
-  immer((set, get) => ({
-    slides: [],
-    currentIndex: 0,
-    slide: null,
+export const useEditorStore = create<EditorState>((set) => ({
+  slide: null,
 
-    // -----------------------
-    // MULTI SLIDE
-    // -----------------------
-    setSlides: (slides) =>
-      set((state) => {
-        state.slides = slides;
-        state.currentIndex = 0;
-        state.slide = slides[0] ?? null;
-      }),
+  setSlide: (slide) => set({ slide }),
+  clearSlide: () => set({ slide: null }),
 
-    selectSlide: (index) =>
-      set((state) => {
-        state.currentIndex = index;
-        state.slide = state.slides[index];
-      }),
+  updateTitle: (title) =>
+    set((state) => (state.slide ? { slide: { ...state.slide, title } } : {})),
 
-    addSlide: () =>
-      set((state) => {
-        const newSlide: SlideOut = {
-          id: crypto.randomUUID(),
-          heading: "New Slide",
-          title: "New Slide",
-          bullets: [],
-          notes: "",
-          design: {},
-        };
+  updateHeading: (heading) =>
+    set((state) => (state.slide ? { slide: { ...state.slide, heading } } : {})),
 
-        state.slides.push(newSlide);
-        state.currentIndex = state.slides.length - 1;
-        state.slide = newSlide;
-      }),
+  updateNotes: (notes) =>
+    set((state) => (state.slide ? { slide: { ...state.slide, notes } } : {})),
 
-    deleteSlide: (index) =>
-      set((state) => {
-        state.slides.splice(index, 1);
-        state.currentIndex = Math.max(0, index - 1);
-        state.slide = state.slides[state.currentIndex] ?? null;
-      }),
+  updateBullet: (index, value) =>
+    set((state) => {
+      if (!state.slide) return {};
+      const newBullets = [...(state.slide.bullets || [])];
+      newBullets[index] = value;
+      return { slide: { ...state.slide, bullets: newBullets } };
+    }),
 
-    updateSlide: (index, data) =>
-      set((state) => {
-        Object.assign(state.slides[index], data);
-        if (index === state.currentIndex) {
-          state.slide = state.slides[index];
-        }
-      }),
+  addBullet: () =>
+    set((state) => {
+      if (!state.slide) return {};
+      return { slide: { ...state.slide, bullets: [...(state.slide.bullets || []), "New point"] } };
+    }),
 
-    // -----------------------
-    // OLD SINGLE SLIDE FLOW
-    // -----------------------
-    setSlide: (slide) =>
-      set((state) => {
-        state.slide = slide;
-      }),
+  removeBullet: (index) =>
+    set((state) => {
+      if (!state.slide) return {};
+      const newBullets = (state.slide.bullets || []).filter((_, i) => i !== index);
+      return { slide: { ...state.slide, bullets: newBullets } };
+    }),
 
-    clearSlide: () =>
-      set((state) => {
-        state.slide = null;
-      }),
-
-    // -----------------------
-    // FIELD EDITORS
-    // -----------------------
-    updateTitle: (title) =>
-      set((state) => {
-        const idx = state.currentIndex;
-
-        if (state.slides[idx]) {
-          state.slides[idx].title = title;
-          state.slides[idx].heading = title;
-          state.slide = state.slides[idx];
-        }
-
-        if (state.slide) state.slide.title = title;
-      }),
-
-    updateNotes: (notes) =>
-      set((state) => {
-        const idx = state.currentIndex;
-
-        if (state.slides[idx]) {
-          state.slides[idx].notes = notes;
-          state.slide = state.slides[idx];
-        }
-      }),
-
-    updateBullet: (i, val) =>
-      set((state) => {
-        const idx = state.currentIndex;
-
-        if (state.slides[idx]) {
-          state.slides[idx].bullets[i] = val;
-          state.slide = state.slides[idx];
-        }
-      }),
-
-    addBullet: () =>
-      set((state) => {
-        const idx = state.currentIndex;
-
-        if (state.slides[idx]) {
-          state.slides[idx].bullets.push("");
-          state.slide = state.slides[idx];
-        }
-      }),
-
-    removeBullet: (i) =>
-      set((state) => {
-        const idx = state.currentIndex;
-
-        if (state.slides[idx]) {
-          state.slides[idx].bullets.splice(i, 1);
-          state.slide = state.slides[idx];
-        }
-      }),
-
-    updateDesign: (design) =>
-      set((state) => {
-        const idx = state.currentIndex;
-
-        if (state.slides[idx]) {
-          state.slides[idx].design = {
-            ...state.slides[idx].design,
-            ...design,
-          };
-          state.slide = state.slides[idx];
-        }
-      }),
-
-    // -----------------------
-    // UI
-    // -----------------------
-    loading: false,
-    setLoading: (value) =>
-      set((state) => {
-        state.loading = value;
-      }),
-
-    error: null,
-    setError: (msg) =>
-      set((state) => {
-        state.error = msg;
-      }),
-  }))
-);
-
+  updateDesign: (designUpdates) =>
+    set((state) => {
+      if (!state.slide) return {};
+      return {
+        slide: {
+          ...state.slide,
+          design: { ...state.slide.design, ...designUpdates },
+        },
+      };
+    }),
+}));

@@ -1441,3 +1441,226 @@ FROM presentations]
 2025-12-07 00:23:05,192 [INFO] backend: [RAG] Global query: 'Introduction' (top_k=5)
 2025-12-07 00:23:09,940 [INFO] backend: [RAG] Global query: 'Capabilities' (top_k=5)
 2025-12-07 00:23:42,508 [INFO] backend: Application Shutting Down...
+2025-12-08 00:18:14,928 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 00:18:15,729 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 00:18:16,618 [INFO] backend: Application Starting Up...
+2025-12-08 00:18:16,626 [INFO] backend: Database & tables created/verified.
+2025-12-08 00:18:16,626 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 00:19:53,072 [INFO] backend: [RAG] Global query: 'Introduction to Future of AI' (top_k=5)
+2025-12-08 00:20:45,677 [INFO] backend: [RAG] Global query: 'Impact of AI on Society' (top_k=5)
+2025-12-08 01:36:54,922 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-08 01:37:05,890 [INFO] backend: [RAG] Global query: 'Potential Applications and Challenges' (top_k=5)
+2025-12-08 02:08:39,382 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 02:08:45,936 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 02:08:51,893 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 02:10:30,641 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 02:11:04,928 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 13:12:03,252 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 13:12:13,528 [INFO] backend: Application Shutting Down...
+2025-12-08 13:12:35,999 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:12:36,738 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:12:37,699 [INFO] backend: Application Starting Up...
+2025-12-08 13:12:37,709 [INFO] backend: Database & tables created/verified.
+2025-12-08 13:12:37,709 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 13:14:15,761 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-08 13:15:17,747 [INFO] backend: [RAG] Global query: 'Potential Applications of Future AI' (top_k=5)
+2025-12-08 13:15:48,039 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 13:39:41,218 [INFO] backend: Application Shutting Down...
+2025-12-08 13:39:55,656 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:39:56,132 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:39:57,498 [INFO] backend: Application Starting Up...
+2025-12-08 13:39:57,509 [INFO] backend: Database & tables created/verified.
+2025-12-08 13:39:57,509 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 13:39:58,418 [WARNING] backend: HTTPException: HF API error: {"error":"https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead."}
+2025-12-08 13:40:50,035 [INFO] backend: Application Shutting Down...
+2025-12-08 13:40:55,684 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:40:56,002 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:40:56,758 [INFO] backend: Application Starting Up...
+2025-12-08 13:40:56,760 [INFO] backend: Database & tables created/verified.
+2025-12-08 13:40:56,760 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 13:40:57,470 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 13:41:11,553 [INFO] backend: Application Shutting Down...
+2025-12-08 13:41:17,017 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:41:17,280 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:41:18,042 [INFO] backend: Application Starting Up...
+2025-12-08 13:41:18,044 [INFO] backend: Database & tables created/verified.
+2025-12-08 13:41:18,045 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 13:41:30,113 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 13:42:30,228 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 13:43:18,398 [INFO] backend: Application Shutting Down...
+2025-12-08 13:43:25,897 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:43:26,256 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:43:27,426 [INFO] backend: Application Starting Up...
+2025-12-08 13:43:27,435 [INFO] backend: Database & tables created/verified.
+2025-12-08 13:43:27,435 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 13:43:28,225 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 13:45:30,160 [ERROR] backend: Unhandled exception occurred
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\requests\models.py", line 976, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\fastapi\routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2485, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\app\api\image.py", line 43, in generate_image
+    data = resp.json()
+           ^^^^^^^^^^^
+  File "C:\Users\ASUS\Documents\chilldeck\backend\venv\Lib\site-packages\requests\models.py", line 980, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-12-08 13:46:27,935 [INFO] backend: Application Shutting Down...
+2025-12-08 13:46:33,506 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:46:33,830 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 13:46:35,193 [INFO] backend: Application Starting Up...
+2025-12-08 13:46:35,196 [INFO] backend: Database & tables created/verified.
+2025-12-08 13:46:35,196 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 13:47:47,728 [INFO] backend: [RAG] Global query: 'Introduction to Social Media' (top_k=5)
+2025-12-08 13:48:16,719 [INFO] backend: [RAG] Global query: 'Impact of Social Media on Society' (top_k=5)
+2025-12-08 13:48:56,572 [WARNING] backend: HTTPException: HF API error: Not Found
+2025-12-08 14:06:38,865 [INFO] backend: Application Shutting Down...
+2025-12-08 14:13:25,763 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:13:26,220 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:13:26,410 [INFO] backend: Application Starting Up...
+2025-12-08 14:13:26,426 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:13:26,427 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:14:06,558 [INFO] backend: Application Shutting Down...
+2025-12-08 14:14:12,169 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:14:12,471 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:14:12,606 [INFO] backend: Application Starting Up...
+2025-12-08 14:14:12,610 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:14:12,611 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:17:04,753 [INFO] backend: Application Shutting Down...
+2025-12-08 14:17:12,011 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:12,407 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:12,581 [INFO] backend: Application Starting Up...
+2025-12-08 14:17:12,594 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:17:12,594 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:17:12,596 [INFO] backend: Application Shutting Down...
+2025-12-08 14:17:17,881 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:18,133 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:18,267 [INFO] backend: Application Starting Up...
+2025-12-08 14:17:18,271 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:17:18,271 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:17:18,273 [INFO] backend: Application Shutting Down...
+2025-12-08 14:17:23,189 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:23,406 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:23,526 [INFO] backend: Application Starting Up...
+2025-12-08 14:17:23,528 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:17:23,528 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:17:53,052 [INFO] backend: Application Shutting Down...
+2025-12-08 14:17:58,451 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:58,712 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:17:58,838 [INFO] backend: Application Starting Up...
+2025-12-08 14:17:58,840 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:17:58,841 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:18:07,261 [INFO] backend: Application Shutting Down...
+2025-12-08 14:18:12,591 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:18:12,858 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:18:12,989 [INFO] backend: Application Starting Up...
+2025-12-08 14:18:12,992 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:18:12,993 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:21:55,873 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-08 14:22:27,087 [INFO] backend: [RAG] Global query: 'Challenges and Limitations of AI' (top_k=5)
+2025-12-08 14:23:06,958 [INFO] backend: Application Shutting Down...
+2025-12-08 14:23:14,968 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:23:15,326 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:23:15,469 [INFO] backend: Application Starting Up...
+2025-12-08 14:23:15,477 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:23:15,478 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:23:26,513 [INFO] backend: Application Shutting Down...
+2025-12-08 14:24:57,302 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:24:57,662 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:24:58,710 [INFO] backend: Application Starting Up...
+2025-12-08 14:24:58,725 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:24:58,725 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:24:58,727 [INFO] backend: Application Shutting Down...
+2025-12-08 14:25:02,242 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:25:02,437 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 14:25:02,914 [INFO] backend: Application Starting Up...
+2025-12-08 14:25:02,915 [INFO] backend: Database & tables created/verified.
+2025-12-08 14:25:02,916 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 14:42:31,082 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-08 14:43:16,000 [INFO] backend: [RAG] Global query: 'Potential Applications and Challenges' (top_k=5)
+2025-12-08 14:52:31,854 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-08 14:52:39,182 [INFO] backend: [RAG] Global query: 'Potential Impact of AI on Society' (top_k=5)
+2025-12-08 14:54:36,986 [INFO] backend: Exported PDF to: exports\Introduction_to_the_Future_of_AI_5033e26f.pdf
+2025-12-08 15:05:28,354 [INFO] backend: Application Shutting Down...
+2025-12-08 15:06:09,672 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 15:06:10,398 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 15:06:12,239 [INFO] backend: Application Starting Up...
+2025-12-08 15:06:12,252 [INFO] backend: Database & tables created/verified.
+2025-12-08 15:06:12,253 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 15:06:12,255 [INFO] backend: Application Shutting Down...
+2025-12-08 15:06:21,094 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 15:06:21,734 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 15:06:23,046 [INFO] backend: Application Starting Up...
+2025-12-08 15:06:23,051 [INFO] backend: Database & tables created/verified.
+2025-12-08 15:06:23,051 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 15:06:23,790 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-08 15:07:00,849 [INFO] backend: [RAG] Global query: 'Potential Applications and Implications' (top_k=5)
+2025-12-08 15:07:52,385 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-08 15:08:28,359 [INFO] backend: [RAG] Global query: 'Potential Impact of AI on Society' (top_k=5)
+2025-12-08 16:29:10,129 [INFO] backend: Application Shutting Down...
+2025-12-08 16:29:26,682 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 16:29:33,479 [INFO] backend: RAGPipeline initialized successfully
+2025-12-08 16:29:35,142 [INFO] backend: Application Starting Up...
+2025-12-08 16:29:35,167 [INFO] backend: Database & tables created/verified.
+2025-12-08 16:29:35,167 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-08 16:37:01,892 [INFO] backend: [RAG] Global query: 'Overview of Chilldeck' (top_k=5)
+2025-12-08 16:37:48,059 [INFO] backend: [RAG] Global query: 'Core Features of Chilldeck' (top_k=5)
+2025-12-08 22:43:25,757 [INFO] backend: Application Shutting Down...

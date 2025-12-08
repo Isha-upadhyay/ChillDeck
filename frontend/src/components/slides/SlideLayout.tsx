@@ -1,115 +1,142 @@
+// frontend/src/components/slides/SlideLayout.tsx
 "use client";
 
 import { useState, useEffect } from "react";
-import { SlideEditor } from "@/components/slides/SlideEditor";
-import { SlidePreview } from "@/components/slides/SlidePreview";
-import { SlideThumbnail } from "@/components/slides/SlideThumbnail";
-import { Button } from "@/components/ui/button";
 import { useEditorStore } from "@/store/editorStore";
 import type { SlideOut } from "@/types/slide";
+import { SlidePreview } from "@/components/slides/SlidePreview"; 
+import { SlideEditor } from "@/components/slides/SlideEditor";
+import { SlideCanvas } from "@/components/slides/SlideCanvas"; 
+import { X, PanelRightClose, PanelRightOpen } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface SlidesLayoutProps {
   slides: SlideOut[];
   onUpdateSlides: (slides: SlideOut[]) => void;
 }
 
-
 export function SlidesLayout({ slides, onUpdateSlides }: SlidesLayoutProps) {
-  const { slide, setSlide, clearSlide } = useEditorStore();
+  const { slide, setSlide } = useEditorStore();
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [showEditor, setShowEditor] = useState(false);
 
-  // Load first slide initially
+  // Initialize
   useEffect(() => {
-    if (slides.length > 0) {
+    if (slides.length > 0 && !slide) {
       setSlide(slides[0]);
     }
-  }, [slides, setSlide]);
+  }, [slides]); // Run once on mount/slides change
 
-  // Select slide
   const handleSelect = (index: number) => {
     setSelectedIndex(index);
     setSlide(slides[index]);
   };
 
-  // Save slide changes
-  const handleSave = (updated: SlideOut) => {
+  // ✅ Updates coming from Editor
+  const handleSaveFromEditor = (updated: SlideOut) => {
     const newSlides = [...slides];
     newSlides[selectedIndex] = updated;
     onUpdateSlides(newSlides);
   };
 
-  // Duplicate slide
-  const duplicateSlide = () => {
-    const copy = structuredClone(slides[selectedIndex]);
-    copy.id = crypto.randomUUID();
-
+  const handleDuplicate = (index: number) => {
+    const copy = structuredClone(slides[index]);
+    copy.id = crypto.randomUUID(); // New ID
     const newSlides = [
-      ...slides.slice(0, selectedIndex + 1),
+      ...slides.slice(0, index + 1),
       copy,
-      ...slides.slice(selectedIndex + 1),
+      ...slides.slice(index + 1),
     ];
-
     onUpdateSlides(newSlides);
-    setSelectedIndex(selectedIndex + 1);
-    setSlide(copy);
   };
 
-  // Delete slide
-  const deleteSlide = () => {
-    if (slides.length <= 1) return;
-
-    const newSlides = slides.filter((_, i) => i !== selectedIndex);
+  const handleDelete = (index: number) => {
+    if (slides.length <= 1) {
+        alert("Cannot delete the last slide.");
+        return;
+    }
+    const newSlides = slides.filter((_, i) => i !== index);
     onUpdateSlides(newSlides);
-
-    const newIndex = Math.max(0, selectedIndex - 1);
-    setSelectedIndex(newIndex);
-    setSlide(newSlides[newIndex]);
+    
+    // Adjust selection
+    const nextIdx = Math.max(0, index - 1);
+    setSelectedIndex(nextIdx);
+    setSlide(newSlides[nextIdx]);
   };
+
+  const handleAdd = () => {
+      const newSlide: SlideOut = {
+          id: crypto.randomUUID(),
+          title: "New Slide",
+          heading: "New Topic", // ✅ Added required field
+          bullets: ["Point 1", "Point 2"],
+          notes: "",
+          design: { 
+            theme: slides[0]?.design?.theme || "corporate", 
+            layout: "title_and_body" 
+          }
+      }
+      onUpdateSlides([...slides, newSlide]);
+      // Auto select new slide
+      setTimeout(() => {
+          setSelectedIndex(slides.length);
+          setSlide(newSlide);
+      }, 50);
+  }
 
   return (
-    <div className="flex h-full gap-4">
-      {/* Sidebar Thumbnails */}
-      <aside className="w-60 bg-white border rounded-xl shadow-sm p-3 overflow-y-auto">
-        <div className="flex items-center justify-between mb-3">
-          <p className="font-semibold text-sm">Slides</p>
-          <Button variant="outline" size="sm" onClick={duplicateSlide}>
-            ➕
-          </Button>
+    <div className="flex h-full w-full bg-background overflow-hidden">
+      
+      {/* 1. LEFT SIDEBAR */}
+      <aside className="w-64 border-r bg-muted/10 flex flex-col h-full shrink-0">
+        <div className="p-4 border-b bg-background/50">
+           <h2 className="font-semibold text-sm">Slides ({slides.length})</h2>
         </div>
-
-        <div className="space-y-3">
-          {slides.map((s, i) => (
-            <SlideThumbnail
-              key={s.id}
-              slide={s}
-              index={i}
-              active={i === selectedIndex}
-              onClick={() => handleSelect(i)}
+        <div className="flex-1 overflow-y-auto p-2">
+            <SlidePreview 
+                slides={slides}
+                activeIndex={selectedIndex}
+                onSelectSlide={handleSelect}
+                onDuplicateSlide={handleDuplicate}
+                onDeleteSlide={handleDelete}
+                onAddSlide={handleAdd}
             />
-          ))}
         </div>
-
-        {slides.length > 1 && (
-          <Button
-            variant="destructive"
-            size="sm"
-            className="w-full mt-4"
-            onClick={deleteSlide}
-          >
-            Delete Slide
-          </Button>
-        )}
       </aside>
 
-      {/* Middle Preview */}
-      <div className="flex-1 bg-gray-50 rounded-xl p-6 overflow-auto">
-        <SlidePreview slides={slides} />
-      </div>
+      {/* 2. CENTER CANVAS */}
+      <main className="flex-1 relative flex flex-col min-w-0 bg-gray-100/80">
+        {slide ? (
+            <SlideCanvas 
+                slide={slide} 
+                onEdit={() => setShowEditor(!showEditor)} 
+            />
+        ) : (
+            <div className="flex items-center justify-center h-full text-muted-foreground">
+                Loading slide...
+            </div>
+        )}
+      </main>
 
-      {/* Right Slide Editor */}
-      <div className="w-[420px]">
-        <SlideEditor onSave={handleSave} saving={false} />
-      </div>
+      {/* 3. RIGHT SIDEBAR (Editor) */}
+      {showEditor && (
+        <aside className="w-[400px] border-l bg-background h-full shadow-2xl flex flex-col animate-in slide-in-from-right-10 duration-200 relative z-20 shrink-0">
+          <div className="flex items-center justify-between p-4 border-b bg-muted/5">
+            <h3 className="font-semibold flex items-center gap-2">
+                <PanelRightOpen className="h-4 w-4" /> Edit Slide
+            </h3>
+            <Button variant="ghost" size="icon" onClick={() => setShowEditor(false)}>
+                <X className="h-4 w-4" />
+            </Button>
+          </div>
+          
+          <div className="flex-1 overflow-y-auto p-4">
+             {/* Pass handleSaveFromEditor */}
+             <SlideEditor onSave={handleSaveFromEditor} saving={false} />
+          </div>
+        </aside>
+      )}
+
     </div>
   );
 }

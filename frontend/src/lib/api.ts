@@ -68,14 +68,30 @@ export async function generateSlidesFromDocument(documentId: string, theme: stri
   return resp.data;
 }
 
-export async function generateImage(prompt: string, model: string = "flux") {
+export async function generateImage(prompt: string) 
+ {
   const res = await fetch(`${API_BASE}/api/image/generate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt, model }),
+    body: JSON.stringify({ prompt }),
   });
 
   const data = await res.json();
   return data;
 }
+
+// FETCH ALL SAVED IMAGES
+export async function fetchImages() {
+  const res = await fetch(`${API_BASE}/api/image/all`);
+  return res.json();
+}
+
+// DELETE IMAGE
+export async function deleteImage(id: string) {
+  const res = await fetch(`${API_BASE}/api/image/${id}`, {
+    method: "DELETE",
+  });
+  return res.json();
+}
+
 
