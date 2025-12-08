@@ -58,6 +58,7 @@ export default function Home() {
         design: {
           ...slide.design,
           theme: selectedTheme,
+          layout: slide.design?.layout || "title_and_body",
         },
       }));
 
@@ -124,6 +125,29 @@ export default function Home() {
     setEditingSlideIndex(null);
   }
 
+
+  function getThemeStyles(themeId: string) {
+  switch (themeId) {
+    case "corporate":
+      return "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-900 border-blue-300";
+    case "dark":
+      return "bg-gray-900 text-gray-200 border-gray-700";
+    case "modern":
+      return "bg-gradient-to-br from-purple-50 to-pink-50 text-purple-900 border-purple-300";
+    case "tech":
+      return "bg-gradient-to-br from-green-50 to-blue-50 text-green-900 border-green-300";
+    case "cute":
+      return "bg-pink-50 text-pink-900 border-pink-300";
+    case "minimal":
+      return "bg-white text-gray-900 border-gray-300";
+    default:
+      return "bg-gray-100 text-gray-900";
+  }
+}
+
+
+  
+
   return (
     <main className="min-h-screen bg-[#0b0b0f] text-white px-6 py-16 flex justify-center">
       <div className="max-w-4xl w-full">
@@ -173,22 +197,27 @@ export default function Home() {
           {/* Theme Selector */}
           <div className="mb-6">
             <label className="text-sm font-medium text-gray-300 mb-2 block">Select Theme</label>
-            <div className="flex gap-2 flex-wrap">
-              {THEMES.map((theme) => (
-                <button
-                  key={theme.id}
-                  type="button"
-                  onClick={() => setSelectedTheme(theme.id)}
-                  className={`px-3 py-2 rounded text-sm border transition-all ${
-                    selectedTheme === theme.id
-                      ? `${theme.colors.bg} ${theme.colors.border} border-2 font-semibold`
-                      : "bg-white border-gray-300 hover:bg-gray-50"
-                  }`}
-                >
-                  {theme.name}
-                </button>
-              ))}
-            </div>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+  {THEMES.map((theme) => (
+    <button
+      key={theme.id}
+      type="button"
+      onClick={() => setSelectedTheme(theme.id)}
+      className={`
+        px-3 py-2 rounded-lg text-xs border transition-all shadow-sm
+        flex items-center justify-center font-medium
+        ${
+          selectedTheme === theme.id
+            ? `${theme.colors.bg} ${theme.colors.border} border-2 scale-[1.05] shadow-md`
+            : "bg-[#181820] border-gray-700 text-gray-300 hover:bg-[#22222a]"
+        }
+      `}
+    >
+      {theme.name}
+    </button>
+  ))}
+</div>
+
           </div>
 
           <button
@@ -223,36 +252,39 @@ export default function Home() {
               </Button>
             </div>
 
+            
+
             {/* SLIDE PREVIEWS */}
-            <div className="grid gap-4 md:grid-cols-2">
-              {result.slides.map((slide, index) => {
-                const themeId = slide.design?.theme || selectedTheme;
-                const themeColors = getThemeColors(themeId);
+           <div className="grid gap-4 md:grid-cols-2">
+  {result.slides.map((slide, index) => {
+    const themeId = slide.design?.theme || selectedTheme;
+    const themeClass = getThemeStyles(themeId);
 
-                return (
-                  <div 
-                    key={slide.id || index}
-                    className={`${themeColors.bg} p-5 rounded-xl shadow-md border-2 ${themeColors.border}`}
-                  >
-                    <h3 className={`text-xl font-semibold mb-2 ${themeColors.text}`}>
-                      {slide.title || `Slide ${index + 1}`}
-                    </h3>
+    return (
+      <div
+        key={slide.id || index}
+        className={`p-5 rounded-xl shadow-md border ${themeClass}`}
+      >
+        <h3 className="text-xl font-semibold mb-2">
+          {slide.title || `Slide ${index + 1}`}
+        </h3>
 
-                    <ul className="mb-3">
-                      {(slide.bullets || []).map((b, i) => (
-                        <li key={i} className={`${themeColors.text} text-sm flex`}>
-                          <span className="mr-2">•</span> {b}
-                        </li>
-                      ))}
-                    </ul>
+        <ul className="mb-3 space-y-1">
+          {(slide.bullets || []).map((b, i) => (
+            <li key={i} className="text-sm flex">
+              <span className="mr-2">•</span> {b}
+            </li>
+          ))}
+        </ul>
 
-                    <Button onClick={() => handleEditSlide(index)} className="text-sm mt-2">
-                      ✏️ Edit
-                    </Button>
-                  </div>
-                );
-              })}
-            </div>
+        <Button onClick={() => handleEditSlide(index)} className="text-sm mt-2">
+          ✏️ Edit
+        </Button>
+      </div>
+    );
+  })}
+</div>
+
 
             {/* EDIT DIALOG */}
             <Dialog open={editingSlideIndex !== null} onOpenChange={(open) => !open && handleCloseEdit()}>

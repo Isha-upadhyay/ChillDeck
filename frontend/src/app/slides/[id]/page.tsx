@@ -102,18 +102,26 @@
 //   );
 // }
 
-
-
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { fetchPresentationById, updatePresentation } from "@/services/slides.services";
+import {
+  exportSlides,
+  fetchPresentationById,
+  updatePresentation,
+} from "@/services/slides.services";
 import { SlidesLayout } from "@/components/slides/SlideLayout";
 import type { SlideOut } from "@/types/slide";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 export default function SlideDetailPage() {
   const params = useParams();
@@ -135,21 +143,21 @@ export default function SlideDetailPage() {
         const data = await fetchPresentationById(presentationId);
 
         // Ensure slides are SlideOut[]
-       const formattedSlides: SlideOut[] = data.slides.map(
-  (s: any, i: number): SlideOut => ({
-    id: String(s.id ?? i + 1),
-    title: s.title ?? `Slide ${i + 1}`,
-    heading: s.heading ?? s.title ?? `Slide ${i + 1}`, // <-- FIX
-    bullets: s.bullets ?? [],
-    notes: s.notes ?? "",
-    design: s.design ?? {
-      layout: "title_and_body",
-      theme: "corporate",
-    },
-  })
-);
+        const formattedSlides: SlideOut[] = data.slides.map(
+          (s: any, i: number): SlideOut => ({
+            id: String(s.id ?? i + 1),
+            title: s.title ?? `Slide ${i + 1}`,
+            heading: s.heading ?? s.title ?? `Slide ${i + 1}`, // <-- FIX
+            bullets: s.bullets ?? [],
+            notes: s.notes ?? "",
+            design: s.design ?? {
+              layout: "title_and_body",
+              theme: "corporate",
+            },
+          })
+        );
 
-setSlides(formattedSlides);
+        setSlides(formattedSlides);
 
         setSlides(formattedSlides);
       } catch (err) {
@@ -165,26 +173,41 @@ setSlides(formattedSlides);
 
   // Save all slides (bulk update)
   const handleSaveAll = async () => {
-  try {
-    setSaving(true);
+    try {
+      setSaving(true);
 
-    await updatePresentation(presentationId, {
-      title: slides[0]?.title || "Untitled",
-      theme: slides[0]?.design?.theme || "corporate",
-      slides: slides,
-    });
+      await updatePresentation(presentationId, {
+        title: slides[0]?.title || "Untitled",
+        theme: slides[0]?.design?.theme || "corporate",
+        slides: slides,
+      });
 
-    // ⭐ Redirect to Dashboard
-    router.push("/");
+      // ⭐ Redirect to Dashboard
+      router.push("/workspace");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to save.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
-  } catch (err) {
-    console.error(err);
-    alert("Failed to save.");
-  } finally {
-    setSaving(false);
-  }
-};
+  const handleExport = async (format: string) => {
+    try {
+      const topic = slides[0]?.title || "Presentation";
 
+      const blob = await exportSlides(slides, topic, format);
+
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${topic}.${format}`;
+      link.click();
+    } catch (err) {
+      console.error("Export failed", err);
+      alert("Export failed.");
+    }
+  };
 
   if (loading) {
     return (
@@ -216,15 +239,31 @@ setSlides(formattedSlides);
           </p>
         </div>
 
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={() => router.push("/")}>
-            Back
-          </Button>
+       <div className="flex gap-2">
+  <Button variant="outline" onClick={() => router.push("/")}>
+    Back
+  </Button>
 
-          <Button onClick={handleSaveAll} disabled={saving}>
-            {saving ? "Saving..." : "Save All"}
-          </Button>
-        </div>
+  <Button onClick={handleSaveAll} disabled={saving}>
+    {saving ? "Saving..." : "Save All"}
+  </Button>
+
+  {/* EXPORT BUTTON HERE INSIDE SAME FLEX ROW */}
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">🚀 Export</Button>
+    </DropdownMenuTrigger>
+
+    <DropdownMenuContent align="end" className="w-40">
+      <DropdownMenuItem onClick={() => handleExport("pptx")}>📊 PPTX</DropdownMenuItem>
+      <DropdownMenuItem onClick={() => handleExport("pdf")}>📄 PDF</DropdownMenuItem>
+      <DropdownMenuItem onClick={() => handleExport("md")}>📝 Markdown</DropdownMenuItem>
+      <DropdownMenuItem onClick={() => handleExport("json")}>💾 JSON</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+
+</div>
+
       </div>
 
       {/* MAIN LAYOUT */}

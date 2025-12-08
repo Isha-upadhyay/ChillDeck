@@ -1,13 +1,16 @@
+// frontend/src/components/slides/SlideEditor.tsx
 "use client";
 
+import { useState } from "react";
 import { useEditorStore } from "@/store/editorStore";
-import { SlideOut } from "@/types/slide";
+import { generateImage } from "@/lib/api"; // ✅ Imported from your API file
+import type { SlideOut } from "@/types/slide";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
+import { Loader2, Sparkles, Trash2, Plus } from "lucide-react";
 
 interface SlideEditorProps {
   onSave?: (slide: SlideOut) => void;
@@ -18,6 +21,7 @@ export function SlideEditor({ onSave, saving }: SlideEditorProps) {
   const {
     slide,
     updateTitle,
+    updateHeading,
     updateNotes,
     updateBullet,
     addBullet,
@@ -25,191 +29,154 @@ export function SlideEditor({ onSave, saving }: SlideEditorProps) {
     updateDesign,
   } = useEditorStore();
 
+  const [isGeneratingImg, setIsGeneratingImg] = useState(false);
+
   if (!slide) {
     return (
       <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-        No slide loaded.
+        No slide selected.
       </div>
     );
   }
 
+  // Save Handler
   const handleSaveClick = () => {
     if (onSave) onSave(slide);
   };
 
+  // ✅ Image Generation Logic using lib/api.ts
+  const handleGenerateImage = async () => {
+  const prompt = slide.design?.image_prompt;
+  if (!prompt) return;
+
+  try {
+    setIsGeneratingImg(true);
+
+    // Call API (returns: { id, url, prompt, created_at })
+    const data = await generateImage(prompt);
+
+    // NEW: backend returns 'url'
+    const finalImageUrl = data.url;
+
+    if (!finalImageUrl) {
+      alert("No image returned from server.");
+      return;
+    }
+
+    // Update slide design
+    updateDesign({ image_url: finalImageUrl });
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to generate image.");
+  } finally {
+    setIsGeneratingImg(false);
+  }
+};
+
   return (
-    <div className="grid gap-4 md:grid-cols-[2fr,1fr]">
-      {/* Main content editor */}
-      <Card className="h-full">
-        <CardHeader>
-          <CardTitle>Edit Slide Content</CardTitle>
+    <div className="flex flex-col h-full gap-4">
+      <Card className="flex-1 overflow-y-auto border-0 shadow-none">
+        <CardHeader className="pb-2 px-0">
+          <CardTitle className="text-md font-bold">Content Editor</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 px-1">
+          
           {/* Title */}
           <div className="space-y-1.5">
-            <Label htmlFor="title">Title</Label>
+            <Label className="text-xs font-semibold text-muted-foreground">Title (Top Bar)</Label>
             <Input
-              id="title"
               value={slide.title}
               onChange={(e) => updateTitle(e.target.value)}
-              placeholder="Enter slide title"
+              className="bg-muted/30"
+            />
+          </div>
+
+          {/* Heading */}
+          <div className="space-y-1.5">
+            <Label className="text-xs font-semibold text-muted-foreground">Main Heading</Label>
+            <Input
+              value={slide.heading || slide.title}
+              onChange={(e) => updateHeading(e.target.value)}
+              className="font-semibold text-lg"
             />
           </div>
 
           {/* Bullets */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label>Bullet Points</Label>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={addBullet}
-              >
-                + Add bullet
+              <Label className="text-xs font-semibold text-muted-foreground">Bullet Points</Label>
+              <Button variant="ghost" size="sm" onClick={addBullet} className="h-6 w-6 p-0 hover:bg-muted">
+                <Plus className="h-4 w-4" />
               </Button>
             </div>
             <div className="space-y-2">
-              {slide.bullets.map((b, idx) => (
-                <div key={idx} className="flex gap-2">
+              {(slide.bullets || []).map((b, idx) => (
+                <div key={idx} className="flex gap-2 group">
                   <Input
                     value={b}
                     onChange={(e) => updateBullet(idx, e.target.value)}
-                    placeholder={`Bullet ${idx + 1}`}
+                    className="flex-1"
                   />
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => removeBullet(idx)}
-                    disabled={slide.bullets.length <= 1}
+                    className="opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-600 transition-opacity"
                   >
-                    ✕
+                    <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Notes */}
-          <div className="space-y-1.5">
-            <Label htmlFor="notes">Speaker Notes (optional)</Label>
+          {/* AI Image Generator Section */}
+          <div className="pt-4 mt-4 border-t border-dashed">
+            <Label className="text-xs font-semibold text-indigo-400 mb-2 block">AI Image Generator</Label>
+            <div className="space-y-2">
+                <Textarea
+                  value={slide.design?.image_prompt || ""}
+                  onChange={(e) => updateDesign({ image_prompt: e.target.value })}
+                  placeholder="Describe the image (e.g. 'Futuristic city with flying cars')..."
+                  className="min-h-[80px] text-sm resize-none"
+                />
+                <Button 
+                    onClick={handleGenerateImage} 
+                    disabled={!slide.design?.image_prompt || isGeneratingImg}
+                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                    size="sm"
+                >
+                    {isGeneratingImg ? (
+                        <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...</>
+                    ) : (
+                        <><Sparkles className="mr-2 h-4 w-4" /> Generate Image</>
+                    )}
+                </Button>
+            </div>
+          </div>
+
+          {/* Speaker Notes */}
+          <div className="pt-4 border-t">
+            <Label className="text-xs text-muted-foreground mb-1 block">Speaker Notes</Label>
             <Textarea
-              id="notes"
-              value={slide.notes ?? ""}
+              value={slide.notes || ""}
               onChange={(e) => updateNotes(e.target.value)}
-              rows={4}
-              placeholder="Add detailed notes for the speaker..."
+              rows={3}
+              className="text-xs bg-muted/20"
+              placeholder="Notes for the presenter..."
             />
           </div>
-
-          <div className="flex justify-end">
-            <Button onClick={handleSaveClick} disabled={saving}>
-              {saving ? "Saving..." : "Save Changes"}
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Design sidebar */}
-      <Card className="h-full">
-        <CardHeader>
-          <CardTitle>Design</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {/* Layout */}
-          <div className="space-y-1.5">
-            <Label htmlFor="layout">Layout</Label>
-            <Input
-              id="layout"
-              value={slide.design?.layout ?? "title_and_body"}
-              onChange={(e) => updateDesign({ layout: e.target.value })}
-              placeholder="title_and_body / left-image / cover ..."
-            />
-          </div>
-
-          {/* Theme */}
-          <div className="space-y-1.5">
-            <Label htmlFor="theme">Theme</Label>
-            <Input
-              id="theme"
-              value={slide.design?.theme ?? "corporate"}
-              onChange={(e) => updateDesign({ theme: e.target.value })}
-              placeholder="corporate / dark / modern / cute / tech"
-            />
-          </div>
-
-          {/* Icon */}
-          <div className="space-y-1.5">
-            <Label htmlFor="icon">Icon (optional)</Label>
-            <Input
-              id="icon"
-              value={slide.design?.icon ?? ""}
-              onChange={(e) => updateDesign({ icon: e.target.value || null })}
-              placeholder="e.g. 'Sparkles', 'Brain', 'Chart'"
-            />
-          </div>
-
-          {/* Image Prompt */}
-<div className="space-y-1.5">
-  <Label htmlFor="image_prompt">Image Prompt</Label>
-  <Textarea
-    id="image_prompt"
-    value={slide.design?.image_prompt ?? ""}
-    onChange={(e) => updateDesign({ image_prompt: e.target.value || null })}
-    rows={3}
-    placeholder="Prompt for AI image generator..."
-  />
-</div>
-
-{/* Generate Image Button */}
-<div className="flex justify-end">
-  <Button
-    variant="outline"
-    disabled={!slide.design?.image_prompt}
-    onClick={async () => {
-      if (!slide.design?.image_prompt) return;
-
-      try {
-        const prompt = slide.design.image_prompt;
-        const res = await fetch("http://localhost:8000/api/image/generate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt }),
-        });
-
-        const data = await res.json();
-
-        if (data.image_base64) {
-          const base64Url = `data:image/png;base64,${data.image_base64}`;
-          updateDesign({ image_url: base64Url });
-        } else {
-          alert("Image generation failed.");
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Error generating image!");
-      }
-    }}
-  >
-    Generate Image
-  </Button>
-</div>
-
-{/* Image Preview */}
-{slide.design?.image_url && (
-  <div className="space-y-1.5">
-    <Label>Preview Image</Label>
-    <div className="overflow-hidden rounded-md border">
-      <img
-        src={slide.design.image_url}
-        alt="slide image"
-        className="h-40 w-full object-cover"
-      />
-    </div>
-  </div>
-)}
 
         </CardContent>
       </Card>
+      
+      {/* Footer Save Button */}
+      <div className="pt-2 border-t">
+          <Button onClick={handleSaveClick} disabled={saving} className="w-full">
+            {saving ? "Saving All..." : "Save Changes"}
+          </Button>
+      </div>
     </div>
   );
 }
