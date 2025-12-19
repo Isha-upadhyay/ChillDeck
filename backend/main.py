@@ -17,6 +17,8 @@ from app.api.upload import router as upload_router
 from app.api.user import router as user_router
 from app.api.image import router as image_router
 from app.api.folders import router as folders_router
+from app.api.templates import router as templates_router
+
 
 
 # Core
@@ -58,6 +60,8 @@ def create_application() -> FastAPI:
     app.include_router(slides_router, prefix="/api/slides", tags=["slides"])
     app.include_router(image_router, prefix="/api/image", tags=["image"])
     app.include_router(folders_router, prefix="/api/folders")
+    app.include_router(templates_router)
+
 
     # -----------------------
     # Exception Handlers

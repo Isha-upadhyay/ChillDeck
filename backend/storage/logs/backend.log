@@ -2014,3 +2014,84 @@ requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 2025-12-20 01:57:21,468 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
 2025-12-20 01:57:24,552 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
 2025-12-20 01:57:28,324 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-20 02:27:33,489 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:27:33,907 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:27:34,587 [INFO] backend: Application Starting Up...
+2025-12-20 02:27:34,595 [INFO] backend: Database & tables created/verified.
+2025-12-20 02:27:34,595 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-20 02:31:22,665 [INFO] backend: Application Shutting Down...
+2025-12-20 02:31:28,244 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:28,532 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:42,165 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:42,314 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:45,640 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:45,810 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:50,498 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:50,639 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:58,975 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:31:59,113 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:23,064 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:23,256 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:32,248 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:32,393 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:35,570 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:35,747 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:40,681 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:40,861 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:43,946 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:44,081 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:58,075 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:33:58,227 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:04,482 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:04,626 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:07,739 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:07,875 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:18,194 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:18,349 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:21,768 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:21,902 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:25,368 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:25,517 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:28,536 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:28,670 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:39,869 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:40,006 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:43,193 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:43,342 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:51,006 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:34:51,157 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:35:34,217 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:35:34,398 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:35:37,629 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:35:37,775 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:35:46,706 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:35:46,902 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:36:28,163 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:36:28,380 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:36:31,351 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:36:31,483 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:36:45,439 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:36:45,620 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:39:55,156 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:39:55,461 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:39:58,879 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:39:59,009 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:06,535 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:06,674 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:10,655 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:10,810 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:14,108 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:14,240 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:17,298 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:17,436 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:39,886 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:40,022 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:40:40,514 [INFO] backend: Application Starting Up...
+2025-12-20 02:40:40,534 [INFO] backend: Database & tables created/verified.
+2025-12-20 02:40:40,534 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-20 02:46:29,853 [INFO] backend: Application Shutting Down...
+2025-12-20 02:46:34,228 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:46:34,475 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 02:46:34,985 [INFO] backend: Application Starting Up...
+2025-12-20 02:46:34,993 [INFO] backend: Database & tables created/verified.
+2025-12-20 02:46:34,993 [INFO] backend: DB Ready, AI Slide Generator Online!
