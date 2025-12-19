@@ -140,20 +140,25 @@ cd backend
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
 # OR: venv\Scripts\activate  # Windows
-
+```
+```bash
 pip install -r requirements.txt
+```
 
 # Add GROQ_API_KEY or OPENAI_API_KEY in .env
+```bash
 uvicorn main:app --reload
-
+```
+```bash
 cd frontend
 npm install
+```
 
 # Set backend endpoint
+```bash
 echo "NEXT_PUBLIC_API_BASE=http://localhost:8000" > .env.local
-
 npm run dev
-
+```
 ✔ Run the App
 
 Visit:
