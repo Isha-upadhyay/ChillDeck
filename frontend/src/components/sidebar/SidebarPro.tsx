@@ -150,11 +150,13 @@ export default function SidebarPro() {
             icon={<FileText size={16} />}
             text="Templates"
             collapsed={collapsed}
+            href="/templates"
           />
           <NavItem
             icon={<Palette size={16} />}
             text="Themes"
             collapsed={collapsed}
+            href="/themes"
           />
           <NavItem
             icon={<Trash2 size={16} />}

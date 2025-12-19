@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { UploadBox } from "@/components/slides/UploadBox";
 import { uploadDocument, generateSlidesFromDocument, exportSlides } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "next/navigation";
+
+
+
 
 interface Slide {
   id: number;
@@ -31,9 +35,11 @@ export default function UploadPage() {
   const [uploading, setUploading] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("corporate");
-  const [result, setResult] = useState<{ topic: string; slides: Slide[] } | null>(null);
+  // const [result, setResult] = useState<{ topic: string; slides: Slide[] } | null>(null);
   const [error, setError] = useState("");
   const [documentId, setDocumentId] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+const folderId = searchParams.get("folder");
 
   const handleFileSelect = (file: File) => {
     // Validate file type
@@ -63,39 +69,38 @@ export default function UploadPage() {
   };
 
   const handleUpload = async () => {
-    if (!selectedFile) return;
-    
-    setUploading(true);
-    setError("");
-    
-    try {
-      const uploadResult = await uploadDocument(selectedFile);
-      setDocumentId(uploadResult.document_id);
-      
-      // Automatically generate slides after upload
-      setGenerating(true);
-      const slidesResult = await generateSlidesFromDocument(uploadResult.document_id, selectedTheme);
-      
-      // Apply theme to slides
-      const themedSlides = slidesResult.slides.map((slide: Slide) => ({
-        ...slide,
-        design: {
-          ...slide.design,
-          theme: selectedTheme
-        }
-      }));
-      
-      setResult({
-        topic: selectedFile.name.replace(/\.[^/.]+$/, ""), // Remove extension
-        slides: themedSlides
-      });
-    } catch (err: any) {
-      setError(err?.response?.data?.detail || err?.message || "Upload failed");
-    } finally {
-      setUploading(false);
-      setGenerating(false);
-    }
-  };
+  if (!selectedFile) return;
+
+  setUploading(true);
+  setGenerating(true);
+  setError("");
+
+  try {
+    // 1️⃣ Upload document
+    const uploadResult = await uploadDocument(selectedFile);
+
+    // 2️⃣ Generate slides
+    const res = await generateSlidesFromDocument(
+      uploadResult.document_id,
+      selectedTheme
+    );
+
+    // 3️⃣ Open SAME slide editor page
+    if (folderId) {
+  router.push(`/slides/${res.presentation_id}?folder=${folderId}`);
+} else {
+  router.push(`/slides/${res.presentation_id}`);
+}
+
+
+  } catch (err: any) {
+    setError(err?.message || "Upload failed");
+  } finally {
+    setUploading(false);
+    setGenerating(false);
+  }
+};
+
 
   return (
     <main className="min-h-screen p-8 bg-slate-50">
@@ -123,7 +128,7 @@ export default function UploadPage() {
           </div>
 
           {/* Selected File Info */}
-          {selectedFile && !result && (
+          {selectedFile  && (
             <div className="mb-4 p-4 bg-blue-50 rounded border border-blue-200">
               <div className="flex items-center justify-between">
                 <div>
@@ -144,7 +149,7 @@ export default function UploadPage() {
           )}
 
           {/* Theme Selector */}
-          {selectedFile && !result && (
+          {selectedFile  && (
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Select Theme:</label>
               <div className="flex gap-2 flex-wrap">
@@ -167,7 +172,7 @@ export default function UploadPage() {
           )}
 
           {/* Upload Button */}
-          {selectedFile && !result && (
+          {selectedFile && (
             <Button
               onClick={handleUpload}
               disabled={uploading || generating}
@@ -178,7 +183,7 @@ export default function UploadPage() {
                 ? "Uploading Document..." 
                 : generating 
                 ? "Generating Slides from Document..." 
-                : "Upload & Generate Slides"
+                : "Upload"
               }
             </Button>
           )}
@@ -190,82 +195,9 @@ export default function UploadPage() {
           )}
         </div>
 
-        {/* Results */}
-        {result && result.slides && (
-          <div>
-            <div className="bg-white p-4 rounded shadow mb-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-2xl font-semibold mb-2">Document: {result.topic}</h2>
-                  <p className="text-gray-600">Generated {result.slides.length} slides from document</p>
-                </div>
-                <div className="flex gap-2 flex-wrap">
-                  <Button
-                    onClick={() => exportSlides(result.slides, result.topic, "pptx")}
-                    variant="outline"
-                    size="sm"
-                  >
-                    📊 Export PPTX
-                  </Button>
-                  <Button
-                    onClick={() => exportSlides(result.slides, result.topic, "pdf")}
-                    variant="outline"
-                    size="sm"
-                  >
-                    📄 Export PDF
-                  </Button>
-                  <Button
-                    onClick={() => exportSlides(result.slides, result.topic, "md")}
-                    variant="outline"
-                    size="sm"
-                  >
-                    📝 Export Markdown
-                  </Button>
-                </div>
-              </div>
-            </div>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {result.slides.map((slide: Slide, index: number) => {
-                const themeId = slide.design?.theme || selectedTheme || "corporate";
-                const themeColors = getThemeColors(themeId);
-                return (
-                  <div
-                    key={slide.id || index}
-                    className={`${themeColors.bg} p-5 rounded-lg shadow-md ${themeColors.border} border-2 hover:shadow-lg transition-shadow`}
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <span className={`text-xs font-semibold ${themeColors.text} bg-white/50 px-2 py-1 rounded`}>
-                        Slide {slide.id || index + 1}
-                      </span>
-                    </div>
-                    
-                    <h3 className={`text-lg font-bold mb-3 ${themeColors.text}`}>
-                      {slide.title || slide.heading || `Slide ${index + 1}`}
-                    </h3>
-                    
-                    <ul className="space-y-2 mb-4">
-                      {(slide.bullets || slide.points || []).map((bullet: string, idx: number) => (
-                        <li key={idx} className={`text-sm ${themeColors.text} flex items-start opacity-90`}>
-                          <span className={`${themeColors.text} mr-2 font-bold`}>•</span>
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
 
-                    {slide.notes && (
-                      <div className={`mt-4 pt-4 border-t ${themeColors.border}`}>
-                        <p className={`text-xs ${themeColors.text} italic opacity-75`}>
-                          <strong>Notes:</strong> {slide.notes}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
+   
       </div>
     </main>
   );

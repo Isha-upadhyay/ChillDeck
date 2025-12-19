@@ -177,7 +177,7 @@ const folderId = searchParams.get("folder");
           </button>
 
           <button
-            onClick={() => router.push("/upload")}
+            onClick={() => router.push(`/upload?folder=${folderId}`)}
             className="w-full max-w-[260px] px-5 py-3 rounded-xl bg-[#1a1a22] border border-gray-700
                        text-gray-200 hover:bg-[#22222b] transition flex items-center justify-center gap-2"
           >

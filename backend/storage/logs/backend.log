@@ -1865,3 +1865,152 @@ requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 2025-12-09 01:47:16,458 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
 2025-12-09 01:47:20,802 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
 2025-12-09 01:48:59,912 [INFO] backend: Application Shutting Down...
+2025-12-16 14:49:11,772 [INFO] backend: RAGPipeline initialized successfully
+2025-12-16 14:49:12,774 [INFO] backend: RAGPipeline initialized successfully
+2025-12-16 14:49:13,892 [INFO] backend: Application Starting Up...
+2025-12-16 14:49:13,904 [INFO] backend: Database & tables created/verified.
+2025-12-16 14:49:13,905 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-16 14:57:23,148 [INFO] backend: [RAG] Global query: 'Generative AI: An Overview' (top_k=5)
+2025-12-16 14:58:30,471 [INFO] backend: [RAG] Global query: 'Impact of Generative AI on Developers' (top_k=5)
+2025-12-16 15:04:48,539 [INFO] backend: Uploading file: Isha_Upadhyay_internship_report.pdf (578.88KB)
+2025-12-16 15:04:48,552 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_internship_report.pdf
+2025-12-16 15:04:50,131 [INFO] backend: Processing text: 13394 characters (original: 13394)
+2025-12-16 15:04:50,135 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_internship_report.pdf (doc__5ca11ac51bb1), text length: 13394
+2025-12-16 15:05:21,528 [INFO] backend: [RAG] Document doc__5ca11ac51bb1 ingested with 1000 chunks
+2025-12-16 15:05:21,528 [INFO] backend: Successfully ingested document: doc__5ca11ac51bb1
+2025-12-16 15:05:21,549 [INFO] backend: [RAG] Querying document: doc__5ca11ac51bb1 | query='None'
+2025-12-16 15:05:21,560 [ERROR] backend: [RAG] Error querying document doc__5ca11ac51bb1: 'NoneType' object is not subscriptable
+2025-12-16 15:05:21,561 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-16 15:05:26,616 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-16 15:05:30,833 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-16 15:26:56,033 [INFO] backend: Application Shutting Down...
+2025-12-16 15:27:08,489 [INFO] backend: RAGPipeline initialized successfully
+2025-12-16 15:27:09,405 [INFO] backend: RAGPipeline initialized successfully
+2025-12-16 15:27:10,688 [INFO] backend: Application Starting Up...
+2025-12-16 15:27:10,700 [INFO] backend: Database & tables created/verified.
+2025-12-16 15:27:10,701 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-16 15:27:10,702 [INFO] backend: Application Shutting Down...
+2025-12-16 15:27:15,527 [INFO] backend: RAGPipeline initialized successfully
+2025-12-16 15:27:15,741 [INFO] backend: RAGPipeline initialized successfully
+2025-12-16 15:27:16,447 [INFO] backend: Application Starting Up...
+2025-12-16 15:27:16,450 [INFO] backend: Database & tables created/verified.
+2025-12-16 15:27:16,452 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-19 23:08:52,026 [INFO] backend: RAGPipeline initialized successfully
+2025-12-19 23:08:57,179 [INFO] backend: RAGPipeline initialized successfully
+2025-12-19 23:08:59,832 [INFO] backend: Application Starting Up...
+2025-12-19 23:08:59,855 [INFO] backend: Database & tables created/verified.
+2025-12-19 23:08:59,855 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-20 01:02:26,132 [INFO] backend: [RAG] Global query: 'Introduction to Generative AI Tools' (top_k=5)
+2025-12-20 01:03:14,503 [INFO] backend: [RAG] Global query: 'Applications of Generative AI Tools' (top_k=5)
+2025-12-20 01:03:33,116 [INFO] backend: Application Shutting Down...
+2025-12-20 01:03:38,563 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:03:39,237 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:00,579 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:00,796 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:09,012 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:09,149 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:12,232 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:12,365 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:15,404 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:12:15,576 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:15:23,896 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:15:24,035 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:20:11,066 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:20:11,258 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:20:14,724 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:20:14,865 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:21:56,695 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:21:56,844 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:21:57,919 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:22:00,745 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:22:00,878 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:22:01,292 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:22:04,079 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:22:04,208 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:22:04,655 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:22:44,093 [WARNING] backend: HTTPException: Presentation not found
+2025-12-20 01:22:51,003 [WARNING] backend: HTTPException: Presentation not found
+2025-12-20 01:23:02,501 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:02,645 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:03,406 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:23:06,287 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:06,420 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:06,809 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:23:13,552 [WARNING] backend: HTTPException: Presentation not found
+2025-12-20 01:23:26,804 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:26,977 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:27,342 [INFO] backend: Application Starting Up...
+2025-12-20 01:23:27,352 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:23:27,352 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-20 01:23:27,353 [INFO] backend: Application Shutting Down...
+2025-12-20 01:23:30,085 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:30,327 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:30,766 [INFO] backend: Application Starting Up...
+2025-12-20 01:23:30,768 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:23:30,768 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-20 01:23:30,768 [INFO] backend: Application Shutting Down...
+2025-12-20 01:23:33,584 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:33,722 [INFO] backend: RAGPipeline initialized successfully
+2025-12-20 01:23:34,091 [INFO] backend: Application Starting Up...
+2025-12-20 01:23:34,093 [INFO] backend: Database & tables created/verified.
+2025-12-20 01:23:34,093 [INFO] backend: DB Ready, AI Slide Generator Online!
+2025-12-20 01:23:42,573 [WARNING] backend: HTTPException: Presentation not found
+2025-12-20 01:23:57,403 [INFO] backend: [RAG] Global query: 'What is Generative AI?' (top_k=5)
+2025-12-20 01:24:21,555 [INFO] backend: [RAG] Global query: 'Applications of Generative AI' (top_k=5)
+2025-12-20 01:26:50,667 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (164.74KB)
+2025-12-20 01:26:50,672 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-12-20 01:26:50,828 [INFO] backend: Processing text: 2630 characters (original: 2630)
+2025-12-20 01:26:50,828 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__134fa76df404), text length: 2630
+2025-12-20 01:27:20,721 [INFO] backend: [RAG] Document doc__134fa76df404 ingested with 1000 chunks
+2025-12-20 01:27:20,721 [INFO] backend: Successfully ingested document: doc__134fa76df404
+2025-12-20 01:27:20,739 [INFO] backend: [RAG] Querying document: doc__134fa76df404 | query='None'
+2025-12-20 01:27:20,742 [ERROR] backend: [RAG] Error querying document doc__134fa76df404: 'NoneType' object is not subscriptable
+2025-12-20 01:27:20,742 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-20 01:27:24,941 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-20 01:27:29,376 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-20 01:35:47,846 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (164.74KB)
+2025-12-20 01:35:47,861 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-12-20 01:35:48,028 [INFO] backend: Processing text: 2630 characters (original: 2630)
+2025-12-20 01:35:48,030 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__ab57f5a7bd0d), text length: 2630
+2025-12-20 01:36:19,881 [INFO] backend: [RAG] Document doc__ab57f5a7bd0d ingested with 1000 chunks
+2025-12-20 01:36:19,881 [INFO] backend: Successfully ingested document: doc__ab57f5a7bd0d
+2025-12-20 01:36:19,915 [INFO] backend: [RAG] Querying document: doc__ab57f5a7bd0d | query='None'
+2025-12-20 01:36:19,920 [ERROR] backend: [RAG] Error querying document doc__ab57f5a7bd0d: 'NoneType' object is not subscriptable
+2025-12-20 01:36:19,920 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-20 01:36:22,918 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-20 01:36:25,622 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-20 01:37:17,323 [INFO] backend: Uploading file: Isha_Upadhyay_Software_Engineer_Resume.pdf (165.02KB)
+2025-12-20 01:37:17,326 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Software_Engineer_Resume.pdf
+2025-12-20 01:37:17,441 [INFO] backend: Processing text: 2706 characters (original: 2706)
+2025-12-20 01:37:17,441 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Software_Engineer_Resume.pdf (doc__a067e3395a9b), text length: 2706
+2025-12-20 01:37:45,508 [INFO] backend: [RAG] Document doc__a067e3395a9b ingested with 1000 chunks
+2025-12-20 01:37:45,508 [INFO] backend: Successfully ingested document: doc__a067e3395a9b
+2025-12-20 01:37:45,520 [INFO] backend: [RAG] Querying document: doc__a067e3395a9b | query='None'
+2025-12-20 01:37:45,523 [ERROR] backend: [RAG] Error querying document doc__a067e3395a9b: 'NoneType' object is not subscriptable
+2025-12-20 01:37:45,523 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-20 01:37:48,562 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-20 01:37:51,381 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-20 01:39:23,574 [INFO] backend: Uploading file: Isha_Upadhyay_Software_Engineer_Resume.pdf (165.02KB)
+2025-12-20 01:39:23,577 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Software_Engineer_Resume.pdf
+2025-12-20 01:39:23,689 [INFO] backend: Processing text: 2706 characters (original: 2706)
+2025-12-20 01:39:23,689 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Software_Engineer_Resume.pdf (doc__fed95c056e4b), text length: 2706
+2025-12-20 01:39:51,276 [INFO] backend: [RAG] Document doc__fed95c056e4b ingested with 1000 chunks
+2025-12-20 01:39:51,277 [INFO] backend: Successfully ingested document: doc__fed95c056e4b
+2025-12-20 01:39:51,286 [INFO] backend: [RAG] Querying document: doc__fed95c056e4b | query='None'
+2025-12-20 01:39:51,288 [ERROR] backend: [RAG] Error querying document doc__fed95c056e4b: 'NoneType' object is not subscriptable
+2025-12-20 01:39:51,289 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-20 01:39:54,762 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-20 01:39:57,563 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
+2025-12-20 01:40:56,254 [INFO] backend: [RAG] Global query: 'Introduction to the Future of AI' (top_k=5)
+2025-12-20 01:41:01,297 [INFO] backend: [RAG] Global query: 'Potential Applications and Challenges' (top_k=5)
+2025-12-20 01:56:42,933 [INFO] backend: Uploading file: Isha_Upadhyay_Resume.pdf (164.74KB)
+2025-12-20 01:56:42,945 [INFO] backend: Loading document: storage\uploads\Isha_Upadhyay_Resume.pdf
+2025-12-20 01:56:43,151 [INFO] backend: Processing text: 2630 characters (original: 2630)
+2025-12-20 01:56:43,154 [INFO] backend: [RAG] Ingesting document: Isha_Upadhyay_Resume.pdf (doc__b1022bdb797e), text length: 2630
+2025-12-20 01:57:21,444 [INFO] backend: [RAG] Document doc__b1022bdb797e ingested with 1000 chunks
+2025-12-20 01:57:21,445 [INFO] backend: Successfully ingested document: doc__b1022bdb797e
+2025-12-20 01:57:21,466 [INFO] backend: [RAG] Querying document: doc__b1022bdb797e | query='None'
+2025-12-20 01:57:21,468 [ERROR] backend: [RAG] Error querying document doc__b1022bdb797e: 'NoneType' object is not subscriptable
+2025-12-20 01:57:21,468 [INFO] backend: [RAG] Global query: 'None - Introduction' (top_k=5)
+2025-12-20 01:57:24,552 [INFO] backend: [RAG] Global query: 'None - Concepts' (top_k=5)
+2025-12-20 01:57:28,324 [INFO] backend: [RAG] Global query: 'None - Summary' (top_k=5)
