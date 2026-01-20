@@ -1,5 +1,6 @@
 // frontend/src/lib/api.ts
 import axios from "axios";
+import type { Template, TemplateCreatePayload } from "@/types/template";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 
@@ -95,59 +96,6 @@ export async function deleteImage(id: string) {
 }
 
 
-// // folder api
-// export async function fetchFolders() {
-//   const res = await fetch(`${API_BASE}/api/folders/all`);
-//   return res.json();
-// }
-
-// export async function fetchFolderPresentations(id: string) {
-//   const res = await fetch(`${API_BASE}/api/folders/${id}`);
-//   return res.json();
-// }
-
-
-// export async function createFolder(name: string) {
-//   const res = await fetch(`${API_BASE}/api/folders/create`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ name }),
-//   });
-//   return res.json();
-// }
-
-// export async function deleteFolder(id: string) {
-//   return fetch(`${API_BASE}/api/folders/${id}`, { method: "DELETE" });
-// }
-
-
-
-
-
-// export async function fetchFolders() {
-//   const res = await fetch(`${API_BASE}/api/folders/all`);
-//   return res.json();
-// }
-
-// export async function createFolder(name: string) {
-//   const res = await fetch(`${API_BASE}/api/folders/create`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ name }),
-//   });
-//   return res.json();
-// }
-
-// export async function deleteFolder(id: string) {
-//   return fetch(`${API_BASE}/api/folders/${id}`, { method: "DELETE" });
-// }
-
-// // ✅ NEW: Folder ke andar presentations
-// export async function fetchFolderPresentations(folderId: string) {
-//   const res = await fetch(`${API_BASE}/api/folders/${folderId}/presentations`);
-//   return res.json();
-// }
-
 // ✅ NEW: Assign presentation to folder
 export async function assignPresentationToFolder(folderId: string, presentationId: string) {
   const res = await fetch(`${API_BASE}/api/folders/${folderId}/add`, {
@@ -160,8 +108,6 @@ export async function assignPresentationToFolder(folderId: string, presentationI
 
   return res.json();
 }
-
-
 
 
 
@@ -213,4 +159,100 @@ export async function fetchFolderPresentations(folderId: string) {
   }
 
   return data;
+}
+
+// ---------- TEMPLATE API ----------
+
+// export async function fetchTemplates(params?: {
+//   category?: string;
+//   limit?: number;
+//   offset?: number;
+// }) {
+//   const query = new URLSearchParams();
+
+//   if (params?.category) query.append("category", params.category);
+//   if (params?.limit) query.append("limit", String(params.limit));
+//   if (params?.offset) query.append("offset", String(params.offset));
+
+//   const res = await fetch(
+//     `${API_BASE}/api/templates${query.toString() ? `?${query}` : ""}`
+//   );
+
+//   if (!res.ok) {
+//     throw new Error("Failed to fetch templates");
+//   }
+
+//   return res.json();
+// }
+
+// export async function fetchTemplateById(templateId: string) {
+//   const res = await fetch(`${API_BASE}/api/templates/${templateId}`);
+
+//   if (!res.ok) {
+//     throw new Error("Template not found");
+//   }
+
+//   return res.json();
+// }
+
+// export async function createTemplate(payload: any) {
+//   const res = await fetch(`${API_BASE}/api/templates`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(payload),
+//   });
+
+//   if (!res.ok) {
+//     throw new Error("Failed to create template");
+//   }
+
+//   return res.json();
+// }
+
+// export async function deleteTemplate(templateId: string) {
+//   const res = await fetch(`${API_BASE}/api/templates/${templateId}`, {
+//     method: "DELETE",
+//   });
+
+//   if (!res.ok) {
+//     throw new Error("Failed to delete template");
+//   }
+
+//   return true;
+// }
+
+
+
+
+// ---------------- TEMPLATES ----------------
+
+export async function fetchTemplates(params?: {
+  category?: string;
+  limit?: number;
+  offset?: number;
+}): Promise<Template[]> {
+  const res = await axios.get(`${API_BASE}/api/templates`, {
+    params,
+  });
+  return res.data;
+}
+
+export async function fetchTemplateById(
+  templateId: string
+): Promise<Template> {
+  const res = await axios.get(`${API_BASE}/api/templates/${templateId}`);
+  return res.data;
+}
+
+// ⚠️ Admin / Seed only
+export async function createTemplate(
+  payload: TemplateCreatePayload
+): Promise<Template> {
+  const res = await axios.post(`${API_BASE}/api/templates`, payload);
+  return res.data;
+}
+
+// ⚠️ Admin only
+export async function deleteTemplate(templateId: string): Promise<void> {
+  await axios.delete(`${API_BASE}/api/templates/${templateId}`);
 }

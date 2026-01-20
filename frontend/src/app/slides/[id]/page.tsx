@@ -32,36 +32,30 @@ export default function SlideDetailPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
-const searchParams = useSearchParams();
-const folderId = searchParams.get("folder");
+  const searchParams = useSearchParams();
+  const folderId = searchParams.get("folder");
+  const urlTheme = searchParams.get("theme") || "corporate";
 
-
-
-  // Fetch ALL slides for this presentation
   useEffect(() => {
     const load = async () => {
       try {
         setLoading(true);
 
-        // Fetch full document/presentation
         const data = await fetchPresentationById(presentationId);
 
-        // Ensure slides are SlideOut[]
         const formattedSlides: SlideOut[] = data.slides.map(
           (s: any, i: number): SlideOut => ({
             id: String(s.id ?? i + 1),
             title: s.title ?? `Slide ${i + 1}`,
-            heading: s.heading ?? s.title ?? `Slide ${i + 1}`, // <-- FIX
+            heading: s.heading ?? s.title ?? `Slide ${i + 1}`,
             bullets: s.bullets ?? [],
             notes: s.notes ?? "",
-            design: s.design ?? {
-              layout: "title_and_body",
-              theme: "corporate",
+            design: {
+              layout: s.design?.layout ?? "title_and_body",
+              theme: s.design?.theme ?? urlTheme, // ✅ APPLY THEME HERE
             },
-          })
+          }),
         );
-
-        setSlides(formattedSlides);
 
         setSlides(formattedSlides);
       } catch (err) {
@@ -73,34 +67,32 @@ const folderId = searchParams.get("folder");
     };
 
     load();
-  }, [presentationId]);
+  }, [presentationId, urlTheme]);
 
   // Save all slides (bulk update)
-const handleSaveAll = async () => {
-  try {
-    setSaving(true);
+  const handleSaveAll = async () => {
+    try {
+      setSaving(true);
 
-    await updatePresentation(presentationId, {
-      title: slides[0]?.title || "Untitled",
-      theme: slides[0]?.design?.theme || "corporate",
-      slides: slides,
-    });
+      await updatePresentation(presentationId, {
+        title: slides[0]?.title || "Untitled",
+        theme: slides[0]?.design?.theme || "corporate",
+        slides: slides,
+      });
 
-    // ⭐ ADD THIS: Auto add to folder if folderId exists
-    if (folderId) {
-      await assignPresentationToFolder(folderId, presentationId);
+      // ADD THIS: Auto add to folder if folderId exists
+      if (folderId) {
+        await assignPresentationToFolder(folderId, presentationId);
+      }
+
+      router.push(folderId ? `/folders/${folderId}` : "/workspace");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to save.");
+    } finally {
+      setSaving(false);
     }
-
-    router.push(folderId ? `/folders/${folderId}` : "/workspace");
-
-  } catch (err) {
-    console.error(err);
-    alert("Failed to save.");
-  } finally {
-    setSaving(false);
-  }
-};
-
+  };
 
   const handleExport = async (format: string) => {
     try {
@@ -149,31 +141,37 @@ const handleSaveAll = async () => {
           </p>
         </div>
 
-       <div className="flex gap-2">
-  <Button variant="outline" onClick={() => router.push("/")}>
-    Back
-  </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={() => router.push("/")}>
+            Back
+          </Button>
 
-  <Button onClick={handleSaveAll} disabled={saving}>
-    {saving ? "Saving..." : "Save All"}
-  </Button>
+          <Button onClick={handleSaveAll} disabled={saving}>
+            {saving ? "Saving..." : "Save All"}
+          </Button>
 
-  {/* EXPORT BUTTON HERE INSIDE SAME FLEX ROW */}
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="outline">🚀 Export</Button>
-    </DropdownMenuTrigger>
+          {/* EXPORT BUTTON HERE INSIDE SAME FLEX ROW */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">🚀 Export</Button>
+            </DropdownMenuTrigger>
 
-    <DropdownMenuContent align="end" className="w-40">
-      <DropdownMenuItem onClick={() => handleExport("pptx")}>📊 PPTX</DropdownMenuItem>
-      <DropdownMenuItem onClick={() => handleExport("pdf")}>📄 PDF</DropdownMenuItem>
-      <DropdownMenuItem onClick={() => handleExport("md")}>📝 Markdown</DropdownMenuItem>
-      <DropdownMenuItem onClick={() => handleExport("json")}>💾 JSON</DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
-
-</div>
-
+            <DropdownMenuContent align="end" className="w-40">
+              <DropdownMenuItem onClick={() => handleExport("pptx")}>
+                📊 PPTX
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("pdf")}>
+                📄 PDF
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("md")}>
+                📝 Markdown
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("json")}>
+                💾 JSON
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
 
       {/* MAIN LAYOUT */}
