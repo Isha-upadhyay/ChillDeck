@@ -28,7 +28,7 @@ class TemplateTable(SQLModel, table=True):
         index=True
     )
 
-    title: str = Field(nullable=False)
+    title: str = Field(nullable=False, index=True)
     category: str = Field(index=True)   # marketing, pitch, project, etc
     description: Optional[str] = None
 
