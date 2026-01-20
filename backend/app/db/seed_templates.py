@@ -1,4 +1,4 @@
-from sqlmodel import Session
+from sqlmodel import Session, select
 from app.db.session import engine
 from app.db.models import TemplateTable
 
@@ -6,37 +6,54 @@ TEMPLATES = [
     {
         "title": "Startup Pitch Deck",
         "category": "pitch",
-        "description": "Perfect for early-stage startups",
+        "description": "Problem → Solution → Traction → Ask",
         "structure": {
             "slides": [
                 {"type": "title", "title": "Startup Pitch"},
-                {"type": "problem", "title": "Problem"},
-                {"type": "solution", "title": "Solution"},
-                {"type": "market", "title": "Market Opportunity"},
-                {"type": "traction", "title": "Traction"},
-                {"type": "ask", "title": "The Ask"}
+                {"type": "problem"},
+                {"type": "solution"},
+                {"type": "market"},
+                {"type": "traction"},
+                {"type": "ask"}
             ]
         }
     },
     {
         "title": "Project Kickoff",
         "category": "project",
-        "description": "Align teams before starting",
+        "description": "Align teams before execution",
         "structure": {
             "slides": [
-                {"type": "title", "title": "Project Kickoff"},
-                {"type": "agenda", "title": "Agenda"},
-                {"type": "goals", "title": "Goals"},
-                {"type": "timeline", "title": "Timeline"},
-                {"type": "roles", "title": "Roles & Owners"}
+                {"type": "title"},
+                {"type": "agenda"},
+                {"type": "goals"},
+                {"type": "timeline"},
+                {"type": "owners"}
             ]
         }
     }
 ]
 
+
 def seed():
     with Session(engine) as session:
         for t in TEMPLATES:
+            exists = session.exec(
+                select(TemplateTable)
+                .where(TemplateTable.title == t["title"])
+                .where(TemplateTable.category == t["category"])
+            ).first()
+
+            if exists:
+                continue
+
             session.add(TemplateTable(**t))
+
         session.commit()
-print("Templates seeded successfully")
+
+
+    print("✅ Templates seeded successfully")
+
+
+if __name__ == "__main__":
+    seed()
