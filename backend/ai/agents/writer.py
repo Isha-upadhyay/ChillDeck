@@ -23,14 +23,14 @@ class WriterAgent(BaseAgent):
 
     def _extract_json(self, text: str):
         """Extract valid JSON from any LLM output."""
-        # Direct load attempt
+        # Direct load attempt 
         try:
             return json.loads(text)
         except:
             pass
 
         # Try extracting JSON inside code block
-        match = re.search(r"\{[\s\S]*\}", text)
+        match = re.search(r"\{[\s\S]*\}", text) 
         if match:
             try:
                 return json.loads(match.group(0))

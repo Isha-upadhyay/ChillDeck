@@ -1,6 +1,7 @@
-from ai.utils.agents_utils import BaseAgent
-import requests
-import os
+from ai.utils.agents_utils import BaseAgent #common ai agent which call llm internally and set krta hai system and give .run() method
+import requests # to make external api calls an here tavily api call krne ke liye
+import os # to get env variable
+import json
 
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 
@@ -23,7 +24,7 @@ Return JSON:
 }
 """
 
-class ResearcherAgent(BaseAgent):
+class ResearcherAgent(BaseAgent): # ai agent jo baseagent se inherit kr rha hai
     def __init__(self):
         super().__init__(RESEARCHER_SYSTEM_PROMPT)
 
@@ -35,7 +36,7 @@ class ResearcherAgent(BaseAgent):
 
     def research(self, topic: str = None, subtopics: list = None, outline_json: str = None):
         """Perform research for a topic/subtopics or outline"""
-        if outline_json:
+        if outline_json: # planner se agar output json aata hai to uske basis pr research krna hai
             prompt = f"Perform research for: {outline_json}\nUse structured facts."
         else:
             query = topic or ""
@@ -55,7 +56,6 @@ class ResearcherAgent(BaseAgent):
             prompt = f"Topic: {query}\n\nSearch Results:\n{context}\n\nExtract key facts, statistics, and insights. Return structured research data."
         
         result = self.run(prompt)
-        import json
         try:
             return json.loads(result)
         except (json.JSONDecodeError, ValueError, TypeError):

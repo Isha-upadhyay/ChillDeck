@@ -1,10 +1,10 @@
 import requests
 import os
-import base64
+import base64 # to encode image bytes to base64 string
 
 HF_API_KEY = os.getenv("HF_API_KEY")  # free key from huggingface
 
-class ImageAgent:
+class ImageAgent: # why this not inherited from baseagent - because it is not llm text agent - that is image refernce  API call
     def __init__(self):
         self.models = {
             "flux": "black-forest-labs/FLUX.1-schnell",
@@ -16,7 +16,7 @@ class ImageAgent:
 
         url = f"https://api-inference.huggingface.co/models/{model_id}"
 
-        headers = {"Authorization": f"Bearer {HF_API_KEY}"}
+        headers = {"Authorization": f"Bearer {HF_API_KEY}"} 
 
         payload = {
             "inputs": prompt,
