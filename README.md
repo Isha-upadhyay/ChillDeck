@@ -165,30 +165,24 @@ Visit:
 👉 http://localhost:3000
 
 Enter a topic → Select theme → Generate slides!
-
 🤖 Agentic Pipeline (How It Works)
 1️⃣ Planning Agent
 
 Creates slide outline + logical structure.
 
 2️⃣ Research Agent
-
 Uses Tavily/SerpAPI → extracts current data, stats, quotes.
 
 3️⃣ Content Writer Agent
-
 Writes bullet points, headings, examples.
 
 4️⃣ Quality Agent
-
 Enhances grammar, readability, emphasis.
 
 5️⃣ Slide Designer Agent
-
 Adds emojis, layout hints, visual instructions.
 
 6️⃣ Image Agent
-
 Generates slide-cover or illustration images using HF models.
 
 🔌 API Endpoints
@@ -223,18 +217,8 @@ frontend/
 🔮 Future Enhancements
 
 🎤 AI Voiceover for presentations
-
 🔗 Real-time collaboration mode
-
 🧩 Plugin marketplace (templates, charts, animations)
-
 📊 Auto chart/graph generation from CSV
-
 ⏳ Offline RAG + local models
-
-📝 Resume Description (Copy This for Your Resume)
-
-ChillDeck — AI Slide Generator
-Built a multi-agent LLM system that converts topics or documents into complete presentations using FastAPI, LangChain, ChromaDB, and Next.js; implemented RAG pipelines, AI image generation, and modular export features (PDF/PPTX) with real-time slide preview.
-
 
