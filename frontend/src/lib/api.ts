@@ -256,3 +256,83 @@ export async function createTemplate(
 export async function deleteTemplate(templateId: string): Promise<void> {
   await axios.delete(`${API_BASE}/api/templates/${templateId}`);
 }
+
+// ---------- SSE STREAMING GENERATE ----------
+
+export function generateOutlineStream(
+  topic: string,
+  theme: string,
+  onProgress: (data: { step: string; message: string; progress: number; presentation_id?: string; slides?: unknown[] }) => void,
+  onError: (error: string) => void
+) {
+  const API = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+
+  fetch(`${API}/api/slides/generate/stream`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ topic, detail: "medium", style: theme }),
+  }).then(async (response) => {
+    if (!response.body) {
+      onError("No response body");
+      return;
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      const text = decoder.decode(value);
+      const lines = text.split("\n");
+
+      for (const line of lines) {
+        if (line.startsWith("data: ")) {
+          try {
+            const data = JSON.parse(line.slice(6));
+            onProgress(data);
+          } catch {
+            // skip malformed JSON
+          }
+        }
+      }
+    }
+  }).catch((err) => {
+    onError(err.message || "Stream failed");
+  });
+}
+
+// ---------- CHAT API ----------
+
+export async function sendChatMessage(presentationId: string, slideIndex: number, message: string) {
+  const API = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+  const res = await fetch(`${API}/api/chat/send`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ presentation_id: presentationId, slide_index: slideIndex, message }),
+  });
+  return res.json();
+}
+
+export async function getChatHistory(presentationId: string, slideIndex: number) {
+  const API = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+  const res = await fetch(`${API}/api/chat/history/${presentationId}/${slideIndex}`);
+  return res.json();
+}
+
+// ---------- VERSION HISTORY API ----------
+
+export async function getVersionHistory(presentationId: string) {
+  const API = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+  const res = await fetch(`${API}/api/slides/presentation/${presentationId}/versions`);
+  return res.json();
+}
+
+export async function restoreVersion(presentationId: string, versionId: string) {
+  const API = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+  const res = await fetch(`${API}/api/slides/presentation/${presentationId}/restore/${versionId}`, {
+    method: "POST",
+  });
+  return res.json();
+}

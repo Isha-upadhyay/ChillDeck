@@ -1,86 +1,3 @@
-// // src/store/editorStore.ts
-// import { create } from "zustand";
-// import type { SlideOut, SlideDesign } from "@/types/slide";
-
-// interface EditorState {
-//   slide: SlideOut | null;
-//   loading: boolean;
-//   error: string | null;
-
-//   setSlide: (slide: SlideOut) => void;
-//   setLoading: (value: boolean) => void;
-//   setError: (msg: string | null) => void;
-
-//   updateTitle: (title: string) => void;
-//   updateNotes: (notes: string) => void;
-
-//   updateBullet: (index: number, value: string) => void;
-//   addBullet: () => void;
-//   removeBullet: (index: number) => void;
-
-//   updateDesign: (design: Partial<SlideDesign>) => void;
-//   clearSlide: () => void;
-// }
-
-// export const useEditorStore = create<EditorState>((set) => ({
-//   slide: null,
-//   loading: false,
-//   error: null,
-
-//   setSlide: (slide) => set({ slide }),
-//   setLoading: (value) => set({ loading: value }),
-//   setError: (msg) => set({ error: msg }),
-
-//   updateTitle: (title) =>
-//     set((state) =>
-//       state.slide ? { slide: { ...state.slide, title } } : state
-//     ),
-
-//   updateNotes: (notes) =>
-//     set((state) =>
-//       state.slide ? { slide: { ...state.slide, notes } } : state
-//     ),
-
-//   updateBullet: (index, value) =>
-//     set((state) => {
-//       if (!state.slide) return state;
-//       const bullets = [...state.slide.bullets];
-//       bullets[index] = value;
-//       return { slide: { ...state.slide, bullets } };
-//     }),
-
-//   addBullet: () =>
-//     set((state) => {
-//       if (!state.slide) return state;
-//       const bullets = [...state.slide.bullets, ""];
-//       return { slide: { ...state.slide, bullets } };
-//     }),
-
-//   removeBullet: (index) =>
-//     set((state) => {
-//       if (!state.slide) return state;
-//       const bullets = state.slide.bullets.filter((_, i) => i !== index);
-//       return { slide: { ...state.slide, bullets } };
-//     }),
-
-//   updateDesign: (designPart) =>
-//     set((state) => {
-//       if (!state.slide) return state;
-//       const prevDesign = state.slide.design ?? {};
-//       return {
-//         slide: {
-//           ...state.slide,
-//           design: { ...prevDesign, ...designPart },
-//         },
-//       };
-//     }),
-
-//   clearSlide: () => set({ slide: null }),
-// }));
-
-
-
-
 // frontend/src/store/editorStore.ts
 import { create } from "zustand";
 import type { SlideOut } from "@/types/slide";
@@ -89,7 +6,16 @@ interface EditorState {
   slide: SlideOut | null;
   setSlide: (slide: SlideOut) => void;
   clearSlide: () => void;
-  
+
+  // Undo/Redo
+  history: SlideOut[];
+  historyIndex: number;
+  pushHistory: (slide: SlideOut) => void;
+  undo: () => void;
+  redo: () => void;
+  canUndo: () => boolean;
+  canRedo: () => boolean;
+
   // Actions
   updateTitle: (title: string) => void;
   updateHeading: (heading: string) => void;
@@ -98,16 +24,51 @@ interface EditorState {
   addBullet: () => void;
   removeBullet: (index: number) => void;
   updateDesign: (designUpdates: Partial<SlideOut["design"]>) => void;
+  updateLayout: (layout: string) => void;
 }
 
-export const useEditorStore = create<EditorState>((set) => ({
+export const useEditorStore = create<EditorState>((set, get) => ({
   slide: null,
+  history: [],
+  historyIndex: -1,
 
-  setSlide: (slide) => set({ slide }),
-  clearSlide: () => set({ slide: null }),
+  setSlide: (slide) => set({ slide, history: [slide], historyIndex: 0 }),
+  clearSlide: () => set({ slide: null, history: [], historyIndex: -1 }),
+
+  pushHistory: (slide) => {
+    const { history, historyIndex } = get();
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push(structuredClone(slide));
+    // Keep max 50 history items
+    if (newHistory.length > 50) newHistory.shift();
+    set({ history: newHistory, historyIndex: newHistory.length - 1 });
+  },
+
+  undo: () => {
+    const { history, historyIndex } = get();
+    if (historyIndex > 0) {
+      const newIndex = historyIndex - 1;
+      set({ slide: structuredClone(history[newIndex]), historyIndex: newIndex });
+    }
+  },
+
+  redo: () => {
+    const { history, historyIndex } = get();
+    if (historyIndex < history.length - 1) {
+      const newIndex = historyIndex + 1;
+      set({ slide: structuredClone(history[newIndex]), historyIndex: newIndex });
+    }
+  },
+
+  canUndo: () => get().historyIndex > 0,
+  canRedo: () => get().historyIndex < get().history.length - 1,
 
   updateTitle: (title) =>
-    set((state) => (state.slide ? { slide: { ...state.slide, title } } : {})),
+    set((state) => {
+      if (!state.slide) return {};
+      const updated = { ...state.slide, title };
+      return { slide: updated };
+    }),
 
   updateHeading: (heading) =>
     set((state) => (state.slide ? { slide: { ...state.slide, heading } } : {})),
@@ -143,6 +104,17 @@ export const useEditorStore = create<EditorState>((set) => ({
         slide: {
           ...state.slide,
           design: { ...state.slide.design, ...designUpdates },
+        },
+      };
+    }),
+
+  updateLayout: (layout) =>
+    set((state) => {
+      if (!state.slide) return {};
+      return {
+        slide: {
+          ...state.slide,
+          design: { ...state.slide.design, layout },
         },
       };
     }),

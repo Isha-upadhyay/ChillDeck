@@ -13,7 +13,7 @@ import {
 import { SlidesLayout } from "@/components/slides/SlideLayout";
 import type { SlideOut } from "@/types/slide";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, History } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -21,7 +21,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { addPresentationToFolder } from "@/lib/api";
+
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 
 export default function SlideDetailPage() {
   const params = useParams();
@@ -35,6 +36,8 @@ export default function SlideDetailPage() {
   const searchParams = useSearchParams();
   const folderId = searchParams.get("folder");
   const urlTheme = searchParams.get("theme") || "corporate";
+  const [showVersions, setShowVersions] = useState(false);
+  const [versions, setVersions] = useState<Array<{id: string; version_number: number; created_at: string; slide_count: number}>>([]);
 
   useEffect(() => {
     const load = async () => {
@@ -44,15 +47,15 @@ export default function SlideDetailPage() {
         const data = await fetchPresentationById(presentationId);
 
         const formattedSlides: SlideOut[] = data.slides.map(
-          (s: any, i: number): SlideOut => ({
-            id: String(s.id ?? i + 1),
-            title: s.title ?? `Slide ${i + 1}`,
-            heading: s.heading ?? s.title ?? `Slide ${i + 1}`,
-            bullets: s.bullets ?? [],
-            notes: s.notes ?? "",
+          (s: Record<string, unknown>, i: number): SlideOut => ({
+            id: String((s.id as string | number) ?? i + 1),
+            title: (s.title as string) ?? `Slide ${i + 1}`,
+            heading: (s.heading as string) ?? (s.title as string) ?? `Slide ${i + 1}`,
+            bullets: (s.bullets as string[]) ?? [],
+            notes: (s.notes as string) ?? "",
             design: {
-              layout: s.design?.layout ?? "title_and_body",
-              theme: s.design?.theme ?? urlTheme, // ✅ APPLY THEME HERE
+              layout: ((s.design as Record<string, unknown>)?.layout as string) ?? "title_and_body",
+              theme: ((s.design as Record<string, unknown>)?.theme as string) ?? urlTheme,
             },
           }),
         );
@@ -69,7 +72,6 @@ export default function SlideDetailPage() {
     load();
   }, [presentationId, urlTheme]);
 
-  // Save all slides (bulk update)
   const handleSaveAll = async () => {
     try {
       setSaving(true);
@@ -80,7 +82,6 @@ export default function SlideDetailPage() {
         slides: slides,
       });
 
-      // ADD THIS: Auto add to folder if folderId exists
       if (folderId) {
         await assignPresentationToFolder(folderId, presentationId);
       }
@@ -97,9 +98,7 @@ export default function SlideDetailPage() {
   const handleExport = async (format: string) => {
     try {
       const topic = slides[0]?.title || "Presentation";
-
       const blob = await exportSlides(slides, topic, format);
-
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");
       link.href = url;
@@ -108,6 +107,32 @@ export default function SlideDetailPage() {
     } catch (err) {
       console.error("Export failed", err);
       alert("Export failed.");
+    }
+  };
+
+  const loadVersions = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/api/slides/presentation/${presentationId}/versions`);
+      if (res.ok) {
+        const data = await res.json();
+        setVersions(data);
+        setShowVersions(true);
+      }
+    } catch (err) {
+      console.error("Failed to load versions:", err);
+    }
+  };
+
+  const restoreVersion = async (versionId: string) => {
+    try {
+      const res = await fetch(`${API_BASE}/api/slides/presentation/${presentationId}/restore/${versionId}`, {
+        method: "POST",
+      });
+      if (res.ok) {
+        window.location.reload();
+      }
+    } catch (err) {
+      console.error("Failed to restore version:", err);
     }
   };
 
@@ -146,39 +171,57 @@ export default function SlideDetailPage() {
             Back
           </Button>
 
+          <Button variant="outline" onClick={loadVersions}>
+            <History className="h-4 w-4 mr-1" /> Versions
+          </Button>
+
           <Button onClick={handleSaveAll} disabled={saving}>
             {saving ? "Saving..." : "Save All"}
           </Button>
 
-          {/* EXPORT BUTTON HERE INSIDE SAME FLEX ROW */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">🚀 Export</Button>
+              <Button variant="outline">Export</Button>
             </DropdownMenuTrigger>
-
             <DropdownMenuContent align="end" className="w-40">
-              <DropdownMenuItem onClick={() => handleExport("pptx")}>
-                📊 PPTX
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("pdf")}>
-                📄 PDF
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("md")}>
-                📝 Markdown
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("json")}>
-                💾 JSON
-              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("pptx")}>PPTX</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("pdf")}>PDF</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("md")}>Markdown</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("json")}>JSON</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </div>
+
+      {/* VERSION HISTORY PANEL */}
+      {showVersions && (
+        <div className="bg-muted/50 border-b p-3">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-sm font-semibold">Version History</h3>
+            <Button variant="ghost" size="sm" onClick={() => setShowVersions(false)}>Close</Button>
+          </div>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {versions.map((v) => (
+              <button
+                key={v.id}
+                onClick={() => restoreVersion(v.id)}
+                className="flex-shrink-0 px-3 py-2 bg-background rounded-lg border text-xs hover:border-indigo-400 transition"
+              >
+                <span className="font-semibold">v{v.version_number}</span>
+                <span className="text-muted-foreground ml-2">{v.slide_count} slides</span>
+                <span className="text-muted-foreground ml-2">{new Date(v.created_at).toLocaleString()}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* MAIN LAYOUT */}
       <div className="flex-1 p-4 overflow-hidden">
         <SlidesLayout
           slides={slides}
           onUpdateSlides={(updated) => setSlides(updated)}
+          presentationId={presentationId}
         />
       </div>
     </main>
