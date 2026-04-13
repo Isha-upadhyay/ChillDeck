@@ -21,6 +21,8 @@ from app.db.models import PresentationTable, PresentationVersionTable
 from sqlmodel import select
 
 router = APIRouter()
+# slides.py
+PRESENTATIONS = []
 
 # Initialize Orchestrator + Export Service
 orchestrator = SlideOrchestrator()
