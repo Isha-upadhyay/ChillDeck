@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { generateOutline, exportSlides } from "@/lib/api";
+import { generateOutline, exportSlides, generateOutlineStream } from "@/lib/api";
 import { SlideEditor } from "@/components/slides/SlideEditor";
 import {
   Dialog,
@@ -92,6 +92,7 @@ export default function Home() {
     slides: Slide[];
   } | null>(null);
   const [error, setError] = useState("");
+  const [streamProgress, setStreamProgress] = useState<{ step: string; message: string; progress: number } | null>(null);
   const [editingSlideIndex, setEditingSlideIndex] = useState<number | null>(
     null,
   );
@@ -298,6 +299,22 @@ export default function Home() {
             </p>
           )}
         </div>
+
+        {/* GENERATION PROGRESS */}
+        {streamProgress && (
+          <div className="mt-6 bg-[#11111a] border border-gray-800 rounded-2xl p-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm text-gray-300">{streamProgress.message}</span>
+              <span className="text-sm text-indigo-400">{streamProgress.progress}%</span>
+            </div>
+            <div className="w-full bg-gray-800 rounded-full h-2">
+              <div
+                className="bg-gradient-to-r from-indigo-500 to-blue-500 h-2 rounded-full transition-all duration-300"
+                style={{ width: `${streamProgress.progress}%` }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* RESULTS */}
         {result && result.slides && (

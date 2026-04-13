@@ -1,16 +1,25 @@
-// frontend/src/components/slides/SlideEditor.tsx
 "use client";
 
 import { useState } from "react";
 import { useEditorStore } from "@/store/editorStore";
-import { generateImage } from "@/lib/api"; // ✅ Imported from your API file
+import { generateImage } from "@/lib/api";
 import type { SlideOut } from "@/types/slide";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Loader2, Sparkles, Trash2, Plus } from "lucide-react";
+import { Loader2, Sparkles, Trash2, Plus, Undo2, Redo2 } from "lucide-react";
+
+const LAYOUTS = [
+  { id: "title_and_body", name: "Title + Body", icon: "|||" },
+  { id: "title_only", name: "Title Only", icon: "T" },
+  { id: "two_column", name: "Two Column", icon: "||" },
+  { id: "quote", name: "Quote", icon: "\u201C" },
+  { id: "stats", name: "Stats", icon: "#" },
+  { id: "timeline", name: "Timeline", icon: "\u2502" },
+  { id: "comparison", name: "Compare", icon: "\u00B1" },
+];
 
 interface SlideEditorProps {
   onSave?: (slide: SlideOut) => void;
@@ -27,6 +36,12 @@ export function SlideEditor({ onSave, saving }: SlideEditorProps) {
     addBullet,
     removeBullet,
     updateDesign,
+    updateLayout,
+    undo,
+    redo,
+    canUndo,
+    canRedo,
+    pushHistory,
   } = useEditorStore();
 
   const [isGeneratingImg, setIsGeneratingImg] = useState(false);
@@ -39,49 +54,73 @@ export function SlideEditor({ onSave, saving }: SlideEditorProps) {
     );
   }
 
-  // Save Handler
   const handleSaveClick = () => {
-    if (onSave) onSave(slide);
+    if (slide) pushHistory(slide);
+    if (onSave && slide) onSave(slide);
   };
 
-  // ✅ Image Generation Logic using lib/api.ts
   const handleGenerateImage = async () => {
-  const prompt = slide.design?.image_prompt;
-  if (!prompt) return;
+    const prompt = slide.design?.image_prompt;
+    if (!prompt) return;
 
-  try {
-    setIsGeneratingImg(true);
+    try {
+      setIsGeneratingImg(true);
+      const data = await generateImage(prompt);
+      const finalImageUrl = data.url;
 
-    // Call API (returns: { id, url, prompt, created_at })
-    const data = await generateImage(prompt);
+      if (!finalImageUrl) {
+        alert("No image returned from server.");
+        return;
+      }
 
-    // NEW: backend returns 'url'
-    const finalImageUrl = data.url;
-
-    if (!finalImageUrl) {
-      alert("No image returned from server.");
-      return;
+      updateDesign({ image_url: finalImageUrl });
+    } catch (err) {
+      console.error(err);
+      alert("Failed to generate image.");
+    } finally {
+      setIsGeneratingImg(false);
     }
-
-    // Update slide design
-    updateDesign({ image_url: finalImageUrl });
-
-  } catch (err) {
-    console.error(err);
-    alert("Failed to generate image.");
-  } finally {
-    setIsGeneratingImg(false);
-  }
-};
+  };
 
   return (
     <div className="flex flex-col h-full gap-4">
       <Card className="flex-1 overflow-y-auto border-0 shadow-none">
         <CardHeader className="pb-2 px-0">
-          <CardTitle className="text-md font-bold">Content Editor</CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-md font-bold">Content Editor</CardTitle>
+            <div className="flex gap-1">
+              <Button variant="ghost" size="icon" onClick={undo} disabled={!canUndo()} title="Undo (Ctrl+Z)">
+                <Undo2 className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon" onClick={redo} disabled={!canRedo()} title="Redo (Ctrl+Y)">
+                <Redo2 className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
         </CardHeader>
         <CardContent className="space-y-4 px-1">
-          
+
+          {/* Layout Selector */}
+          <div className="space-y-1.5">
+            <Label className="text-xs font-semibold text-muted-foreground">Layout</Label>
+            <div className="grid grid-cols-4 gap-1.5">
+              {LAYOUTS.map((l) => (
+                <button
+                  key={l.id}
+                  onClick={() => updateLayout(l.id)}
+                  className={`px-2 py-1.5 rounded-md text-xs font-medium border transition-all ${
+                    slide.design?.layout === l.id
+                      ? "bg-indigo-100 border-indigo-400 text-indigo-700"
+                      : "bg-muted/30 border-transparent hover:bg-muted/50"
+                  }`}
+                >
+                  <span className="block text-lg leading-none mb-0.5">{l.icon}</span>
+                  {l.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Title */}
           <div className="space-y-1.5">
             <Label className="text-xs font-semibold text-muted-foreground">Title (Top Bar)</Label>
@@ -135,24 +174,24 @@ export function SlideEditor({ onSave, saving }: SlideEditorProps) {
           <div className="pt-4 mt-4 border-t border-dashed">
             <Label className="text-xs font-semibold text-indigo-400 mb-2 block">AI Image Generator</Label>
             <div className="space-y-2">
-                <Textarea
-                  value={slide.design?.image_prompt || ""}
-                  onChange={(e) => updateDesign({ image_prompt: e.target.value })}
-                  placeholder="Describe the image (e.g. 'Futuristic city with flying cars')..."
-                  className="min-h-[80px] text-sm resize-none"
-                />
-                <Button 
-                    onClick={handleGenerateImage} 
-                    disabled={!slide.design?.image_prompt || isGeneratingImg}
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
-                    size="sm"
-                >
-                    {isGeneratingImg ? (
-                        <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...</>
-                    ) : (
-                        <><Sparkles className="mr-2 h-4 w-4" /> Generate Image</>
-                    )}
-                </Button>
+              <Textarea
+                value={slide.design?.image_prompt || ""}
+                onChange={(e) => updateDesign({ image_prompt: e.target.value })}
+                placeholder="Describe the image..."
+                className="min-h-[80px] text-sm resize-none"
+              />
+              <Button
+                onClick={handleGenerateImage}
+                disabled={!slide.design?.image_prompt || isGeneratingImg}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                size="sm"
+              >
+                {isGeneratingImg ? (
+                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...</>
+                ) : (
+                  <><Sparkles className="mr-2 h-4 w-4" /> Generate Image</>
+                )}
+              </Button>
             </div>
           </div>
 
@@ -170,12 +209,12 @@ export function SlideEditor({ onSave, saving }: SlideEditorProps) {
 
         </CardContent>
       </Card>
-      
+
       {/* Footer Save Button */}
       <div className="pt-2 border-t">
-          <Button onClick={handleSaveClick} disabled={saving} className="w-full">
-            {saving ? "Saving All..." : "Save Changes"}
-          </Button>
+        <Button onClick={handleSaveClick} disabled={saving} className="w-full">
+          {saving ? "Saving All..." : "Save Changes"}
+        </Button>
       </div>
     </div>
   );
